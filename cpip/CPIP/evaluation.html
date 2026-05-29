@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CPIP | Strategic Evaluation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #D4AF37; --dark: #050505; --panel: #111; --safe: #00ffcc; }
+        body { background: var(--dark); color: white; font-family: 'Inter', sans-serif; padding: 60px 20px; margin: 0; display: flex; justify-content: center; }
+        .container { width: 100%; max-width: 950px; }
+        .header h1 { font-weight: 900; font-size: 3rem; letter-spacing: 8px; color: var(--gold); text-transform: uppercase; text-align: center; margin-bottom: 60px; text-shadow: 0 4px 20px rgba(212, 175, 55, 0.2); }
+        .evaluation-card { background: var(--panel); border: 1px solid rgba(212,175,55,0.3); padding: 60px; border-radius: 20px; box-shadow: 0 40px 100px rgba(0,0,0,0.9); }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; margin-bottom: 30px; }
+        label { display: block; color: var(--gold); font-weight: 900; text-transform: uppercase; font-size: 1rem; margin-bottom: 15px; letter-spacing: 2px; }
+        input, textarea { width: 100%; background: #000; border: 2px solid #222; color: #fff; padding: 20px; border-radius: 10px; font-size: 1.2rem; outline: none; font-family: inherit; box-sizing: border-box; transition: 0.3s; }
+        input:focus, textarea:focus { border-color: var(--gold); background: #050505; }
+        .strategic-question-box { background: rgba(255, 255, 255, 0.02); padding: 45px; border-radius: 15px; margin: 50px 0; border: 1px solid rgba(212, 175, 55, 0.2); text-align: center; }
+        .q-text { font-size: 1.8rem; font-weight: 800; line-height: 1.5; margin-bottom: 40px; color: #f0f0f0; }
+        .opt-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .opt-btn { padding: 22px; background: #000; border: 2px solid #333; color: #888; cursor: pointer; font-weight: 900; text-transform: uppercase; font-size: 0.9rem; border-radius: 8px; transition: 0.4s; }
+        .opt-btn:hover { border-color: var(--gold); color: #fff; }
+        .opt-btn.active { border-color: var(--safe); color: var(--safe); background: rgba(0, 255, 204, 0.05); }
+        .btn-report { width: 100%; padding: 30px; background: var(--gold); color: black; font-weight: 900; border: none; cursor: pointer; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 4px; margin-top: 40px; border-radius: 12px; transition: 0.5s; }
+        .btn-report:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header"><h1>Strategic Evaluation</h1></div>
+        <div class="evaluation-card">
+            
+            <div class="field-row">
+                <div class="input-group">
+                    <label>Physician Full Name</label>
+                    <input type="text" id="physicianName" placeholder="Dr. Ahmed Ali">
+                </div>
+                <div class="input-group">
+                    <label>Medical Speciality</label>
+                    <input type="text" id="physicianSpec" placeholder="e.g. family medicine">
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="input-group">
+                    <label>Organization / Hospital</label>
+                    <input type="text" id="physicianOrg" placeholder="e.g. JHAH">
+                </div>
+                <div class="input-group">
+                    <label>Contact Number</label>
+                    <input type="text" id="physicianPhone" placeholder="+966 5X XXX XXXX">
+                </div>
+            </div>
+
+            <div class="input-group" style="margin-bottom: 30px;">
+                <label>Official Email Address</label>
+                <input type="email" id="physicianEmail" placeholder="doctor@organization.com">
+            </div>
+
+            <div class="strategic-question-box">
+                <div class="q-text" id="ehrQuestion">Do you recommend the integration of the CPIP protocol into medical organization systems (EHR)?</div>
+                <div class="opt-grid">
+                    <button class="opt-btn" onclick="sel(this)">Strongly Recommend</button>
+                    <button class="opt-btn" onclick="sel(this)">Recommend</button>
+                    <button class="opt-btn" onclick="sel(this)">Not Recommended</button>
+                </div>
+            </div>
+
+            <label>Ultimate Strategic Vision</label>
+            <p id="coreQuestion" style="color: #aaa; font-size: 0.9rem; margin-bottom: 10px;">What is your ultimate vision for integrating AI into the clinical safety framework of your organization?</p>
+            <textarea id="drVision" style="font-size: 1.2rem; min-height: 180px;" placeholder="Describe your future vision for AI safety..."></textarea>
+            
+            <button class="btn-report" onclick="saveAndGo()">Generate Final Audit Report →</button>
+        </div>
+    </div>
+
+    <script>
+        function sel(el) {
+            // إزالة الحالة النشطة من جميع الأزرار
+            document.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+            // إضافة الحالة النشطة للزر المختار
+            el.classList.add('active');
+            // حفظ الاختيار فوراً
+            localStorage.setItem('recommendation_status', el.innerText);
+        }
+
+        function saveAndGo() {
+            const status = localStorage.getItem('recommendation_status');
+            const visionAnswer = document.getElementById('drVision').value;
+            
+            const name = document.getElementById('physicianName').value.trim();
+            const spec = document.getElementById('physicianSpec').value.trim();
+            const org = document.getElementById('physicianOrg').value.trim();
+            const email = document.getElementById('physicianEmail').value.trim();
+
+            // التحقق من الاختيار قبل الإرسال
+            if (!name || !org || !email) {
+                alert("Please fill in your professional credentials (Name, Organization, and Email).");
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid official email address.");
+                return;
+            }
+
+            if (!status || !visionAnswer.trim()) {
+                alert("Please complete the recommendation status and strategic vision fields.");
+                return;
+            }
+
+            // حفظ البيانات الشخصية
+            localStorage.setItem('physicianName', name);
+            localStorage.setItem('physicianSpec', spec);
+            localStorage.setItem('physicianOrg', org);
+            localStorage.setItem('physicianPhone', document.getElementById('physicianPhone').value);
+            localStorage.setItem('physicianEmail', email);
+            
+            // تحديث الشهادة (Testimony) بناءً على الاختيار
+            localStorage.setItem('drFeedback', status + ": The CPIP protocol represents a vital advancement in clinical AI safety.");
+
+            // الربط البرمجي للتقرير (يظهر الاختيار + الرؤية)
+            const questionTitle = document.getElementById('ehrQuestion').innerText;
+            // دمج الحالة المختارة مع نص الرؤية ليظهرا في صندوق واحد في التقرير
+            const fullDecision = "Status: " + status + "\n\nVision: " + visionAnswer;
+
+            localStorage.setItem('evaluation_question_text', questionTitle); 
+            localStorage.setItem('evaluation_ans', fullDecision); 
+            
+            location.href = 'report.html';
+        }
+    </script>
+</body>
+</html>

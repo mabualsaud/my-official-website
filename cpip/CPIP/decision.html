@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPIP | Next Steps</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0; padding: 0; background-color: #0A0A0A;
+            color: white; font-family: 'Montserrat', sans-serif;
+            display: flex; justify-content: center; align-items: center; min-height: 100vh;
+            text-align: center;
+        }
+        .container { max-width: 800px; padding: 40px; }
+        
+        h1 {
+            font-family: 'Cinzel', serif; font-size: 2.5rem; color: #C5A021;
+            margin-bottom: 20px; line-height: 1.4;
+        }
+        
+        p { font-size: 1.2rem; color: #aaa; margin-bottom: 40px; }
+        
+        .note { font-size: 1rem; color: #aaa8a8; margin-top: 10px; font-style: italic; }
+
+        .btn-group { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+
+        .btn {
+            padding: 20px 50px; font-size: 1.2rem; font-weight: bold;
+            text-transform: uppercase; border-radius: 50px; cursor: pointer;
+            transition: 0.3s; text-decoration: none; display: inline-block;
+        }
+
+        .btn-yes {
+            background: #C5A021; color: black; border: 2px solid #C5A021;
+        }
+        .btn-yes:hover { background: white; border-color: white; transform: translateY(-5px); }
+
+        .btn-no {
+            background: transparent; color: white; border: 2px solid white;
+        }
+        .btn-no:hover { background: white; color: black; transform: translateY(-5px); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Do you want to try another model for simulation?</h1>
+        <p>Compare how different AI architectures handle your clinical protocol.</p>
+        
+        <div class="btn-group">
+            <button onclick="prepareNewSimulation()" class="btn btn-yes">Yes, Try Another Model</button>
+            <a href="certification.html" class="btn btn-no">No, Claim My Certificate</a>
+        </div>
+
+        <div class="note">
+            (Note: You can perform as many simulations as you want at any time)
+        </div>
+    </div>
+
+    <script>
+        function prepareNewSimulation() {
+            // مسح بيانات التقييم فقط (النقاط والملاحظات والقرار النهائي)
+            for (let i = 0; i < 7; i++) {
+                localStorage.removeItem(`metric_score_${i}`);
+                localStorage.removeItem(`metric_note_${i}`);
+            }
+            localStorage.removeItem('recommendation_status');
+            localStorage.removeItem('drFeedback');
+            localStorage.removeItem('evaluation_ans');
+            localStorage.removeItem('evaluation_question_text');
+            
+            // التوجه للمحاكاة من جديد مع بقاء اسم الطبيب ومؤسسته في الذاكرة
+            window.location.href = 'sandbox.html';
+        }
+    </script>
+</body>
+</html>
