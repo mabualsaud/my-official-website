@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications & Articles | Mai Abu Al Saud</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --body-bg: #020617;
+            --body-gradient: radial-gradient(circle at 50% 50%, #0d1b2a 0%, #020617 100%);
+            --body-text: #ffffff;
+            --panel-bg: rgba(255, 255, 255, 0.04);
+            --accent-cyan: #22d3ee;
+            --accent-purple: #a855f7;
+            --accent-pink: #ff00fb;
+            --border-color: rgba(0, 209, 255, 0.25);
+            --nav-bg: rgba(10, 12, 16, 0.7);
+            --nav-text: rgba(255, 255, 255, 0.5);
+        }
+
+        body.light {
+            --body-bg: #f3f4f6; 
+            --body-gradient: none;
+            --body-text: #111827;
+            --panel-bg: #ffffff;
+            --border-color: rgba(0, 85, 204, 0.15);
+            --nav-bg: rgba(255, 255, 255, 0.85);
+            --nav-text: #4b5563;
+        }
+
+        body {
+            background: var(--body-gradient);
+            background-attachment: fixed;
+            background-color: var(--body-bg);
+            color: var(--body-text);
+            font-family: 'Urbanist', sans-serif;
+            margin: 0; padding: 0;
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh; transition: background 0.3s ease;
+        }
+
+        .page-wrapper {
+            width: 100%; max-width: 1150px;
+            padding: 60px 20px; box-sizing: border-box;
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        /* Top Glowing Button - LinkedIn/WhatsApp Focus */
+        .mega-glow-btn {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            width: 100%; max-width: 1000px; padding: 50px 40px; border-radius: 40px;
+            background: linear-gradient(45deg, #075e54, #128c7e, #25d366, #128c7e);
+            background-size: 300% 300%;
+            animation: mega-glow 5s ease infinite;
+            text-decoration: none; color: white;
+            box-shadow: 0 15px 45px rgba(37, 211, 102, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 80px; border: 2px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        @keyframes mega-glow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .mega-glow-btn:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(37, 211, 102, 0.6);
+        }
+
+        .mega-glow-btn h2 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; margin: 0; text-transform: uppercase; letter-spacing: 3px; }
+        .mega-glow-btn span { font-size: 18px; margin-top: 15px; font-weight: 700; opacity: 0.9; letter-spacing: 2px; }
+
+        /* Gallery Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 50px; width: 100%;
+        }
+
+        /* Navigation Back */
+        .nav-back {
+            align-self: flex-start; margin-bottom: 30px;
+            color: var(--accent-cyan); text-decoration: none;
+            font-weight: 800; text-transform: uppercase;
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        /* Article Card Styles */
+        .article-card {
+            background: var(--panel-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(10px);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .article-card:hover {
+            border-color: var(--accent-pink);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 0 30px rgba(255, 0, 251, 0.3);
+        }
+
+        /* Category Navigation Styles */
+        .category-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        .category-nav a {
+            padding: 12px 24px;
+            border-radius: 30px;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            color: var(--body-text);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .category-nav a:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(34, 211, 238, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(34, 211, 238, 0.15);
+        }
+
+        .channel-intro {
+            font-size: clamp(22px, 4vw, 32px);
+            color: var(--accent-cyan);
+            margin-bottom: 30px;
+            font-weight: 800;
+            line-height: 1.4;
+            text-align: center;
+            letter-spacing: 0.5px;
+            max-width: 800px;
+        }
+
+        .category-section {
+            width: 100%;
+            border: 3px solid var(--border-color);
+            border-radius: 50px;
+            padding: 50px;
+            margin-bottom: 80px;
+            background: var(--panel-bg);
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            scroll-margin-top: 50px;
+        }
+
+        /* Colorful Section Borders & Glows */
+        .category-section.se-border { border-color: var(--accent-cyan); box-shadow: 0 10px 40px rgba(34, 211, 238, 0.1); }
+        .category-section.ai-border { border-color: var(--accent-purple); box-shadow: 0 10px 40px rgba(168, 85, 247, 0.1); }
+        .category-section.epic-border { border-color: var(--accent-pink); box-shadow: 0 10px 40px rgba(255, 0, 251, 0.1); }
+        .category-section.nm-border { border-color: #fbbf24; box-shadow: 0 10px 40px rgba(251, 191, 36, 0.1); }
+
+        .category-title {
+            width: 100%;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--accent-purple);
+            border-left: 5px solid var(--accent-pink);
+            padding-left: 15px;
+        }
+
+        .card-image-container {
+            width: 100%;
+            height: 550px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2); /* Fallback background for containment */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensures images are never cut */
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .article-card:hover .card-image-container img {
+            transform: scale(1.15); /* Slightly stronger zoom */
+        }
+
+        .theme-toggle {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--panel-bg); border: 1px solid var(--border-color);
+            color: var(--body-text); padding: 15px; border-radius: 50%;
+            cursor: pointer; z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper"> 
+        <a href="../index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+
+        <!-- Quick Navigation Bar -->
+        <nav class="category-nav">
+            <a href="#se-section">Software Engineering</a>
+            <a href="#ai-section">AI & Governance</a>
+            <a href="#epic-section">EPIC System</a>
+            <a href="#nm-section">Nuclear Medicine</a>
+        </nav>
+
+        <p class="channel-intro">Explore my strategic insights and digital transformation publications in my professional channel.</p>
+
+        <a href="https://whatsapp.com/channel/0029Vb6o1xHISTkIzG33VY3c" target="_blank" class="mega-glow-btn">
+            <h2>Strategic Publication Gallery</h2>
+            <span>Follow My WhatsApp Channel for Real-time Insights →</span>
+        </a>
+
+        <!-- Section 1: Software Engineering & Digital Transformation -->
+        <div class="category-section se-border" id="se-section">
+            <h2 class="category-title">Software Engineering & Digital Transformation</h2>
+            <div class="articles-grid">
+                <a href="../articles/digital_transformation_se/1.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/digital_transformation_se/1.jpg" alt="Publication 1"></div></a>
+                <a href="../articles/digital_transformation_se/2.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/digital_transformation_se/2.jpg" alt="Publication 2"></div></a>
+                <a href="../articles/digital_transformation_se/3.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/digital_transformation_se/3.jpg" alt="Publication 3"></div></a>
+                <a href="../articles/digital_transformation_se/4.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/digital_transformation_se/4.jpg" alt="Publication 4"></div></a>
+                <a href="../articles/digital_transformation_se/5.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/digital_transformation_se/5.jpg" alt="Publication 5"></div></a>
+                <a href="../articles/digital_transformation_se/6.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/digital_transformation_se/6.jpg" alt="Publication 6"></div></a>
+                <a href="../articles/digital_transformation_se/7.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/digital_transformation_se/7.jpg" alt="Publication 7"></div></a>
+                <a href="../articles/digital_transformation_se/8.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/digital_transformation_se/8.jpg" alt="Publication 8"></div></a>
+                <a href="../articles/digital_transformation_se/9.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/digital_transformation_se/9.jpg" alt="Publication 9"></div></a>
+                <a href="../articles/digital_transformation_se/10.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/digital_transformation_se/10.jpg" alt="Publication 10"></div></a>
+            </div>
+        </div>
+
+        <!-- Section 2: Artificial Intelligence & Governance -->
+        <div class="category-section ai-border" id="ai-section">
+            <h2 class="category-title">Artificial Intelligence & Governance Publications</h2>
+            <div class="articles-grid">
+                <a href="../articles/ai/1.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/1.jpg" alt="Publication 1"></div></a>
+                <a href="../articles/ai/10.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/10.jpg" alt="Publication 10"></div></a>
+                <a href="../articles/ai/16.png" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/16.png" alt="Publication 16"></div></a>            
+                <a href="../articles/ai/2.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/2.jpg" alt="Publication 2"></div></a>
+                <a href="../articles/ai/3.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/3.jpg" alt="Publication 3"></div></a>
+                <a href="../articles/ai/4.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/4.jpg" alt="Publication 4"></div></a>
+                <a href="../articles/ai/5.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/5.jpg" alt="Publication 5"></div></a>
+                <a href="../articles/ai/6.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/6.jpg" alt="Publication 6"></div></a>
+                <a href="../articles/ai/7.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/7.jpg" alt="Publication 7"></div></a>
+                <a href="../articles/ai/8.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/8.jpg" alt="Publication 8"></div></a>
+                <a href="../articles/ai/9.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/9.jpg" alt="Publication 9"></div></a>
+                <a href="../articles/ai/11.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/11.jpg" alt="Publication 11"></div></a>
+                <a href="../articles/ai/12.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/12.jpg" alt="Publication 12"></div></a>
+                <a href="../articles/ai/13.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/13.jpg" alt="Publication 13"></div></a>
+                <a href="../articles/ai/14.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/14.jpg" alt="Publication 14"></div></a>
+                <a href="../articles/ai/15.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/15.jpg" alt="Publication 15"></div></a>
+            </div>
+        </div>
+
+        <!-- Section 3: Nuclear Medicine EPIC system -->
+        <div class="category-section epic-border" id="epic-section">
+            <h2 class="category-title">Nuclear Medicine EPIC system</h2>
+            <div class="articles-grid">
+                <a href="../articles/epic/1.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/epic/1.jpg" alt="Publication 1"></div></a>
+                <a href="../articles/epic/2.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/epic/2.jpg" alt="Publication 2"></div></a>
+                <a href="../articles/epic/3.png" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/epic/3.png" alt="Publication 3"></div></a>
+                <a href="../articles/epic/4.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/epic/4.jpg" alt="Publication 4"></div></a>
+                <a href="../articles/epic/5.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/epic/5.jpg" alt="Publication 5"></div></a>
+                <a href="../articles/epic/6.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/epic/6.jpg" alt="Publication 6"></div></a>
+                <a href="../articles/epic/7.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/epic/7.jpg" alt="Publication 7"></div></a>
+                <a href="../articles/epic/8.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/epic/8.jpg" alt="Publication 8"></div></a>
+                <a href="../articles/epic/9.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/epic/9.jpg" alt="Publication 9"></div></a>
+                <a href="../articles/epic/10.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/epic/10.jpg" alt="Publication 10"></div></a>
+            </div>
+        </div>
+
+        <!-- Section 4: Nuclear Medicine & Health Publications -->
+        <div class="category-section nm-border" id="nm-section">
+            <h2 class="category-title">Nuclear Medicine & Health Publications</h2>
+            <div class="articles-grid" id="gallery">
+                <a href="../articles/nm/1%20(1).jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/1%20(1).jpg" alt="Publication 1"></div></a>
+                <a href="../articles/nm/2.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/2.jpg" alt="Publication 2"></div></a>
+                <a href="../articles/nm/3.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/3.jpg" alt="Publication 3"></div></a>
+                <a href="../articles/nm/4.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/4.jpg" alt="Publication 4"></div></a>
+                <a href="../articles/nm/5.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/5.jpg" alt="Publication 5"></div></a>
+                <a href="../articles/nm/6.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/6.jpg" alt="Publication 6"></div></a>
+                <a href="../articles/nm/7.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/7.jpg" alt="Publication 7"></div></a>
+                <a href="../articles/nm/8.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/8.jpg" alt="Publication 8"></div></a>
+                <a href="../articles/nm/9.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/9.jpg" alt="Publication 9"></div></a>
+                <a href="../articles/nm/10.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/10.jpg" alt="Publication 10"></div></a>
+                <a href="../articles/nm/11.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/11.jpg" alt="Publication 11"></div></a>
+                <a href="../articles/nm/12.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/12.jpg" alt="Publication 12"></div></a>
+                <a href="../articles/nm/13.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/13.jpg" alt="Publication 13"></div></a>
+                <a href="../articles/nm/14.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/14.jpg" alt="Publication 14"></div></a>
+                <a href="../articles/nm/15.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/15.jpg" alt="Publication 15"></div></a>
+                <a href="../articles/nm/16.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/16.jpg" alt="Publication 16"></div></a>
+                <a href="../articles/nm/18.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/18.jpg" alt="Publication 18"></div></a>
+                <a href="../articles/nm/19.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/19.jpg" alt="Publication 19"></div></a>
+                <a href="../articles/nm/21.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/21.jpg" alt="Publication 21"></div></a>
+                <a href="../articles/nm/22.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/22.jpg" alt="Publication 22"></div></a>
+                <a href="../articles/nm/23.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/23.jpg" alt="Publication 23"></div></a>
+                <a href="../articles/nm/24.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/24.jpg" alt="Publication 24"></div></a>
+                <a href="../articles/nm/25.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/25.jpg" alt="Publication 25"></div></a>
+                <a href="../articles/nm/26.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/26.jpg" alt="Publication 26"></div></a>
+                <a href="../articles/nm/27.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/27.jpg" alt="Publication 27"></div></a>
+                <a href="../articles/nm/28.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/28.jpg" alt="Publication 28"></div></a>
+                <a href="../articles/nm/29.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/29.jpg" alt="Publication 29"></div></a>
+                <a href="../articles/nm/30.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/nm/30.jpg" alt="Publication 30"></div></a>
+            </div>
+        </div>
+
+        <footer style="margin-top: 50px; padding: 40px 0; opacity: 0.7; border-top: 1px solid var(--border-color); text-align: center; width: 100%; font-size: 14px; color: var(--nav-text);">
+            &copy; 2026 Mai Abu Al Saud. All rights reserved. | <a href="privacy.html" style="color: inherit; text-decoration: none; font-weight: 600;">Privacy Policy</a> | 
+            <a href="https://github.com/mabualsaud/my-official-website" target="_blank" style="color: inherit; text-decoration: none;"><i class="fab fa-github"></i> Website Source</a>
+        </footer>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">◐</button>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light');
+            localStorage.setItem('themePreference', document.body.classList.contains('light') ? 'light' : 'dark');
+        }
+        
+        window.onload = () => {
+            if (localStorage.getItem('themePreference') === 'light') document.body.classList.add('light');
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Transformation | SAP to EPIC</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ==========================================================================
+           1. GLOBAL VARIABLES & DARK/LIGHT THEME CONTROL
+           ========================================================================== */
+        :root {
+            --ge-purple: #7e22ce;
+            --ge-purple-glow: rgba(126, 34, 206, 0.4);
+            --ge-dark: #020617;
+            --panel-bg: #0b1329; 
+            --slate-300: #cbd5e1;
+            --accent-cyan: #00d1ff;
+            --accent-cyan-glow: rgba(0, 209, 255, 0.3);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            --body-bg: var(--ge-dark);
+            --body-text: #ffffff;
+            
+            /* ألوان الحدود التفاعلية لبطاقات التأثير */
+            --sap-border-active: #ef4444;
+            --epic-border-active: #10b981;
+            
+            /* ظلال احترافية ناعمة وعميقة (Perfect Glow Shadows) خلف البطاقات */
+            --sap-blue-glow: 0 20px 45px rgba(0, 84, 157, 0.5);
+            --epic-purple-glow: 0 20px 45px rgba(90, 45, 129, 0.5);
+            --impact-sap-glow: 0 20px 45px rgba(239, 68, 68, 0.35);
+            --impact-epic-glow: 0 20px 45px rgba(16, 185, 129, 0.35);
+        }
+
+        body.light {
+            --body-bg: #f3f4f6;
+            --body-text: #111111;
+            --slate-300: #4b5563;
+            --panel-bg: #ffffff; 
+            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --border-color: rgba(0, 0, 0, 0.08);
+            --ge-purple-glow: rgba(126, 34, 206, 0.15);
+            --accent-cyan-glow: rgba(0, 209, 255, 0.15);
+            
+            --sap-border-active: #b91c1c;
+            --epic-border-active: #047857;
+            
+            /* ظلال النسخة المضيئة */
+            --sap-blue-glow: 0 15px 35px rgba(0, 84, 157, 0.25);
+            --epic-purple-glow: 0 15px 35px rgba(90, 45, 129, 0.25);
+            --impact-sap-glow: 0 15px 35px rgba(239, 68, 68, 0.15);
+            --impact-epic-glow: 0 15px 35px rgba(16, 185, 129, 0.15);
+        }
+
+        body {
+            background: var(--body-bg);
+            color: var(--body-text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .container { max-width: 1200px; width: 100%; }
+
+        /* HEADER & LOGO */
+        .jhah-header-container {
+            display: flex;
+            justify-content: center;
+            padding: 40px 0;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 70%);
+        }
+
+        .jhah-professional-logo {
+            max-width: 350px;
+            height: auto;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease;
+        }
+        .jhah-professional-logo:hover { transform: scale(1.03); }
+
+        .header-section { text-align: center; margin-bottom: 50px; }
+        
+        h1 {
+            font-size: clamp(28px, 7vw, 60px) !important; 
+            margin: 20px auto;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.2;
+            width: 95%;
+            color: var(--accent-cyan);
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: clamp(20px, 4vw, 32px) !important;
+            color: var(--slate-300);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h2 { 
+            font-size: 2rem; 
+            color: var(--accent-cyan); 
+            border-left: 5px solid var(--accent-cyan); 
+            padding-left: 15px; 
+            margin-bottom: 25px; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        body.light h2 { color: #007799; border-left-color: #007799; }
+
+        /* MAIN CONTAINER CARD */
+        .animated-section-card {
+            background: var(--panel-bg);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            margin-bottom: 40px;
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .animated-section-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 20px 40px var(--accent-cyan-glow);
+        }
+
+        .comparison-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .logo-img { height: 55px; width: auto; display: block; margin-bottom: 20px; }
+        .epic .logo-img { height: 90px; }
+
+        /* ==========================================================================
+           2. SYSTEM CARDS (BORDERLESS WITH DYNAMIC HOVER GLOW)
+           ========================================================================== */
+        .system-screen { 
+            border-radius: 16px; 
+            overflow: hidden; 
+            color: #1e293b;
+            border: none !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+        }
+
+        /* SAP Card & Hover */
+        .system-screen.sap { background: #f8fafc; }
+        .system-screen.sap:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--sap-blue-glow);
+        }
+
+        /* EPIC Card & Hover */
+        .system-screen.epic { background: #ffffff; }
+        .system-screen.epic:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--epic-purple-glow);
+        }
+
+        .sap-header { background: #00549d; color: white; padding: 20px; font-size: 22px; font-weight: bold; }
+        .sap-content { padding: 35px; }
+        .sap-procedure-box { background: #ffffff; padding: 25px; border: 2px solid #00549d; border-radius: 10px; margin-bottom: 25px; }
+        .procedure-label { font-size: 14px; color: #64748b; text-transform: uppercase; display: block; font-weight: bold; }
+        .procedure-value { font-size: 24px; color: #00549d; font-weight: 900; display: block; }
+
+        .sap-table { width: 100%; border-collapse: collapse; background: white; font-size: 18px; margin-top: 20px; }
+        .sap-table th { background: #e2e8f0; border: 1px solid #cbd5e1; padding: 15px; text-align: left; }
+        .sap-table td { border: 1px solid #cbd5e1; padding: 15px; }
+        .status-open { color: #dc2626; font-weight: bold; }
+
+        .epic-header { background: #2d3e50; color: white; padding: 20px; font-size: 22px; font-weight: bold; }
+        .epic-sidebar { display: flex; background: #f8fafc; }
+        .epic-menu { width: 60px; background: #3d4f61; min-height: 500px; }
+        .epic-main { padding: 35px; flex: 1; }
+        .epic-procedure-banner { background: #f5f3ff; padding: 25px; border-left: 10px solid #5a2d81; margin-bottom: 30px; border-radius: 10px; }
+        .epic-proc-title { font-size: 14px; color: #5a2d81; font-weight: bold; text-transform: uppercase; }
+        .epic-proc-name { font-size: 26px; color: #1e293b; font-weight: 900; }
+        .encounter-box { background: #ffffff; border: 1px solid #e2e8f0; border-left: 10px solid #4f46e5; padding: 20px; margin-bottom: 15px; border-radius: 10px; font-size: 20px; font-weight: bold; }
+        .status-pill { background: #10b981; color: white; padding: 5px 15px; border-radius: 20px; font-size: 14px; float: right; }
+
+        /* ==========================================================================
+           3. STRATEGIC IMPACT CARDS (NOW DETAILED WITH INTERACTIVE BORDERLINES)
+           ========================================================================== */
+        .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px; width: 100%; }
+        
+        .impact-card { 
+            padding: 40px; 
+            border-radius: 20px; 
+            font-size: 20px; 
+            line-height: 1.7; 
+            border: 1px solid var(--border-color); /* حد ناعم افتراضي يطابق البطاقات الكبيرة */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        
+        /* تأثير الصعود التفاعلي عند تمرير الماوس */
+        .impact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* SAP Impact Card & Border Styling */
+        .impact-sap { 
+            background: rgba(239, 68, 68, 0.08); 
+            color: #fee2e2; 
+        }
+        .impact-sap:hover { 
+            border-color: var(--sap-border-active); /* يضيء الحد باللون الأحمر عند الـ Hover */
+            box-shadow: var(--impact-sap-glow);
+        }
+        
+        /* EPIC Impact Card & Border Styling */
+        .impact-epic { 
+            background: rgba(16, 185, 129, 0.08); 
+            color: #ecfdf5; 
+        }
+        .impact-epic:hover { 
+            border-color: var(--epic-border-active); /* يضيء الحد باللون الأخضر عند الـ Hover */
+            box-shadow: var(--impact-epic-glow);
+        }
+        
+        body.light .impact-sap { color: #1e293b; background: rgba(239, 68, 68, 0.04); }
+        body.light .impact-epic { color: #1e293b; background: rgba(16, 185, 129, 0.04); }
+        
+        .impact-card strong.title-sap { color: #ff4d4d; font-size: 26px; display: block; margin-bottom: 20px; text-transform: uppercase; border-bottom: 1px solid rgba(255, 77, 77, 0.2); padding-bottom: 10px; }
+        .impact-card strong.title-epic { color: #00ffaa; font-size: 26px; display: block; margin-bottom: 20px; text-transform: uppercase; border-bottom: 1px solid rgba(0, 255, 170, 0.2); padding-bottom: 10px; }
+        body.light .title-sap { color: #b91c1c; }
+        body.light .title-epic { color: #047857; }
+
+        /* ARTICLE SECTION STYLE */
+        .article-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .article-text-side p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--slate-300);
+            margin-bottom: 25px;
+        }
+        .linkedin-badge-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: #0077b5;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(0, 119, 181, 0.3);
+            transition: 0.3s ease;
+        }
+        .linkedin-badge-btn:hover {
+            background: #005987;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 119, 181, 0.5);
+        }
+        .article-image-side img {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .article-image-side img:hover { transform: scale(1.02); }
+
+        /* THEME BUTTON */
+        .theme-btn {
+            background: rgba(0, 209, 255, 0.1);
+            border: 1px solid var(--accent-cyan);
+            padding: 12px 24px;
+            border-radius: 30px;
+            color: var(--body-text);
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin: 20px auto;
+            display: block;
+            transition: 0.3s;
+        }
+
+        /* RETURN BUTTON */
+        .return-container { margin-top: 40px; text-align: center; padding-bottom: 30px; width: 100%; }
+        .return-btn {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: bold;
+            border: 2px solid var(--accent-cyan);
+            padding: 12px 35px;
+            border-radius: 50px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .return-btn:hover { background: rgba(0, 209, 255, 0.1); box-shadow: 0 0 20px var(--accent-cyan-glow); }
+
+        /* LIGHTBOX FOR ZOOMABLE IMAGES */
+        .lightbox-modal {
+            display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(2, 6, 23, 0.95); backdrop-filter: blur(12px); align-items: center; justify-content: center;
+            cursor: zoom-out; opacity: 0; transition: opacity 0.3s ease;
+        }
+        .lightbox-modal.show { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 90%; max-height: 85vh; border-radius: 12px; box-shadow: 0 25px 60px rgba(0,0,0,0.8); transform: scale(0.9); transition: transform 0.3s ease; }
+        .lightbox-modal.show .lightbox-content { transform: scale(1); }
+        .lightbox-close { position: absolute; top: 30px; right: 40px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; }
+
+      /* ==========================================================================
+       MEDIA QUERIES - إصلاح المقارنات والجداول على الجوال والآيباد
+       ========================================================================== */
+    @media (max-width: 900px) {
+        .comparison-wrapper {
+            grid-template-columns: 1fr !important; /* تحويل المقارنة لعمودين فوق بعض بدلاً من بجانب بعض */
+            gap: 25px !important;
+        }
+        .jhah-professional-logo {
+            max-width: 220px !important; /* تصغير شعار جونز هوبكنز ليناسب الشاشة */
+        }
+        .impact-grid {
+            grid-template-columns: 1fr !important;
+        }
+    }
+
+    @media (max-width: 600px) {
+        body {
+            padding: 20px 10px !important;
+        }
+        .animated-section-card {
+            padding: 20px !important;
+            border-radius: 16px !important;
+        }
+        .sap-content {
+            padding: 20px !important; /* تنحيف الحشو الداخلي للبطاقات */
+        }
+        .procedure-value {
+            font-size: 18px !important; /* حماية العناوين الطبية من التداخل */
+        }
+        .sap-table th, .sap-table td {
+            padding: 10px !important;
+            font-size: 14px !important; /* تصغير الجدول ليتناسب مع شاشة اللمس دون خروج النص */
+        }
+        .return-btn {
+            padding: 12px 24px !important;
+            font-size: 14px !important;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+    }
+
+        footer { text-align: center; padding: 50px 20px; opacity: 0.7; border-top: 1px solid var(--border-color); width: 100%; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+
+    <div class="jhah-header-container">
+        <img src="../index.images/jhah.jpg" alt="Johns Hopkins Aramco Healthcare" class="jhah-professional-logo">
+    </div>
+
+    <div class="container">
+        <div class="header-section">
+            <h1>Clinical Workflow Transformation</h1>
+            <p class="subtitle">SAP To EPIC in Nuclear Medicine</p>
+            <button id="themeToggle" class="theme-btn">
+                <i class="fas fa-circle-half-stroke"></i> Switch Theme
+            </button>
+        </div>
+
+        <h2>Ga67 Scan Optimization Case Study</h2>
+        <div class="animated-section-card">
+            <div class="comparison-wrapper">
+                
+                <div class="system-screen sap">
+                    <div class="sap-header">SAP GUI - Patient Encounter Terminal</div>
+                    <div class="sap-content">
+                        <img src="../index.images/sap2.png" alt="SAP Logo" class="logo-img">
+                        <div class="sap-procedure-box">
+                            <span class="procedure-label">Procedure Description:</span>
+                            <span class="procedure-value">NM GALLIUM-67 SCAN (WHOLE BODY)</span>
+                        </div>
+                        <p style="font-size: 18px;"><strong>Patient:</strong> ID: 1004592 | Test Patient</p>
+                        <table class="sap-table">
+                            <thead>
+                                <tr><th>Billing Period</th><th>Order Type</th><th>Status</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Week 01</td><td>Single Global Order</td><td class="status-open">OPEN WHOLE WEEK</td></tr>
+                            </tbody>
+                        </table>
+                        <div style="margin-top:25px; color: #991b1b; background: #fee2e2; padding: 20px; border-radius: 8px; font-size: 16px; border: 2px solid #f87171; font-weight: bold;">
+                            ⚠️ Clinical Limitation: Continuous encounter prevents daily tracking.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="system-screen epic">
+                    <div class="epic-header">Epic Hyperspace - Nuclear Medicine Snapshot</div>
+                    <div class="epic-sidebar">
+                        <div class="epic-menu"></div>
+                        <div class="epic-main">
+                            <img src="../index.images/epic2.png" alt="Epic Logo" class="logo-img">
+                            <div class="epic-procedure-banner">
+                                <span class="epic-proc-title">Active Order:</span>
+                                <span class="epic-proc-name">NM Gallium-67 Scan (Multi-Visit Protocol)</span>
+                            </div>
+                            <div class="encounter-box"><span class="status-pill">Completed</span>Visit 1: Injection</div>
+                            <div class="encounter-box"><span class="status-pill" style="background:#6366f1">Scheduled</span>Visit 2: 24hrs Scan</div>
+                            <div class="encounter-box"><span class="status-pill" style="background:#6366f1">Scheduled</span>Visit 3: 48hrs Scan</div>
+                            <div class="encounter-box"><span class="status-pill" style="background:#6366f1">Scheduled</span>Visit 4: 72hrs Scan</div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <h2>Strategic Impact Analysis</h2>
+        <div class="impact-grid">
+            <div class="impact-card impact-sap">
+                <strong class="title-sap">Manual Workflow Limitations (SAP)</strong>
+                <ul>
+                    <li><strong>Scheduling:</strong> Patient cannot book follow-up appointments for the rest of the week.</li><br>
+                    <li><strong>Documentation:</strong> No official proof of visit generated for the patient's employer.</li><br>
+                    <li><strong>Patient Risk:</strong> Reliance on patient memory leads to forgotten appointments.</li><br>
+                    <li><strong>Management Gap:</strong> Records show only 1 patient despite a whole week of work.</li>
+                </ul>
+            </div>
+
+            <div class="impact-card impact-epic">
+                <strong class="title-epic">Transformation Benefits (EPIC)</strong>
+                <ul>
+                    <li><strong>Access:</strong> Individual appointments scheduled for every single visit phase.</li><br>
+                    <li><strong>Validation:</strong> Verified proof of attendance provided for every visit.</li><br>
+                    <li><strong>Data Accuracy:</strong> Records accurately reflect 100% of technologist productivity.</li><br>
+                    <li><strong>Workflow:</strong> Organized, transparent, and patient-centered protocols.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Deep Dive & Professional Insight</h2>
+        <div class="animated-section-card">
+            <div class="article-layout">
+                <div class="article-text-side">
+                    <p>
+                        This digital engineering transformation was published as a case study highlighting the strategic optimization of clinical tech workflows. The analysis focuses on leveraging enterprise systems to resolve critical scheduling gaps and enhance patient safety.
+                    </p>
+                    <a href="https://www.linkedin.com/posts/mai-abu-al-saud-msc-software-engineering-pmp-kfupm-pm-tricks-139b79283_%F0%9D%97%98%F0%9D%97%BB%F0%9D%98%81%F0%9D%97%B2%F0%9D%97%BF%F0%9D%97%BD%F0%9D%97%BF%F0%9D%97%B6%F0%9D%98%80%F0%9D%97%B2-%F0%9D%97%97%F0%9D%97%B6%F0%9D%97%B4%F0%9D%97%B6%F0%9D%98%81%F0%9D%97%AE%F0%9D%97%B9-%F0%9D%97%A7%F0%9D%97%BF%F0%9D%97%AE%F0%9D%97%BB%F0%9D%98%80%F0%9D%97%B3%F0%9D%97%BC%F0%9D%97%BF%F0%9D%97%BA%F0%9D%97%AE%F0%9D%98%81%F0%9D%97%B6%F0%9D%97%BC%F0%9D%97%BB-ugcPost-7420883843525730305-HxMZ" target="_blank" class="linkedin-badge-btn">
+                        <i class="fab fa-linkedin"></i> Read Full Article on LinkedIn
+                    </a>
+                </div>
+                <div class="article-image-side">
+                    <img src="../index.images/linkedin-article.png" alt="LinkedIn Case Study Article" class="zoomable">
+                </div>
+            </div>
+        </div>
+
+        <div class="return-container">
+            <a href="projects.html" class="return-btn">← Return to Projects</a>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg" src="" alt="Zoomed View">
+    </div>
+    
+    <footer>
+        &copy; 2026 Mai Abu Al Saud. All rights reserved. | <a href="privacy.html" style="color: inherit; text-decoration: none; font-weight: 600;">Privacy Policy</a> |
+        <a href="https://github.com/mabualsaud/my-official-website" target="_blank" style="color: inherit; text-decoration: none;"><i class="fab fa-github"></i> Website Source</a>
+    </footer>
+
+    <script>
+        // Toggle Dark/Light Theme
+        document.getElementById('themeToggle').onclick = () => {
+            document.body.classList.toggle('light');
+        };
+
+        // Lightbox Feature for Zooming Images
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        document.querySelectorAll('.zoomable').forEach(img => {
+            img.onclick = (e) => {
+                e.stopPropagation();
+                lightbox.classList.add('show');
+                lightboxImg.src = img.src;
+            };
+        });
+
+        closeBtn.onclick = () => lightbox.classList.remove('show');
+        lightbox.onclick = () => lightbox.classList.remove('show');
+        lightboxImg.onclick = (e) => e.stopPropagation();
+    </script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPIP | Strategic Clinical Suite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:,">
+    <style>
+        :root { --gold: #D4AF37; --dark: #050505; --panel: #111; --danger: #ff5555; --safe: #00ffcc; }
+        * { box-sizing: border-box; }
+        body { background: var(--dark); color: white; font-family: 'Inter', sans-serif; margin: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+        header { 
+            padding: 15px 40px; 
+            display: flex; 
+            align-items: center; 
+            border-bottom: 2px solid var(--gold); 
+            background: #000; 
+            flex-shrink: 0; 
+        }
+        
+        .header-left { display: flex; align-items: center; gap: 20px; flex: 1; }
+        .header-logo { height: 60px; filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3)); }
+        .header-brand h1 { margin: 0; font-size: 1.8rem; font-weight: 900; color: var(--gold); letter-spacing: 2px; }
+        .header-brand p { margin: 0; font-size: 0.7rem; letter-spacing: 4px; color: #888; font-weight: 700; text-transform: uppercase; }
+
+        .header-right { display: flex; align-items: center; gap: 25px; }
+
+.elegant-title {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--gold);
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+  letter-spacing: 1px; /* Added for an elegant, professional look */
+}
+
+/* Medical Terminology Judge Button Styling */
+.btn-judge {
+    background: rgba(0, 255, 204, 0.05);
+    color: var(--safe);
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    padding: 6px 15px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-judge:hover { 
+    background: var(--safe); 
+    color: var(--dark); 
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+}
+
+
+        .kernel-status { font-size: 0.7rem; padding: 4px 10px; border-radius: 4px; font-weight: 900; text-transform: uppercase; margin-right: 15px; }
+        .status-offline { background: #333; color: #888; border: 1px solid #444; }
+        .status-online { background: rgba(0, 255, 204, 0.1); color: var(--safe); border: 1px solid var(--safe); box-shadow: 0 0 10px rgba(0, 255, 204, 0.2); }
+        
+        .simulation-grid { display: grid; grid-template-columns: 1fr 1fr; flex: 1; min-height: 0; background: #222; gap: 2px; }
+        .panel { display: flex; flex-direction: column; background: var(--dark); position: relative; overflow: hidden; }
+        .panel-header { padding: 20px 25px; font-size: 1.1rem; background: #080808; border-bottom: 1px solid #111; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; flex-shrink: 0; }
+        
+        .chat-area { position: absolute; top: 65px; left: 0; right: 0; bottom: 0; padding: 30px; overflow-y: scroll !important; font-size: 1.35rem; line-height: 1.8; }
+        .chat-area::-webkit-scrollbar { width: 10px; }
+        .chat-area::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 5px; }
+
+        .controls-footer { padding: 25px 40px; background: var(--panel); border-top: 2px solid var(--gold); flex-shrink: 0; z-index: 1000; transition: 0.5s; }
+        .controls-footer.jumped { position: fixed; top: 40%; left: 50%; transform: translate(-50%, -50%); width: 75%; border-radius: 20px; border: 2px solid var(--gold); box-shadow: 0 0 150px #000; background: #0a0a0a; }
+
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; z-index: 999; }
+        .overlay.active { display: block; }
+
+        .input-row { display: flex; gap: 20px; width: 100%; align-items: flex-end; }
+        .main-input { flex: 1; background: #000; border: 1px solid #444; color: white; padding: 15px 20px; border-radius: 12px; font-size: 1.3rem; outline: none; resize: none; min-height: 60px; max-height: 200px; line-height: 1.5; font-family: inherit; }
+        
+        .mic-btn { background: #1a1a1a; border: 2px solid #444; color: #888; width: 60px; height: 60px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .mic-btn.active { color: var(--danger); border-color: var(--danger); animation: pulse 1.5s infinite; }
+
+        .btn-gold { background: var(--gold); color: black; padding: 15px 30px; border: none; border-radius: 8px; cursor: pointer; font-weight: 900; font-size: 1rem; text-transform: uppercase; height: 60px; flex-shrink: 0; }
+        .btn-summary { background: transparent; color: var(--safe); border: 2px solid var(--safe); padding: 10px 25px; border-radius: 30px; font-size: 0.9rem; font-weight: bold; cursor: pointer; margin-bottom: 15px; }
+
+        /* Help Modal Simple */
+        .help-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; z-index: 2000; justify-content: center; align-items: center; }
+        .help-card { background: #111; border: 2px solid var(--gold); padding: 40px; border-radius: 15px; max-width: 500px; text-align: left; }
+        .help-card h2 { color: var(--gold); margin-top: 0; }
+        .help-card code { background: #000; padding: 2px 6px; color: var(--safe); }
+        .help-card ol { padding-left: 20px; line-height: 1.8; color: #ccc; }
+        .help-card a { color: var(--gold); text-decoration: underline; }
+        .close-help { background: var(--gold); color: black; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; float: right; margin-top: 20px; }
+
+        /* Specialty Authentication Box */
+        .spec-input { 
+            width: 100%; background: #000; border: 2px solid var(--safe); 
+            color: white; padding: 15px; border-radius: 10px; font-size: 1.2rem; 
+            margin-bottom: 25px; outline: none; text-align: center;
+        }
+
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+    </style> <!-- Closing style tag -->
+</head>
+<body>
+
+    <div class="overlay" id="bgOverlay" onclick="exitFocus()"></div>
+    <div class="help-overlay" id="gpuHelp">
+        <div class="help-card">
+            <h2>Fix WebGPU Error</h2>
+            <p>Your browser found the WebGPU API but cannot access your graphics card hardware.</p>
+            <ol>
+                <li>Go to <code>chrome://settings/system</code></li>
+                <li>Enable <b>"Use graphics acceleration when available"</b>.</li>
+                <li>Restart your browser (must close all windows).</li>
+                <li>On Windows: Go to <b>Graphics Settings</b> and set Chrome/Edge to <b>"High Performance"</b>.</li>
+                <li>If using a laptop, ensure it is <b>plugged into power</b>.</li>
+                <li>If issue persists, visit <code>chrome://flags</code> and search for <b>"Unsafe WebGPU"</b> and set it to Enabled.</li>
+                <li>See more technical fixes on <a href="https://github.com/mlc-ai/web-llm/issues" target="_blank">GitHub Issues</a>.</li>
+            </ol>
+            <button class="close-help" onclick="document.getElementById('gpuHelp').style.display='none'">Close</button>
+        </div>
+    </div>
+
+    <!-- Clinical Context Modal -->
+    <div class="help-overlay" id="specModal" style="display: none; z-index: 3000;">
+        <div class="help-card" style="border-color: var(--safe); border-width: 3px; text-align: center; box-shadow: 0 0 40px rgba(0, 255, 204, 0.2);">
+            <h2 style="color: var(--safe); letter-spacing: 2px; text-transform: uppercase;">Authentication Required</h2>
+            <p style="color: #aaa; margin-bottom: 30px; font-size: 0.9rem;">To initialize the Clinical Safety Kernel, please define your medical specialty.</p>
+            <input type="text" id="specInput" class="spec-input" placeholder="e.g. Family Medicine">
+            <button class="btn-gold" style="background: var(--safe); width: 100%;" onclick="setContext()">Initialize System</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-left">
+            <img src="cpip_logo.png" alt="CPIP Logo" class="header-logo">
+            <div class="header-brand">
+                <h1>CPIP</h1>
+                <p>CLINICAL PRECISION INTELLIGENCE</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <div style="text-align: right; margin-right: 20px;">
+                <div class="elegant-title" id="displaySpec">No Specialty Set</div>
+                <div class="trainer-info">Medical Expert AI Trainer</div>
+            </div>
+            <div class="kernel-status status-online" id="kStatus">CPIP ACTIVE</div>
+        </div>
+    </header>
+
+    <div class="simulation-grid">
+        <div class="panel">
+            <div class="panel-header" style="color: var(--danger);">Standard AI</div>
+            <div class="chat-area" id="stdOut">
+                <button class="btn-gold" style="width:100%" onclick="window.open('https://gemini.google.com/', '_blank')">Launch Standard Gemini</button>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-header" style="color: var(--gold);">CPIP Protocol Audit</div>
+            <div class="chat-area" id="cpipOut">
+                <a href="https://colab.research.google.com/drive/1gqvA4MZuv5FYtLZi8ASfTLnXcofM7S7H?usp=sharing" 
+                   target="_blank" 
+                   class="btn-gold" 
+                   style="display:block; text-align:center; padding:10px; margin-bottom:10px; background:var(--gold); color:black; text-decoration:none;">
+                   DOWNLOAD / OPEN CPIP PROTOCOL
+                </a>
+                <div style="text-align: center; padding: 20px;">
+                    <h3 style="color: var(--gold);">CPIP Protocol Ready</h3>
+                    <p style="color: #ccc; font-size: 0.9rem;">1. Click "Launch Audit" below.<br>
+                       2. In Gemini, click the "+" icon.<br>
+                       3. Upload <b>CPIP.ipng</b> to activate the Kernel.</p>
+                    <button class="btn-gold" style="width:100%; background:var(--safe);" onclick="openCPIPWithContext()">Launch CPIP Audit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="controls-footer" id="mainFooter">
+        <div class="input-row">
+            <button class="mic-btn" id="mic" onclick="toggleMic()">🎤</button>
+            <textarea id="userInput" class="main-input" placeholder="Start Voice Audit..." onfocus="enterFocus()" oninput="updateHeight(this)"></textarea>
+            <button class="btn-gold" onclick="sendMsg()">Send</button>
+            <button class="btn-gold" style="background:transparent; color:var(--gold); border:2px solid var(--gold);" onclick="location.href='questions.html'">Next</button>
+        </div>
+    </footer>
+    
+    <script type="module">
+        let isRec = false;
+        let finalText = "";
+        let model = "CPIP";
+        window.clinicalContext = null;
+
+        // 1. عرض الترحيب عند بدء التشغيل
+        window.initEngine = async () => {
+            const statusEl = document.getElementById('kStatus');
+            
+            // عرض الترويسة فقط
+            displayGovernanceHeader();
+            
+            // تغيير الحالة لتعكس أن النظام يعمل بنمط الروابط (Link Mode)
+            if (statusEl) {
+                statusEl.innerText = "CPIP LINK-MODE";
+                statusEl.className = "kernel-status status-online";
+            }
+
+            setTimeout(() => {
+                document.getElementById('specModal').style.display = 'flex';
+                document.getElementById('specInput').focus();
+            }, 1000); 
+        };
+
+        // استدعاء تلقائي عند التحميل
+        window.initEngine();
+
+        class ClinicalSafetyKernelLogic {
+            constructor() {
+                this.confidence_ceiling = 0.85;
+                this.rules = {
+                    "cardiac": {"chest pain": 1.4, "pressure": 1.1, "st-elevation": 2.5, "troponin": 2.5, "ecg": 1.5, "infarction": 2.0, "arrhythmia": 1.5, "palpitations": 1.2, "heart": 1.0, "angina": 1.8},
+                    "infection": {"fever": 1.2, "sepsis": 2.0, "wbc high": 1.8, "procalcitonin": 2.2},
+                    "neurology": {"weakness": 1.2, "stroke": 2.0, "facial droop": 2.0, "slurred speech": 1.8, "aphasia": 2.0, "dizziness": 1.2, "seizure": 1.8},
+                    "respiratory": {"dyspnea": 1.8, "hypoxia": 2.0, "shortness of breath": 1.8, "pneumonia": 1.5},
+                    "gastro": {"bleeding": 1.5, "hematemesis": 2.0, "melena": 1.8, "vomiting": 1.0, "nausea": 1.0},
+                    "metabolic": {"sugar": 1.0, "glucose": 1.4, "diabetes": 1.5, "insulin": 1.5}
+                };
+            }
+
+            apply(text) {
+                const lowText = text.toLowerCase();
+                let scores = {};
+                for (let system in this.rules) {
+                    scores[system] = 0;
+                    for (let sig in this.rules[system]) {
+                        // Enhanced detection using word boundaries
+                        const regex = new RegExp(`\\b${sig}\\b`, 'i');
+                        if (regex.test(lowText)) scores[system] += this.rules[system][sig];
+                    }
+                }
+                const total = Object.values(scores).reduce((a, b) => a + b, 0);
+                
+                if (total === 0) return `[GOVERNANCE AUDIT] Monitoring clinical dialogue... | ${text}`;
+
+                const ranking = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+                const topDx = ranking[0][0];
+                const topProb = Math.min(ranking[0][1] / (total || 1), this.confidence_ceiling);
+                
+                const searchLink = `https://www.ncbi.nlm.nih.gov/mesh/?term=${encodeURIComponent(topDx)}`;
+                return `[GOVERNANCE AUDIT] Primary Focus: <a href="${searchLink}" target="_blank" style="color:var(--safe); text-decoration:underline;">${topDx.toUpperCase()}</a> | Certainty: ${(topProb*100).toFixed(1)}% | ${text}`;
+            }
+        }
+
+        const ClinicalSafetyKernel = new ClinicalSafetyKernelLogic();
+
+        window.onload = () => {
+            if (!localStorage.getItem('selectedModel')) localStorage.setItem('selectedModel', 'CPIP');
+        };
+
+        const Speech = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!Speech) {
+            alert("Speech Recognition not supported in this browser.");
+        }
+
+        const rec = Speech ? new Speech() : null;
+
+        if(rec) {
+            rec.continuous = true;
+            rec.interimResults = true;
+            rec.lang = 'en-US';
+
+            rec.onresult = (e) => {
+                let interimTranscript = "";
+                for (let i = e.resultIndex; i < e.results.length; ++i) {
+                    const transcript = e.results[i][0].transcript;
+                    if (e.results[i].isFinal) {
+                        finalText += transcript + " ";
+                    } else {
+                        interimTranscript += transcript;
+                    }
+                }
+                const field = document.getElementById('userInput');
+                // Clean up whitespace to prevent word detection glitches
+                field.value = (finalText + interimTranscript).replace(/\s\s+/g, ' ');
+                updateHeight(field);
+            };
+            rec.onend = () => { 
+                if(isRec) { try { rec.start(); } catch(e) { console.warn("Mic restart blocked"); } } 
+            };
+            rec.onerror = (e) => {
+                console.error("Speech Error:", e.error);
+                if(e.error === 'not-allowed') alert("Microphone access is blocked. Please enable it in browser settings.");
+                isRec = false;
+                document.getElementById('mic').classList.remove('active');
+            };
+        }
+
+        function toggleMic() {
+            if(!rec) return;
+            const field = document.getElementById('userInput');
+            if(!isRec) {
+                finalText = field.value + (field.value.length > 0 ? " " : "");
+                try {
+                    rec.start(); 
+                    isRec = true;
+                    document.getElementById('mic').classList.add('active');
+                } catch(e) { console.error("Mic start failed:", e); }
+            } else {
+                isRec = false;
+                rec.stop(); 
+                document.getElementById('mic').classList.remove('active');
+            }
+        }
+
+        function updateHeight(el) { el.style.height = '60px'; el.style.height = el.scrollHeight + 'px'; }
+
+        function enterFocus() { 
+            document.getElementById('mainFooter').classList.add('jumped'); 
+            document.getElementById('bgOverlay').classList.add('active'); 
+            // Fix: Re-focus the field after the 'jumped' transition to ensure text entry works
+            setTimeout(() => document.getElementById('userInput').focus(), 150);
+        }
+
+        function exitFocus() { 
+            const footer = document.getElementById('mainFooter');
+            const overlay = document.getElementById('bgOverlay');
+            
+            // إزالة فئة 'jumped' لإعادة الفوتر لمكانه الأصلي
+            footer.classList.remove('jumped'); 
+            overlay.classList.remove('active');
+            
+            // إزالة التركيز عن مربع النص
+            document.getElementById('userInput').blur();
+        }
+
+        // دالة استدعاء البيانات الموثوقة لـ CPIP
+        async function fetchClinicalEvidence(query) {
+            const apiKey = "kz_QK1czsPkqk6V51k-S4uK6lTqCXM-VX2jNhf1yh1cJKU"; // ضعي مفتاحك هنا
+            const response = await fetch(`https://api.katzilla.dev/v1/fda/recalls?search=${query}`, {
+                headers: { "X-API-Key": apiKey }
+            });
+            const data = await response.json();
+            
+            // النظام يستخرج المعلومة + الـ Citation (المرجع)
+            console.log("Verified Clinical Data:", data);
+            return data;
+        }
+
+        // دالة استدعاء البيانات الموثوقة لـ CPIP عبر API خارجي
+        async function sendToCPIP() {
+            const patientData = document.getElementById("userInput").value;
+            
+            try {
+                const response = await fetch('/api/cpip-process', {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ symptoms: patientData })
+                });
+                
+                const result = await response.json();
+                // عرض النتيجة في الواجهة (Standard Output)
+                renderStdOutput(result.diagnosis || "No clinical data returned.");
+            } catch (err) {
+                console.error("Critical API Error:", err);
+                renderStdOutput("Connection error: Unable to reach the clinical processing API.");
+            }
+        }
+
+        // UI render wrappers for integrated logic
+        function renderStdOutput(text) { log('stdOut', `<strong>[${model}]:</strong> ${text}`, 'white'); }
+        function renderCPIPOutput(text) { log('cpipOut', `<strong>[CPIP Kernel]:</strong> ${text}`, 'var(--safe)'); }
+
+        async function runAdvancedSimulation(input, context) {
+            // المحاكاة تعتمد على القواعد السريرية المشفرة في Kernel مع مراعاة السياق
+            const result = ClinicalSafetyKernel.apply(input);
+            return `
+                <div class="cpi-audit-container" style="padding: 15px; border-left: 2px solid var(--gold);">
+                    <h3 style="color: var(--gold); margin-top: 0;">CPIP CLINICAL SIMULATION [${context}]</h3>
+                    <div class="audit-content" style="color: var(--safe); font-family: monospace;">
+                        ${result}
+                    </div>
+                </div>
+            `;
+        }
+
+        async function processClinicalCase(input) {
+            const stdArea = document.getElementById('stdOut');
+            
+            // عرض رسالة توجيهية للطبيب بدلاً من محاولة المعالجة محلياً
+            stdArea.innerHTML = `
+                <div style="padding: 20px; text-align: center;">
+                    <p>System is in Link-Mode.</p>
+                    <button class="btn-gold" onclick="openCPIPWithContext()">Launch CPIP Protocol in Gemini</button>
+                </div>`;
+        }
+
+        // 2. تحديث دالة عرض البروتوكول لتكون "صامتة" حتى يأتي المدخل
+        function displayGovernanceHeader() {
+            const cpipArea = document.getElementById('cpipOut');
+            const ts = new Date().toLocaleTimeString('en-US', { hour12: false });
+            
+            // النص مطابق تماماً لما ورد في ملف CPIP.ipynb
+            const headerContent = `================================================================================
+   ENG. MAI ABU AL SAUD | CLINICAL SAFETY KERNEL V 16.0
+================================================================================
+
+[PATIENT SAFETY NOTICE]
+--------------------------------------------------
+>> CRITICAL: THIS SYSTEM IS FOR PHYSICIAN USE ONLY.
+>> SAFETY NOTICE: This is a clinical simulation and decision-support tool.
+>> LIABILITY: It does NOT provide medical diagnosis or treatment decisions.
+>> Zero Overconfidence Mode: ENABLED (Capped at 85.0%)
+>> Architect: Eng. Mai Abu Al Saud
+>> LLM ADAPTER SYNC @ ${ts}
+--------------------------------------------------------------------------------`;
+
+            cpipArea.insertAdjacentHTML('afterbegin', `<pre style="color: var(--gold); font-family: monospace; font-size: 0.85rem; padding: 10px;">${headerContent}</pre>`);
+        }
+
+        async function sendMsg() {
+            const field = document.getElementById('userInput');
+            const val = field.value.trim();
+            if(!val) return;
+
+            field.value = ""; 
+            field.style.height = '60px'; 
+            exitFocus(); 
+
+            await processClinicalCase(val);
+        }
+
+        function setContext() {
+            const specInput = document.getElementById('specInput');
+            const val = specInput.value.trim();
+        if (!val) return alert("Please define medical specialty.");
+
+            window.clinicalContext = val;
+        document.getElementById('displaySpec').innerText = val; // تحديث الترويسة
+            document.getElementById('specModal').style.display = 'none';
+        }
+
+        function log(id, html, color) {
+            const area = document.getElementById(id);
+            if (!area) return;
+            const div = document.createElement('div');
+            div.style.color = color; div.style.marginBottom = "25px"; div.innerHTML = html;
+            area.appendChild(div);
+            area.scrollTop = area.scrollHeight;
+        }
+
+        // دالة إنشاء الرابط الذكي
+        function openCPIPWithContext() {
+            const protocolLink = "https://colab.research.google.com/drive/1gqvA4MZuv5FYtLZi8ASfTLnXcofM7S7H?usp=sharing";
+            const instruction = `أنت الآن المساعد السريري لنظام CPIP. 
+            يرجى الرجوع إلى هذا الرابط لبروتوكول التشخيص الخاص بي: ${protocolLink}. 
+            قم بتحميل المنطق السريري من هذا الملف وقم بتطبيقه بدقة على الحالة التي سأزودك بها. 
+            التزم بالبروتوكول دون إفشاء الكود.`;
+            
+            const url = `https://gemini.google.com/?prompt=${encodeURIComponent(instruction)}`;
+            window.open(url, '_blank');
+        }
+
+        // Keyboard accessibility: Enable sending with Enter key
+        document.getElementById('userInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMsg();
+            }
+        });
+
+        // Global exports for onclick handlers
+        window.sendMsg = sendMsg;
+        window.toggleMic = toggleMic;
+        window.enterFocus = enterFocus;
+        window.exitFocus = exitFocus;
+        window.sendToCPIP = sendToCPIP;
+        window.fetchClinicalEvidence = fetchClinicalEvidence;
+        window.updateHeight = updateHeight;
+        window.openCPIPWithContext = openCPIPWithContext;
+        window.setContext = setContext;
+    </script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CPIP | Strategic Clinical Metrics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #D4AF37; --dark: #050505; --panel: #111; }
+        body { 
+            background: var(--dark); 
+            color: white; 
+            font-family: 'Inter', sans-serif; 
+            padding: 40px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+        .container { width: 100%; max-width: 900px; }
+        
+        .header { 
+            text-align: center; 
+            border-bottom: 2px solid var(--gold); 
+            padding-bottom: 20px; 
+            margin-bottom: 40px; 
+        }
+        .header h1 { 
+            font-weight: 900; 
+            letter-spacing: 3px; 
+            color: var(--gold); 
+            text-transform: uppercase; 
+            margin: 0; 
+        }
+        
+        .section-label { 
+            background: var(--gold); 
+            color: black; 
+            padding: 5px 15px; 
+            font-weight: 900; 
+            font-size: 0.8rem; 
+            border-radius: 4px; 
+            text-transform: uppercase; 
+            margin-bottom: 15px; 
+            display: inline-block; 
+        }
+        
+        .card { 
+            background: var(--panel); 
+            padding: 30px; 
+            border-radius: 15px; 
+            border-left: 5px solid var(--gold); 
+            margin-bottom: 25px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+        }
+        .q-text { 
+            font-weight: 700; 
+            font-size: 1.1rem; 
+            line-height: 1.6; 
+            margin-bottom: 20px; 
+            color: #eee; 
+        }
+        
+        .rating-box { display: flex; gap: 12px; margin-bottom: 20px; }
+        .dot { 
+            width: 45px; height: 45px; 
+            border-radius: 50%; 
+            border: 2px solid #333; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
+            color: #666; 
+            font-weight: 900; 
+            transition: 0.3s; 
+        }
+        .dot:hover { border-color: var(--gold); }
+        .dot.active { 
+            border-color: var(--gold); 
+            color: var(--gold); 
+            background: rgba(212, 175, 55, 0.1); 
+        }
+        
+        textarea { 
+            width: 100%; 
+            background: #000; 
+            border: 1px solid #333; 
+            color: white; 
+            padding: 15px; 
+            border-radius: 10px; 
+            font-size: 1rem; 
+            font-family: inherit; 
+            min-height: 70px; 
+            resize: vertical; 
+            outline: none;
+        }
+        textarea:focus { border-color: var(--gold); }
+
+        .btn-next-step { 
+            width: 100%; 
+            padding: 25px; 
+            background: transparent; 
+            color: var(--gold); 
+            border: 2px solid var(--gold); 
+            font-weight: 900; 
+            border-radius: 12px; 
+            cursor: pointer; 
+            font-size: 1.3rem; 
+            margin-top: 20px; 
+            text-transform: uppercase; 
+            transition: 0.4s;
+            letter-spacing: 2px;
+        }
+        .btn-next-step:hover { 
+            background: var(--gold); 
+            color: black; 
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>CPIP | Clinical Audit Metrics</h1>
+        </div>
+
+        <div class="card">
+            <span class="section-label">Metric 01</span>
+            <div class="q-text">1. Clinical Hallucination Audit: Effectiveness in preventing fabricated medical data or non-existent references?</div>
+            <div class="rating-box">
+                <div class="dot" onclick="sel(this)">1</div><div class="dot" onclick="sel(this)">2</div><div class="dot" onclick="sel(this)">3</div><div class="dot" onclick="sel(this)">4</div><div class="dot active" onclick="sel(this)">5</div>
+            </div>
+            <textarea placeholder="Audit notes on accuracy..."></textarea>
+        </div>
+
+        <div class="card">
+            <span class="section-label">Metric 02</span>
+            <div class="q-text">2. Assumption Detection: Identifying hidden diagnostic risks and "silent" clinical assumptions?</div>
+            <div class="rating-box">
+                <div class="dot" onclick="sel(this)">1</div><div class="dot" onclick="sel(this)">2</div><div class="dot" onclick="sel(this)">3</div><div class="dot" onclick="sel(this)">4</div><div class="dot active" onclick="sel(this)">5</div>
+            </div>
+            <textarea placeholder="Reasoning and logic notes..."></textarea>
+        </div>
+
+        <div class="card">
+            <span class="section-label">Metric 03</span>
+            <div class="q-text">3. Data Integrity: Accuracy in retaining and prioritizing full patient medical history?</div>
+            <div class="rating-box">
+                <div class="dot" onclick="sel(this)">1</div><div class="dot" onclick="sel(this)">2</div><div class="dot" onclick="sel(this)">3</div><div class="dot" onclick="sel(this)">4</div><div class="dot active" onclick="sel(this)">5</div>
+            </div>
+            <textarea placeholder="Retention audit notes..."></textarea>
+        </div>
+
+        <div class="card">
+            <span class="section-label">Metric 04</span>
+            <div class="q-text">4. Logic Trace Continuity: Professional medical reasoning path clarity and continuity?</div>
+            <div class="rating-box">
+                <div class="dot" onclick="sel(this)">1</div><div class="dot" onclick="sel(this)">2</div><div class="dot" onclick="sel(this)">3</div><div class="dot" onclick="sel(this)">4</div><div class="dot active" onclick="sel(this)">5</div>
+            </div>
+            <textarea placeholder="Logic trace verification..."></textarea>
+        </div>
+
+        <div class="card">
+            <span class="section-label">Metric 05</span>
+            <div class="q-text">5. Risk Flagging: Speed and accuracy of identifying high-risk clinical paths?</div>
+            <div class="rating-box">
+                <div class="dot" onclick="sel(this)">1</div><div class="dot" onclick="sel(this)">2</div><div class="dot" onclick="sel(this)">3</div><div class="dot" onclick="sel(this)">4</div><div class="dot active" onclick="sel(this)">5</div>
+            </div>
+            <textarea placeholder="Safety and risk notes..."></textarea>
+        </div>
+
+        <div class="card">
+            <span class="section-label">Metric 06</span>
+            <div class="q-text">6. Ethical Compliance: Alignment with global medical data privacy and safety standards?</div>
+            <div class="rating-box">
+                <div class="dot" onclick="sel(this)">1</div><div class="dot" onclick="sel(this)">2</div><div class="dot" onclick="sel(this)">3</div><div class="dot" onclick="sel(this)">4</div><div class="dot active" onclick="sel(this)">5</div>
+            </div>
+            <textarea placeholder="Ethical audit notes..."></textarea>
+        </div>
+
+        <div class="card">
+            <span class="section-label">Metric 07</span>
+            <div class="q-text">7. Cross-Model Consistency: Performance stability across different AI architectures?</div>
+            <div class="rating-box">
+                <div class="dot" onclick="sel(this)">1</div><div class="dot" onclick="sel(this)">2</div><div class="dot" onclick="sel(this)">3</div><div class="dot" onclick="sel(this)">4</div><div class="dot active" onclick="sel(this)">5</div>
+            </div>
+            <textarea placeholder="Technical stability notes..."></textarea>
+        </div>
+
+        <button class="btn-next-step" onclick="saveQuestionsAndProceed()">Proceed to Strategic Verdict →</button>
+    </div>
+
+    <script>
+        function sel(el) {
+            el.parentElement.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+            el.classList.add('active');
+            const metricIndex = Array.from(document.querySelectorAll('.card')).indexOf(el.closest('.card'));
+            localStorage.setItem(`metric_score_${metricIndex}`, el.innerText);
+        }
+
+        function saveQuestionsAndProceed() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                const note = card.querySelector('textarea').value;
+                const activeScore = card.querySelector('.dot.active').innerText;
+                
+                localStorage.setItem(`metric_note_${index}`, note);
+                localStorage.setItem(`metric_score_${index}`, activeScore);
+            });
+            location.href = 'evaluation.html';
+        }
+    </script>
+</body>
+</html>
