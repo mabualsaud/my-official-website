@@ -3,7 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publications & Articles | Mai Abu Al Saud</title>
+    <title>Strategic Publications & Digital Insights | Mai Abu Al Saud</title>
+    <meta name="description" content="Explore a curated gallery of strategic publications by Mai Abu Al Saud. Professional insights into Executive Leadership, AI Governance, Software Engineering, and Digital Transformation.">
+    <meta name="keywords" content="Mai Abu Al Saud, Publications, Digital Transformation, AI Governance, Executive Leadership, Software Engineering, Saudi Arabia Vision 2030">
+    <meta name="theme-color" content="#020617">
+
+    <!-- Open Graph for Social Sharing & Mobile -->
+    <meta property="og:title" content="Strategic Publications & Articles | Mai Abu Al Saud">
+    <meta property="og:description" content="Professional insights into Digital Transformation, AI Governance, and Leadership.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mabualsaud.github.io/my-official-website/html/articles.html">
+    <meta property="og:image" content="https://mabualsaud.github.io/my-official-website/articles/leadership/1.jpg">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Strategic Publication Gallery",
+      "description": "A professional collection of strategic insights and digital transformation publications by Mai Abu Al Saud.",
+      "author": {
+        "@type": "Person",
+        "name": "Mai Abu Al Saud"
+      }
+    }
+    </script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,7 +102,7 @@
             box-shadow: 0 30px 60px rgba(37, 211, 102, 0.6);
         }
 
-        .mega-glow-btn h2 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; margin: 0; text-transform: uppercase; letter-spacing: 3px; }
+        .mega-glow-btn h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 900; margin: 0; text-transform: uppercase; letter-spacing: 3px; }
         .mega-glow-btn span { font-size: 18px; margin-top: 15px; font-weight: 700; opacity: 0.9; letter-spacing: 2px; }
 
         /* Gallery Grid */
@@ -176,6 +201,10 @@
         .category-section.ai-border { border-color: var(--accent-purple); box-shadow: 0 10px 40px rgba(168, 85, 247, 0.1); }
         .category-section.epic-border { border-color: var(--accent-pink); box-shadow: 0 10px 40px rgba(255, 0, 251, 0.1); }
         .category-section.nm-border { border-color: #fbbf24; box-shadow: 0 10px 40px rgba(251, 191, 36, 0.1); }
+        .category-section.lead-border { border-color: #f59e0b; box-shadow: 0 10px 40px rgba(245, 158, 11, 0.1); }
+        .category-section.lead-border .category-title {
+            color: #f59e0b; border-left-color: #f59e0b;
+        }
 
         .category-title {
             width: 100%;
@@ -214,6 +243,36 @@
             color: var(--body-text); padding: 15px; border-radius: 50%;
             cursor: pointer; z-index: 100;
         }
+
+        @media (max-width: 768px) {
+            .page-wrapper {
+                padding: 30px 15px;
+            }
+            .mega-glow-btn {
+                padding: 30px 20px;
+                border-radius: 25px;
+                margin-bottom: 50px;
+            }
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .category-section {
+                padding: 30px 15px;
+                border-radius: 30px;
+                margin-bottom: 40px;
+            }
+            .card-image-container {
+                height: 350px;
+            }
+            .category-nav {
+                gap: 10px;
+            }
+            .category-nav a {
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -222,6 +281,7 @@
 
         <!-- Quick Navigation Bar -->
         <nav class="category-nav">
+            <a href="#lead-section">Executive Leadership</a>
             <a href="#se-section">Software Engineering</a>
             <a href="#ai-section">AI & Governance</a>
             <a href="#epic-section">EPIC System</a>
@@ -231,9 +291,25 @@
         <p class="channel-intro">Explore my strategic insights and digital transformation publications in my professional channel.</p>
 
         <a href="https://whatsapp.com/channel/0029Vb6o1xHISTkIzG33VY3c" target="_blank" class="mega-glow-btn">
-            <h2>Strategic Publication Gallery</h2>
+            <h1>Strategic Publication Gallery</h1>
             <span>Follow My WhatsApp Channel for Real-time Insights →</span>
         </a>
+
+        <!-- Section 0: Executive Leadership -->
+        <div class="category-section lead-border" id="lead-section">
+            <h2 class="category-title">Executive Leadership</h2>
+            <div class="articles-grid"> 
+                <a href="../articles/leadership/2.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/leadership/2.jpg" alt="Executive Leadership Article 2"></div></a>
+                <a href="../articles/leadership/1.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/leadership/1.jpg" alt="Executive Leadership Article 1"></div></a>
+                <a href="../articles/leadership/1.png" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/leadership/1.png" alt="Executive Leadership Publication"></div></a>
+                 <a href="../articles/leadership/6.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/leadership/6.jpg" alt="Executive Leadership 3"></div></a>
+                 <a href="../articles/leadership/1.png" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/leadership/1.png" alt="Executive Leadership 5"></div></a>
+                <a href="../articles/leadership/2.png" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/leadership/2.png" alt="Executive Leadership 6"></div></a>
+                <a href="../articles/leadership/4.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/leadership/4.jpg" alt="Executive Leadership 1"></div></a>
+                <a href="../articles/leadership/5.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/leadership/5.jpg" alt="Executive Leadership 2"></div></a>
+                <a href="../articles/leadership/3.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/leadership/3.jpg" alt="Executive Leadership 7"></div></a>
+            </div>
+        </div>
 
         <!-- Section 1: Software Engineering & Digital Transformation -->
         <div class="category-section se-border" id="se-section">
@@ -273,6 +349,8 @@
                 <a href="../articles/ai/12.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/12.jpg" alt="Publication 12"></div></a>
                 <a href="../articles/ai/13.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/13.jpg" alt="Publication 13"></div></a>
                 <a href="../articles/ai/14.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/ai/14.jpg" alt="Publication 14"></div></a>
+                <a href="../articles/leadership/7.jpg" target="_blank" class="article-card"><div class="card-image-container"><img src="../articles/leadership/7.jpg" alt="Executive Leadership 4"></div></a>
+                
                
             </div>
         </div>
