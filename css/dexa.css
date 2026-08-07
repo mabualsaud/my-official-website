@@ -1,0 +1,1283 @@
+/* =========================================================
+RE-ENGINEERING DXA REPORTS | CLINICAL INNOVATION CSS STYLESHEET
+========================================================= */
+
+/* ==========================================================================
+1. GLOBAL THEME VARIABLES & RESET
+========================================================================== */
+
+:root {
+  --ge-purple: #7e22ce;
+  --ge-purple-glow: rgba(126, 34, 206, 0.4);
+  --ge-dark: #020617;
+  --panel-bg: #0b1329;
+  --slate-300: #cbd5e1;
+  --accent-cyan: #22d3ee;
+  --accent-cyan-glow: rgba(34, 211, 238, 0.3);
+  --danger-red: #dc2626;
+  --success-green: #10b981;
+  --body-bg: var(--ge-dark);
+  --body-text: white;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.light {
+  --body-bg: #f3f4f6;
+  --body-text: #111;
+  --slate-300: #4b5563;
+  --panel-bg: #ffffff;
+  --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  --border-color: rgba(0, 0, 0, 0.08);
+  --ge-purple-glow: rgba(126, 34, 206, 0.15);
+  --accent-cyan-glow: rgba(34, 211, 238, 0.15);
+}
+
+body {
+  background-color: var(--body-bg);
+  color: var(--body-text);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+  font-size: 20px;
+  overflow-x: hidden;
+}
+
+/* ======================================================================
+REVEAL ANIMATION
+====================================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ======================================================================
+FLOATING TOC SIDEBAR
+====================================================================== */
+
+.toc {
+  position: fixed;
+  top: 365px;
+  left: 30px;
+
+  width: 180px;
+
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+
+  backdrop-filter: blur(10px);
+
+  z-index: 100;
+}
+body.light .toc {
+  background: rgba(0, 0, 0, 0.05);
+}
+.toc a {
+  display: block;
+  color: var(--slate-300);
+  padding: 10px 0;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.toc a:hover {
+  color: var(--accent-cyan);
+}
+
+/* ======================================================================
+HEADER
+====================================================================== */
+
+.main-header {
+  text-align: center;
+  padding: 40px 20px 20px 20px;
+  background: linear-gradient(to bottom, #0f172a, transparent);
+}
+.brand-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  background: white;
+  padding: 20px 50px;
+  border-radius: 60px;
+  width: fit-content;
+  margin: 0 auto 30px auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+.brand-logos img {
+  height: 50px;
+  object-fit: contain;
+}
+.page-title {
+  font-size: 4rem;
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 3px;
+  font-weight: 800;
+}
+
+.page-subtitle{
+  margin:14px 0 0;
+  color:var(--accent-cyan);
+  font-size:1.1rem;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  opacity:.9;
+}
+
+
+.theme-btn {
+  background: rgba(126, 34, 206, 0.2);
+  border: 1px solid var(--ge-purple);
+  padding: 12px 24px;
+  border-radius: 30px;
+  color: var(--body-text);
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+/* ==========================================================================
+2. ANIMATED BORDERLINE CARD DESIGN (NEW)
+========================================================================== */
+
+.screen {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  padding: 40px 10% 40px 250px;
+  box-sizing: border-box;
+}
+
+.section-card-wrapper {
+  width: 100%;
+  background: var(--panel-bg);
+  border-radius: 24px;
+  padding: 50px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.section-card-wrapper:hover {
+  transform: translateY(-5px);
+  border-color: var(--ge-purple);
+  box-shadow: 0 20px 40px var(--ge-purple-glow);
+}
+
+#epic .section-card-wrapper:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 20px 40px var(--accent-cyan-glow);
+}
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+  width: 100%;
+}
+
+.text-side h2 {
+  color: var(--ge-purple);
+  font-size: 3rem;
+  margin-top: 0;
+  margin-bottom: 25px;
+  border-left: 6px solid var(--ge-purple);
+  padding-left: 20px;
+}
+#epic .text-side h2 {
+  color: var(--accent-cyan);
+  border-left-color: var(--accent-cyan);
+}
+.text-side p {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: var(--slate-300);
+}
+
+/* ======================================================================
+INSIGHT BOX DETAILS
+====================================================================== */
+
+.attractive-insight-box {
+  background: rgba(34, 211, 238, 0.04);
+  border-left: 4px solid var(--accent-cyan);
+  padding: 20px;
+  border-radius: 0 12px 12px 0;
+  margin: 25px 0;
+}
+body.light .attractive-insight-box {
+  background: rgba(34, 211, 238, 0.07);
+}
+.attractive-insight-box .example-label {
+  color: var(--accent-cyan);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 8px;
+}
+.attractive-insight-box p {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.6;
+}
+
+.reporting-flow-container {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed var(--border-color);
+}
+.flow-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--ge-purple);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+.flow-tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.flow-tag {
+  background: rgba(126, 34, 206, 0.15);
+  border: 1px solid rgba(126, 34, 206, 0.3);
+  color: var(--body-text);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+body.light .flow-tag {
+  background: rgba(126, 34, 206, 0.08);
+}
+
+/* ======================================================================
+STEP FLOW DIAGRAM
+====================================================================== */
+
+.step-flow-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 5px;
+}
+.flow-step {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--slate-300);
+}
+body.light .flow-step {
+  background: #f3f4f6;
+  color: #374151;
+}
+.flow-step.highlight {
+  border-color: var(--ge-purple);
+  color: #d8b4fe;
+  background: rgba(126, 34, 206, 0.1);
+}
+body.light .flow-step.highlight {
+  color: var(--ge-purple);
+  background: rgba(126, 34, 206, 0.05);
+}
+.flow-arrow {
+  color: var(--accent-cyan);
+  font-size: 1.2rem;
+}
+
+/* ======================================================================
+IMAGES STYLING
+====================================================================== */
+
+.image-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+}
+.image-side img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-color);
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.image-side img:hover {
+  transform: scale(1.02);
+}
+.epic-logo-wrapper {
+  background: white;
+  padding: 12px 30px;
+  border-radius: 15px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ======================================================================
+BEFORE / AFTER COMP-CARDS INSIDE THE MAIN CARD
+====================================================================== */
+
+.automation-comparison {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.comp-card {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
+}
+body.light .comp-card {
+  background: rgba(0, 0, 0, 0.02);
+}
+.comp-card h4 {
+  margin: 0 0 10px 0;
+  color: var(--accent-cyan);
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+.comp-card p {
+  font-size: 1.2rem !important;
+  margin: 0;
+  line-height: 1.5 !important;
+  color: var(--slate-300);
+}
+
+/* ======================================================================
+CLINICAL ALERT BOX
+====================================================================== */
+
+.clinical-alert {
+  background-color: #ffffff;
+  border-left: 15px solid #e11d48;
+  border-radius: 8px;
+  padding: 15px 25px;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  margin-top: 25px;
+  box-sizing: border-box;
+}
+.alert-header {
+  color: #e11d48;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.alert-icon {
+  margin-right: 10px;
+  font-size: 1.4rem;
+}
+.alert-content .patient-status {
+  color: #94a3b8;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.1rem;
+}
+.alert-content .requirement {
+  color: #1e293b;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 5px;
+  line-height: 1.3;
+}
+.alert-content strong {
+  font-weight: 900;
+  color: #000;
+}
+
+/* ======================================================================
+STRATEGIC IMPACT TABLE CARD
+====================================================================== */
+
+.impact-screen {
+  padding-bottom: 100px;
+}
+.impact-screen .section-card-wrapper {
+  text-align: center;
+}
+.impact-screen h1 {
+  font-size: 4rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 800;
+  color: white;
+}
+body.light .impact-screen h1 {
+  color: #111;
+}
+
+.impact-table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+  text-align: left;
+}
+.impact-table th {
+  color: var(--ge-purple);
+  font-size: 1.7rem;
+  padding: 20px;
+  border-bottom: 2px solid rgba(126, 34, 206, 0.3);
+  text-transform: uppercase;
+}
+.impact-table td {
+  padding: 22px 20px;
+  font-size: 1.35rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--slate-300);
+}
+.impact-table i {
+  color: var(--accent-cyan);
+  margin-right: 15px;
+  width: 25px;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 60px;
+  background: #000;
+  border-top: 1px solid var(--border-color);
+}
+.copyright {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 1px;
+}
+
+/* ======================================================================
+CSS LIGHTBOX
+====================================================================== */
+
+.lightbox-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(2, 6, 23, 0.95);
+  backdrop-filter: blur(12px);
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.lightbox-modal.show {
+  display: flex;
+  opacity: 1;
+}
+.lightbox-content {
+  max-width: 90%;
+  max-height: 85vh;
+  border-radius: 12px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+.lightbox-modal.show .lightbox-content {
+  transform: scale(1);
+}
+.lightbox-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.lightbox-close:hover {
+  color: var(--accent-cyan);
+}
+
+@media (max-width: 1200px) {
+  body {
+    font-size: 16px;
+  }
+  .screen {
+    padding: 30px 4% !important;
+    min-height: auto;
+  }
+  .toc {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .page-title {
+    font-size: 2.2rem !important;
+    letter-spacing: 1px !important;
+  }
+  .brand-logos {
+    gap: 20px !important;
+    padding: 12px 30px !important;
+    border-radius: 40px !important;
+  }
+  .brand-logos img {
+    height: 32px !important;
+  }
+  .content-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+  .image-side {
+    order: 2;
+  }
+  .text-side {
+    order: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-card-wrapper {
+    padding: 24px 16px !important;
+    border-radius: 16px !important;
+  }
+  .text-side h2 {
+    font-size: 1.8rem !important;
+    padding-left: 12px !important;
+    margin-bottom: 15px !important;
+  }
+  .text-side p,
+  .attractive-insight-box p {
+    font-size: 1.05rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .step-flow-wrapper {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .flow-step {
+    font-size: 0.95rem !important;
+    text-align: center !important;
+    padding: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .flow-arrow {
+    text-align: center !important;
+    transform: rotate(90deg);
+    margin: 2px 0 !important;
+  }
+
+  .automation-comparison {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .comp-card {
+    padding: 14px !important;
+    border-radius: 10px !important;
+  }
+  .comp-card h4 {
+    font-size: 1.15rem !important;
+  }
+  .comp-card p {
+    font-size: 0.95rem !important;
+  }
+
+  .impact-screen h1 {
+    font-size: 2.2rem !important;
+  }
+  .impact-table {
+    display: block !important;
+    width: 100% !important;
+  }
+  .impact-table thead {
+    display: none !important;
+  }
+  .impact-table tbody,
+  .impact-table tr {
+    display: block !important;
+    width: 100% !important;
+  }
+  .impact-table tr {
+    background: rgba(255, 255, 255, 0.01) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    margin-bottom: 12px !important;
+    padding: 14px !important;
+    box-sizing: border-box !important;
+  }
+  body.light .impact-table tr {
+    background: rgba(0, 0, 0, 0.01) !important;
+  }
+  .impact-table td {
+    display: block !important;
+    width: 100% !important;
+    padding: 4px 0 !important;
+    border: none !important;
+    font-size: 1rem !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
+  }
+
+  .impact-table td:first-child {
+    color: var(--accent-cyan) !important;
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+    margin-bottom: 6px !important;
+    border-bottom: 1px dashed var(--border-color) !important;
+    padding-bottom: 6px !important;
+  }
+  body.light .impact-table td:first-child {
+    color: var(--ge-purple) !important;
+  }
+
+  .flow-tags-wrapper {
+    gap: 6px !important;
+  }
+  .flow-tag {
+    font-size: 0.85rem !important;
+    padding: 4px 10px !important;
+  }
+
+  .clinical-alert {
+    border-left-width: 8px !important;
+    padding: 12px 16px !important;
+  }
+  .alert-content .requirement {
+    font-size: 1.2rem !important;
+  }
+
+  .image-side img {
+    max-width: 100% !important;
+  }
+
+  footer {
+    padding: 30px 15px !important;
+  }
+  .copyright {
+    font-size: 0.95rem !important;
+  }
+}
+
+.attractive-insight-box {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid var(--accent-cyan);
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+.example-label {
+  color: var(--accent-cyan);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+
+.insight-text {
+  margin-top: 10px;
+  color: #e2e8f0;
+  line-height: 1.6;
+}
+
+.var-highlight {
+  background: #0f172a;
+  color: #f8e71c;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9em;
+  border: 1px solid rgba(248, 231, 28, 0.2);
+}
+
+/* ==========================================================================
+FIXED BACK BUTTON POSITION
+Keeps the original page-specific button design.
+========================================================================== */
+
+.back-to-profile-btn {
+  position: static !important;
+  inset: auto !important;
+
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+  gap: 10px;
+
+  width: fit-content !important;
+  min-height: 50px;
+  max-width: 100%;
+  margin: 0 !important;
+  padding: 10px 20px !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.32) !important;
+  border-radius: 25px;
+
+  background: var(--ge-purple) !important;
+
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.30) !important;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+/* ======================================================================
+Final return button refinement
+====================================================================== */
+
+.back-to-profile-btn {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease !important;
+  border: 1px solid rgba(255, 255, 255, 0.32) !important;
+}
+.back-to-profile-btn:hover,
+.back-to-profile-btn:focus-visible {
+  color: #ffffff;
+  filter: brightness(1.14);
+  outline: none;
+  transform: translateY(-3px);
+
+  box-shadow: 0 12px 30px rgba(126, 58, 242, 0.35) !important;
+}
+
+/* ==========================================================================
+SEMANTIC STRUCTURE WRAPPERS
+========================================================================== */
+
+.semantic-structure {
+  display: contents;
+}
+
+.semantic-nav-list,
+.semantic-nav-list li {
+  display: contents;
+}
+
+.epic-workflow-logo {
+  width: auto;
+  height: 50px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+#site-footer {
+  width: 100%;
+  margin-top: 60px;
+  padding: 40px 0;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  opacity: 0.6;
+}
+
+.footer-source-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ======================================================================
+FINAL RESPONSIVE REFINEMENT — RETURN BUTTON IN NORMAL DOCUMENT FLOW
+====================================================================== */
+.back-to-profile-btn {
+  position: static !important;
+  inset: auto !important;
+  display: inline-flex !important;
+  width: fit-content;
+  max-width: calc(100% - 32px);
+  margin: 18px 0 12px 24px !important;
+  z-index: auto !important;
+}
+@media (max-width: 700px) {
+  .back-to-profile-btn {
+    margin: 16px auto 16px !important;
+    padding: 10px 14px !important;
+    font-size: .78rem !important;
+    line-height: 1.25;
+  }
+  body > aside:first-of-type { text-align: center; }
+  .main-header { padding-top: 8px !important; }
+  .page-title {
+    font-size: clamp(2rem, 9vw, 2.8rem) !important;
+    line-height: 1.08 !important;
+  }
+}
+
+/* ======================================================================
+FINAL MOBILE RETURN-BUTTON EDGE SPACING
+====================================================================== */
+@media (max-width: 700px) {
+  body > aside:first-of-type { text-align: left !important; }
+  .back-to-profile-btn {
+    margin: 16px 0 16px 22px !important;
+    max-width: calc(100% - 44px) !important;
+  }
+}
+
+/* ==========================================================================
+13. DXA GLASS HEADER CONTROLS
+========================================================================== */
+
+.main-header {
+  width: 100%;
+  padding: 34px 20px 20px;
+
+  text-align: center;
+
+  background: linear-gradient(to bottom, #0f172a, transparent);
+}
+
+.dxa-header-controls {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto minmax(220px, 1fr);
+  align-items: center;
+  gap: 28px;
+
+  width: min(calc(100% - 80px), 1180px);
+  margin: 0 auto 34px;
+  padding: 12px 0;
+
+  border: 0;
+  border-radius: 0;
+
+  background: transparent;
+  box-shadow: none;
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+body.light .dxa-header-controls {
+  background: transparent;
+}
+
+.back-to-profile-btn,
+.theme-btn {
+  position: static !important;
+  inset: auto !important;
+
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: fit-content !important;
+  min-height: 50px;
+  max-width: 100%;
+  margin: 0 !important;
+  padding: 12px 20px !important;
+
+  border-radius: 999px;
+
+  color: var(--body-text);
+
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.2;
+
+  text-decoration: none;
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.back-to-profile-btn {
+  justify-self: start;
+
+  border: 1px solid rgba(126, 34, 206, 0.58) !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(126, 34, 206, 0.28),
+      rgba(34, 211, 238, 0.12)
+    ),
+    rgba(11, 19, 41, 0.82) !important;
+
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.34),
+    0 0 24px rgba(126, 34, 206, 0.12) !important;
+}
+
+.back-to-profile-btn i {
+  color: #ffffff;
+  transition: transform 0.25s ease;
+}
+
+.back-to-profile-btn:hover,
+.back-to-profile-btn:focus-visible {
+  border-color: rgba(255, 255, 255, 0.66) !important;
+
+  background:
+    linear-gradient(135deg, #7e22ce, #0891b2),
+    rgba(11, 19, 41, 0.94) !important;
+
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.44),
+    0 0 32px rgba(126, 34, 206, 0.30) !important;
+
+  color: #ffffff;
+  outline: none;
+
+  transform: translateY(-2px);
+}
+
+.back-to-profile-btn:hover i {
+  transform: translateX(-3px);
+}
+
+.brand-logos {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  gap: 32px !important;
+
+  width: fit-content !important;
+  margin: 0 !important;
+  padding: 14px 34px !important;
+
+  border-radius: 999px !important;
+
+  background: #ffffff !important;
+
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.40),
+    0 0 28px rgba(255, 255, 255, 0.10) !important;
+}
+
+.brand-logos img {
+  display: block;
+
+  width: auto;
+  height: 44px !important;
+
+  object-fit: contain;
+}
+
+.theme-btn {
+  justify-self: end;
+
+  border: 1px solid rgba(34, 211, 238, 0.55) !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(34, 211, 238, 0.16),
+      rgba(126, 34, 206, 0.16)
+    ),
+    rgba(11, 19, 41, 0.82) !important;
+
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.34),
+    0 0 24px rgba(34, 211, 238, 0.10);
+
+  cursor: pointer;
+}
+
+.theme-btn:hover,
+.theme-btn:focus-visible {
+  border-color: rgba(255, 255, 255, 0.66) !important;
+
+  background:
+    linear-gradient(135deg, #0891b2, #7e22ce),
+    rgba(11, 19, 41, 0.94) !important;
+
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.44),
+    0 0 32px rgba(34, 211, 238, 0.24);
+
+  color: #ffffff;
+  outline: none;
+
+  transform: translateY(-2px);
+}
+
+.page-title {
+  margin: 0;
+
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+
+/* ==========================================================================
+14. DXA NAVIGATION CARD CLEARANCE
+========================================================================== */
+
+@media (min-width: 1201px) {
+  .screen {
+    padding-left: 285px;
+  }
+}
+
+
+/* ==========================================================================
+15. DXA HEADER RESPONSIVE LAYOUT
+========================================================================== */
+
+@media (max-width: 900px) {
+  .dxa-header-controls {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 18px;
+
+    width: min(calc(100% - 30px), 760px);
+    padding: 20px;
+  }
+
+  .back-to-profile-btn,
+  .brand-logos,
+  .theme-btn {
+    justify-self: center;
+  }
+
+  .brand-logos {
+    gap: 20px !important;
+    padding: 12px 28px !important;
+  }
+
+  .brand-logos img {
+    height: 34px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-header {
+    padding: 22px 12px 14px;
+  }
+
+  .dxa-header-controls {
+    width: calc(100% - 24px);
+    padding: 16px 14px;
+    border-radius: 22px;
+  }
+
+  .back-to-profile-btn,
+  .theme-btn {
+    min-height: 46px;
+    padding: 10px 15px !important;
+
+    font-size: 0.76rem !important;
+  }
+
+  .brand-logos {
+    width: 100% !important;
+    max-width: 420px;
+
+    gap: 14px !important;
+    padding: 11px 16px !important;
+  }
+
+  .brand-logos img {
+    height: 28px !important;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 9vw, 2.8rem) !important;
+    line-height: 1.08 !important;
+  }
+}
+
+/* ==========================================================================
+16. FINAL DXA HEADER & NAVIGATION POSITION
+========================================================================== */
+
+.dxa-header-controls {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+@media (min-width: 1201px) {
+  .toc {
+    top: 365px;
+  }
+}
+
+/* ==========================================================================
+17. RESTORE ORIGINAL DXA RETURN BUTTON
+========================================================================== */
+
+.dxa-header-controls .back-to-profile-btn {
+  position: static !important;
+  inset: auto !important;
+  z-index: auto !important;
+
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+  gap: 10px;
+
+  width: auto !important;
+  min-width: 165px;
+  height: 44px;
+  max-width: 100%;
+  margin: 0 !important;
+  padding: 0 18px !important;
+  font-size: .82rem !important;
+  line-height: 1;
+  transform: scale(.88);
+  transform-origin:left center;
+
+  border: 1px solid rgba(255, 255, 255, 0.32) !important;
+  border-radius: 25px !important;
+
+  background: var(--ge-purple) !important;
+
+  color: #ffffff !important;
+  font-weight: 700;
+  text-decoration: none;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.30) !important;
+
+  filter: none;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease !important;
+}
+
+.dxa-header-controls .back-to-profile-btn i {
+  color: #ffffff !important;
+}
+
+.dxa-header-controls .back-to-profile-btn:hover,
+.dxa-header-controls .back-to-profile-btn:focus-visible {
+  color: #ffffff !important;
+
+  filter: brightness(1.14);
+
+  box-shadow: 0 12px 30px rgba(126, 58, 242, 0.35) !important;
+
+  transform: translateY(-3px);
+}
+
+@media (max-width: 900px) {
+  .dxa-header-controls .back-to-profile-btn {
+    justify-self: center;
+  }
+}
+
+
+
+/* ==========================================================================
+FINAL MOBILE POLISH
+========================================================================== */
+
+@media (max-width:600px){
+
+  /* More breathing room for the white logo capsule */
+  .brand-logos{
+    width:90% !important;
+    max-width:380px !important;
+    margin:0 auto 18px !important;
+  }
+
+  /* Bring theme button closer to the logo */
+  .theme-btn{
+    margin-top:8px !important;
+  }
+
+  /* Better subtitle spacing on small screens */
+  .page-subtitle{
+    letter-spacing:2px !important;
+    font-size:.98rem !important;
+  }
+}
+
+/* ==========================================================================
+TOUCH DEVICES
+Keep borders visible when hover is unavailable.
+========================================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .glass-panel,
+  .project-card,
+  .module-card,
+  .feature-card,
+  .article-card,
+  .cert-card,
+  .comparison-col,
+  .phase-card,
+  .visual,
+  .feature-image,
+  .page-return,
+  .project-return,
+  .back-btn,
+  .back-link,
+  .back-home-btn,
+  .return-btn,
+  .theme-btn,
+  .nav-links a {
+    border-color: rgba(255,255,255,.18) !important;
+  }
+
+}

@@ -1,0 +1,90 @@
+/* =========================================================
+CPIP | NEXT STEPS CSS STYLESHEET
+========================================================= */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0a0a0a;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+.container {
+  max-width: 800px;
+  padding: 40px;
+}
+
+h1 {
+  font-family: "Cinzel", serif;
+  font-size: 2.5rem;
+  color: #c5a021;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #aaa;
+  margin-bottom: 40px;
+}
+
+.note {
+  font-size: 1rem;
+  color: #aaa8a8;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 20px 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-yes {
+  background: #c5a021;
+  color: black;
+  border: 2px solid #c5a021;
+}
+.btn-yes:hover {
+  background: white;
+  border-color: white;
+  transform: translateY(-5px);
+}
+
+.btn-no {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+.btn-no:hover {
+  background: white;
+  color: black;
+  transform: translateY(-5px);
+}
+
+/* ==========================================================================
+SEMANTIC STRUCTURE WRAPPERS
+========================================================================== */
+
+.semantic-structure {
+  display: contents;
+}

@@ -1,0 +1,789 @@
+/* =========================================================
+ACHIEVEMENTS & CERTIFICATIONS | MSC SOFTWARE ENGINEERING CSS STYLESHEET
+========================================================= */
+
+/* ==========================================================================
+1. PAGE THEME & GLOBAL LAYOUT
+========================================================================== */
+
+:root {
+  --page-bg: #02040a;
+  --panel-bg: rgba(255, 255, 255, 0.045);
+  --accent-pink: #ff00fb;
+  --accent-purple: #a855f7;
+  --accent-cyan: #22d3ee;
+  --accent-orange: #f59e0b;
+  --body-text: #ffffff;
+  --muted-text: #94a3b8;
+  --border-color: rgba(34, 211, 238, 0.24);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 40px 20px;
+  background: var(--page-bg);
+  color: var(--body-text);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ==========================================================================
+2. RETURN BUTTON
+========================================================================== */
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 12px 20px;
+
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+
+  border: 1px solid rgba(245, 158, 11, 0.72);
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.2),
+    rgba(251, 146, 60, 0.1)
+  );
+
+  box-shadow:
+    0 8px 26px rgba(245, 158, 11, 0.13);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.back-btn i {
+  transition: transform 0.3s ease;
+}
+
+.back-btn:hover,
+.back-btn:focus-visible {
+  color: #111827;
+
+  border-color: #fed7aa;
+
+  background: linear-gradient(
+    135deg,
+    #fbbf24,
+    #fb923c
+  );
+
+  box-shadow:
+    0 12px 32px rgba(245, 158, 11, 0.3);
+
+  outline: none;
+  transform: translateY(-3px);
+}
+
+.back-btn:hover i,
+.back-btn:focus-visible i {
+  transform: translateX(-4px);
+}
+
+/* ==========================================================================
+3. PAGE TITLES & FOOTER
+========================================================================== */
+
+#site-footer {
+  width: 100%;
+  margin-top: 60px;
+  padding: 40px 0;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  opacity: 0.6;
+}
+
+.footer-source-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.section-title {
+  margin-top: 50px;
+  padding-bottom: 12px;
+  color: var(--accent-orange);
+  border-bottom: 1px solid #334155;
+}
+
+/* ==========================================================================
+4. ACADEMIC RESULTS | LUXURY UNIVERSITY BRAND
+========================================================================== */
+
+.academic-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+
+  margin-bottom: 30px;
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid rgba(245, 158, 11, 0.28);
+}
+
+.academic-group-header .group-label {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.academic-logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.academic-logo {
+  display: block;
+  width: clamp(180px, 18vw, 240px);
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+
+  filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.18));
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.academic-logo:hover {
+  transform: scale(1.025);
+
+  filter:
+    drop-shadow(0 7px 16px rgba(0, 0, 0, 0.24))
+    drop-shadow(0 0 12px rgba(245, 158, 11, 0.08));
+}
+
+/* ==========================================================================
+5. FEATURED RESULT & CERTIFICATION CARDS
+========================================================================== */
+
+.featured-card {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  padding: 25px;
+  text-align: center;
+  background: var(--panel-bg);
+  border: 1px solid var(--accent-orange);
+  border-radius: 18px;
+  box-shadow: 0 0 26px rgba(255, 0, 251, 0.11);
+}
+
+.featured-card h3 {
+  margin-bottom: 10px;
+  color: var(--accent-orange);
+}
+
+.featured-card strong {
+  color: var(--accent-orange);
+}
+
+.featured-img {
+  width: 100%;
+  max-height: 250px;
+  margin-top: 15px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.cert-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 25px;
+  overflow: visible;
+  background: var(--panel-bg);
+  border: 1px solid #334155;
+  border-radius: 16px;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-orange);
+  box-shadow: 0 16px 34px rgba(255, 0, 251, 0.12);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.logo {
+  width: auto;
+  max-height: 100%;
+  transition: transform 0.5s ease;
+}
+
+.cert-card:hover .logo {
+  transform: scale(1.25);
+}
+
+.cert-img {
+  width: 100%;
+  height: 220px;
+  margin-top: 15px;
+  object-fit: contain;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* ==========================================================================
+6. CERTIFICATE IMAGE MODAL
+========================================================================== */
+
+#modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.92);
+  cursor: zoom-out;
+}
+
+#modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border: 1px solid rgba(255, 0, 251, 0.4);
+  border-radius: 12px;
+  box-shadow: 0 0 36px rgba(255, 0, 251, 0.18);
+}
+
+/* ==========================================================================
+7. PAGE STRUCTURE & CONTENT GROUPS
+========================================================================== */
+
+body {
+  padding-top: 28px;
+}
+/* ==========================================================================
+7.1 TOP HEADER
+========================================================================== */
+
+.header-container{
+  width:100%;
+  max-width:1200px;
+
+  margin:0 auto 34px;
+  padding:0 0 22px;
+
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+
+  border-bottom:1px solid rgba(245,158,11,.22);
+}
+
+.header-container .achievements-topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+
+  width:100%;
+  margin:0;
+  padding:0;
+
+  border:0;
+}
+
+.achievements-topbar .page-identity{
+  margin-left:auto;
+  text-align:right;
+}
+
+.achievements-topbar .page-identity strong{
+  display:block;
+
+  color:#ffffff;
+
+  font-size:17px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.achievements-topbar .page-identity span{
+  display:block;
+
+  margin-top:5px;
+
+  color:var(--accent-orange);
+
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1.7px;
+  text-transform:uppercase;
+}
+
+
+/* ==========================================================================
+7.2 CERTIFICATE CONTENT GROUPS
+========================================================================== */
+
+.certificate-group{
+  margin:34px 0;
+  padding:30px;
+
+  border-radius:22px;
+
+  background:linear-gradient(
+    145deg,
+    rgba(255,255,255,.042),
+    rgba(255,255,255,.018)
+  );
+
+  box-shadow:0 18px 42px rgba(0,0,0,.28);
+}
+
+.certificate-group .section-title,
+.certificate-group .group-label{
+  margin:0 0 24px;
+  padding-bottom:14px;
+}
+
+.academic-group{
+  border:1px solid rgba(245,158,11,.46);
+
+  box-shadow:
+    0 18px 42px rgba(0,0,0,.28),
+    0 0 24px rgba(245,158,11,.07);
+}
+
+.project-group{
+  border:1px solid rgba(251,146,60,.40);
+
+  box-shadow:
+    0 18px 42px rgba(0,0,0,.28),
+    0 0 24px rgba(251,146,60,.065);
+}
+
+.technical-group{
+  border:1px solid rgba(234,179,8,.38);
+
+  box-shadow:
+    0 18px 42px rgba(0,0,0,.28),
+    0 0 24px rgba(234,179,8,.06);
+}
+
+.healthcare-group{
+  border:1px solid rgba(244,114,182,.32);
+
+  box-shadow:
+    0 18px 42px rgba(0,0,0,.28),
+    0 0 24px rgba(244,114,182,.055);
+}
+
+.group-label{
+  color:var(--accent-orange);
+  border-bottom:1px solid rgba(245,158,11,.28);
+}
+/* ==========================================================================
+8. HERO & SECTION NAVIGATION
+========================================================================== */
+
+.container {
+  width: 95%;
+  max-width: 1200px;
+
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.certifications-hero {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 60px auto 48px;
+  padding: 30px 0 36px;
+
+  border: 0;
+  border-radius: 0;
+
+  background: transparent;
+  box-shadow: none;
+
+  text-align: center;
+}
+
+.certifications-hero .page-title {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(42px, 5.2vw, 64px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.certifications-hero .page-subtitle {
+  margin: 24px auto 0;
+
+  color: #fbbf24;
+
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.certifications-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  width: fit-content;
+  max-width: 100%;
+
+  margin: 0 auto 46px;
+}
+
+.certifications-navigation a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 42px;
+  padding: 10px 17px;
+
+  color: #fff7d6;
+
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+
+  border: 1px solid rgba(251, 191, 36, 0.58);
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(245, 158, 11, 0.13),
+    rgba(251, 191, 36, 0.07)
+  );
+
+  box-shadow: 0 7px 22px rgba(245, 158, 11, 0.08);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.certifications-navigation a:hover,
+.certifications-navigation a:focus-visible {
+  color: #171006;
+
+  background: linear-gradient(
+    135deg,
+    #f59e0b,
+    #facc15
+  );
+
+  box-shadow: 0 12px 28px rgba(245, 158, 11, 0.28);
+
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.certificate-group {
+  scroll-margin-top: 36px;
+}
+
+.academic-group .group-label {
+  color: #fbbf24;
+  font-size: clamp(23px, 3vw, 32px);
+}
+
+/* ==========================================================================
+9. SEMANTIC STRUCTURE WRAPPERS
+========================================================================== */
+
+.semantic-structure {
+  display: contents;
+}
+
+.semantic-nav-list,
+.semantic-nav-list li {
+  display: contents;
+}
+
+/* ==========================================================================
+10. RESPONSIVE LAYOUT
+========================================================================== */
+
+@media (max-width: 768px) {
+  body {
+    padding: 24px 12px;
+    overflow-x: hidden;
+  }
+
+  .header-container {
+    margin-bottom: 26px;
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .achievements-topbar {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .back-btn {
+    position: static;
+    flex: 0 0 auto;
+
+    margin: 0;
+    padding: 10px 13px;
+
+    font-size: 0.76rem;
+    white-space: nowrap;
+  }
+
+  .page-identity {
+    min-width: 0;
+  }
+
+  .achievements-topbar .page-identity strong {
+    font-size: 13px;
+  }
+
+  .achievements-topbar .page-identity span {
+    font-size: 9px;
+  }
+
+  .certifications-hero {
+    width: 100%;
+    margin: 36px auto 28px;
+    padding: 18px 12px 30px;
+  }
+
+  .certifications-hero .page-title {
+    max-width: 100%;
+
+    font-size: clamp(2rem, 10vw, 2.7rem);
+    line-height: 1.05;
+    letter-spacing: 0;
+
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
+  }
+
+  .certifications-hero .page-subtitle {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    line-height: 1.6;
+  }
+
+  .certifications-navigation {
+    width: 100%;
+  }
+
+  .certifications-navigation a {
+    width: 100%;
+  }
+
+  .academic-group-header {
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 18px;
+
+    text-align: center;
+  }
+
+  .academic-group-header .group-label {
+    width: 100%;
+  }
+
+  .academic-logo {
+    width: min(100%, 210px);
+  }
+
+  .certificate-group {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .featured-card,
+  .cert-card {
+    padding: 18px;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+
+  .cert-img {
+    height: auto;
+    max-height: 240px;
+  }
+}
+
+/* ==========================================================================
+11. TABLET TYPOGRAPHY
+========================================================================== */
+
+@media (max-width: 950px) {
+  html {
+    font-size: 85%;
+  }
+}
+
+/* ==========================================================================
+12. REDUCED MOTION
+========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+13. FINAL MOBILE CERTIFICATIONS NAVIGATION
+Compact horizontal navigation inspired by the Patent page.
+========================================================================== */
+
+@media (max-width: 768px) {
+
+  .certifications-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 8px;
+
+    width: 100%;
+    margin: 0 auto 34px;
+    padding: 8px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    border: 1px solid rgba(245, 158, 11, 0.22);
+    border-radius: 18px;
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(245, 158, 11, 0.055),
+        rgba(251, 191, 36, 0.025)
+      ),
+      rgba(8, 10, 15, 0.72);
+
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.035),
+      0 12px 28px rgba(0, 0, 0, 0.24);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    scrollbar-width: none;
+  }
+
+  .certifications-navigation::-webkit-scrollbar {
+    display: none;
+  }
+
+  .certifications-navigation a {
+    flex: 0 0 auto;
+
+    width: auto;
+    min-height: 38px;
+    padding: 9px 13px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+}
+
+/* ==========================================================================
+TOUCH DEVICES
+Keep borders visible when hover is unavailable.
+========================================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .glass-panel,
+  .project-card,
+  .module-card,
+  .feature-card,
+  .article-card,
+  .cert-card,
+  .comparison-col,
+  .phase-card,
+  .visual,
+  .feature-image,
+  .page-return,
+  .project-return,
+  .back-btn,
+  .back-link,
+  .back-home-btn,
+  .return-btn,
+  .theme-btn,
+  .nav-links a {
+    border-color: rgba(255,255,255,.18) !important;
+  }
+
+}

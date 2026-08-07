@@ -1,0 +1,675 @@
+/* =========================================================
+CPIP | STRATEGIC CLINICAL SUITE CSS STYLESHEET
+========================================================= */
+
+:root {
+  --gold: #d4af37;
+  --dark: #050505;
+  --panel: #111;
+  --danger: #ff5555;
+  --safe: #00ffcc;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  background: var(--dark);
+  color: white;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+header {
+  padding: 15px 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--gold);
+  background: #000;
+  flex-shrink: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+.header-logo {
+  height: 60px;
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+}
+.header-brand h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+.header-brand p {
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  color: #888;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.elegant-title {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--gold);
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+
+  letter-spacing: 1px; /* Added for an elegant, professional look */
+}
+
+/* ======================================================================
+Medical Terminology Judge Button Styling
+====================================================================== */
+
+.btn-judge {
+  background: rgba(0, 255, 204, 0.05);
+  color: var(--safe);
+  border: 1px solid rgba(0, 255, 204, 0.3);
+  padding: 6px 15px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-judge:hover {
+  background: var(--safe);
+  color: var(--dark);
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+}
+
+.kernel-status {
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-right: 15px;
+}
+.status-offline {
+  background: #333;
+  color: #888;
+  border: 1px solid #444;
+}
+.status-online {
+  background: rgba(0, 255, 204, 0.1);
+  color: var(--safe);
+  border: 1px solid var(--safe);
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+}
+
+.simulation-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  min-height: 0;
+  background: #222;
+  gap: 2px;
+}
+.panel {
+  display: flex;
+  flex-direction: column;
+  background: var(--dark);
+  position: relative;
+  overflow: hidden;
+}
+.panel-header {
+  padding: 20px 25px;
+  font-size: 1.1rem;
+  background: #080808;
+  border-bottom: 1px solid #111;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.chat-area {
+  position: absolute;
+  top: 65px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 30px;
+  overflow-y: scroll !important;
+  font-size: 1.35rem;
+  line-height: 1.8;
+}
+.chat-area::-webkit-scrollbar {
+  width: 10px;
+}
+.chat-area::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 5px;
+}
+
+.controls-footer {
+  padding: 25px 40px;
+  background: var(--panel);
+  border-top: 2px solid var(--gold);
+  flex-shrink: 0;
+  z-index: 1000;
+  transition: 0.5s;
+}
+.controls-footer.jumped {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  border-radius: 20px;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 150px #000;
+  background: #0a0a0a;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  z-index: 999;
+}
+.overlay.active {
+  display: block;
+}
+
+.input-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  align-items: flex-end;
+}
+.main-input {
+  flex: 1;
+  background: #000;
+  border: 1px solid #444;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-size: 1.3rem;
+  outline: none;
+  resize: none;
+  min-height: 60px;
+  max-height: 200px;
+  line-height: 1.5;
+  font-family: inherit;
+}
+
+.mic-btn {
+  background: #1a1a1a;
+  border: 2px solid #444;
+  color: #888;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.mic-btn.active {
+  color: var(--danger);
+  border-color: var(--danger);
+  animation: pulse 1.5s infinite;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: black;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 1rem;
+  text-transform: uppercase;
+  height: 60px;
+  flex-shrink: 0;
+}
+.btn-summary {
+  background: transparent;
+  color: var(--safe);
+  border: 2px solid var(--safe);
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+/* ======================================================================
+Help Modal Simple
+====================================================================== */
+
+.help-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+.help-card {
+  background: #111;
+  border: 2px solid var(--gold);
+  padding: 40px;
+  border-radius: 15px;
+  max-width: 500px;
+  text-align: left;
+}
+.help-card h2 {
+  color: var(--gold);
+  margin-top: 0;
+}
+.help-card code {
+  background: #000;
+  padding: 2px 6px;
+  color: var(--safe);
+}
+.help-card ol {
+  padding-left: 20px;
+  line-height: 1.8;
+  color: #ccc;
+}
+.help-card a {
+  color: var(--gold);
+  text-decoration: underline;
+}
+.close-help {
+  background: var(--gold);
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  float: right;
+  margin-top: 20px;
+}
+
+/* ======================================================================
+Specialty Authentication Box
+====================================================================== */
+
+.spec-input {
+  width: 100%;
+  background: #000;
+  border: 2px solid var(--safe);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  outline: none;
+  text-align: center;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+SEMANTIC STRUCTURE WRAPPERS
+========================================================================== */
+
+.semantic-structure {
+  display: contents;
+}
+
+@media (max-width: 768px) {
+  body {
+    height: auto;
+    min-height: 100svh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  header {
+    padding: 12px;
+    gap: 12px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header-left,
+  .header-right {
+    width: 100%;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .header-logo {
+    height: 42px;
+  }
+
+  .header-brand h1 {
+    font-size: 1.25rem;
+  }
+
+  .elegant-title {
+    max-width: 100%;
+    font-size: 0.9rem;
+    white-space: normal;
+  }
+
+  .simulation-grid {
+    display: block;
+  }
+
+  .panel {
+    min-height: 520px;
+    border-bottom: 1px solid var(--gold);
+  }
+
+  .panel-header,
+  .chat-area,
+  .controls-footer {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .controls-footer {
+    position: static;
+  }
+
+  .input-row {
+    gap: 10px;
+  }
+
+  .help-card {
+    width: calc(100% - 24px);
+    max-height: 90svh;
+    padding: 22px;
+    overflow-y: auto;
+  }
+}
+.clinical-context-modal {
+  z-index: 3000;
+  display: none;
+}
+
+.clinical-context-card {
+  border-width: 3px;
+  border-color: var(--safe);
+  box-shadow: 0 0 40px rgba(0, 255, 204, 0.2);
+  text-align: center;
+}
+
+.clinical-context-title {
+  color: var(--safe);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.clinical-context-description {
+  margin-bottom: 30px;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.full-width-btn,
+.safe-action-btn {
+  width: 100%;
+}
+
+.safe-action-btn {
+  background: var(--safe);
+}
+
+.specialty-summary {
+  margin-right: 20px;
+  text-align: right;
+}
+
+.standard-ai-title {
+  color: var(--danger);
+}
+
+.cpip-audit-title {
+  color: var(--gold);
+}
+
+.protocol-download-btn {
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px;
+  color: black;
+  background: var(--gold);
+  text-align: center;
+  text-decoration: none;
+}
+
+.protocol-ready-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.protocol-instructions {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.next-step-btn {
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  background: transparent;
+}
+.governance-header {
+  padding: 10px;
+  color: var(--gold);
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+.link-mode-message {
+  padding: 20px;
+  text-align: center;
+}
+
+/* ==========================================================================
+FINAL MOBILE REFINEMENT — SPACING AND CONTROL PROPORTIONS ONLY
+Desktop styling remains unchanged.
+========================================================================== */
+
+@media (max-width: 768px) {
+
+  /* ----------------------------------------------------------------------
+  HEADER
+  ---------------------------------------------------------------------- */
+
+  header {
+    padding: 10px 12px;
+  }
+
+  .header-left,
+  .header-right {
+    gap: 8px;
+  }
+
+  .header-logo {
+    height: 38px;
+  }
+
+  .header-brand h1 {
+    font-size: 1.12rem;
+  }
+
+  .header-brand p {
+    font-size: 0.58rem;
+    letter-spacing: 2.5px;
+  }
+
+  .elegant-title {
+    font-size: 0.82rem;
+  }
+
+  .kernel-status {
+    margin-right: 0;
+  }
+
+  /* ----------------------------------------------------------------------
+  PANELS
+  ---------------------------------------------------------------------- */
+
+  .panel {
+    min-height: 420px;
+  }
+
+  .panel-header {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    letter-spacing: 1.4px;
+  }
+
+  .chat-area {
+    top: 52px;
+    padding: 18px 14px;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* ----------------------------------------------------------------------
+  PROTOCOL SECTIONS
+  ---------------------------------------------------------------------- */
+
+  .protocol-download-btn {
+    margin: 14px 0 0;
+    padding: 14px 16px;
+
+    border-radius: 8px;
+
+    font-size: 0.95rem;
+  }
+
+  .protocol-ready-content {
+    padding: 24px 16px 28px;
+  }
+
+  .protocol-ready-content h2,
+  .help-card h2 {
+    margin-bottom: 18px;
+  }
+
+  .protocol-instructions {
+    margin: 14px 0 18px;
+    padding-left: 22px;
+
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .link-mode-message {
+    padding: 16px;
+  }
+
+  /* ----------------------------------------------------------------------
+  BUTTONS
+  ---------------------------------------------------------------------- */
+
+  .btn-gold,
+  .safe-action-btn,
+  .next-step-btn {
+    min-height: 48px;
+    height: auto;
+    padding: 12px 18px;
+
+    font-size: 0.92rem;
+  }
+
+  .btn-summary {
+    margin-bottom: 10px;
+    padding: 9px 18px;
+  }
+
+  /* ----------------------------------------------------------------------
+  FOOTER CONTROLS
+  ---------------------------------------------------------------------- */
+
+  .controls-footer {
+    padding: 16px 14px;
+  }
+
+  .input-row {
+    align-items: center;
+    gap: 8px;
+  }
+
+  .main-input {
+    min-height: 48px;
+    max-height: 130px;
+    padding: 11px 14px;
+
+    border-radius: 10px;
+
+    font-size: 1rem;
+  }
+
+  .mic-btn {
+    width: 48px;
+    height: 48px;
+
+    font-size: 1.15rem;
+  }
+}
+
+
+@media (max-width: 560px) {
+
+  .input-row {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .main-input {
+    grid-column: 2;
+    width: 100%;
+  }
+
+  .btn-gold,
+  .next-step-btn {
+    width: 100%;
+  }
+
+  .input-row .btn-gold,
+  .input-row .next-step-btn {
+    grid-column: span 1;
+  }
+}

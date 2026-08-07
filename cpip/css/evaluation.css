@@ -1,0 +1,198 @@
+/* =========================================================
+CPIP | STRATEGIC EVALUATION CSS STYLESHEET
+========================================================= */
+
+:root {
+  --gold: #d4af37;
+  --dark: #050505;
+  --panel: #111;
+  --safe: #00ffcc;
+}
+body {
+  background: var(--dark);
+  color: white;
+  font-family: "Inter", sans-serif;
+  padding: 60px 20px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+.container {
+  width: 100%;
+  max-width: 950px;
+}
+.header h1 {
+  font-weight: 900;
+  font-size: 3rem;
+  letter-spacing: 8px;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 60px;
+  text-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+}
+.evaluation-card {
+  background: var(--panel);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 60px;
+  border-radius: 20px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
+}
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  margin-bottom: 30px;
+}
+label {
+  display: block;
+  color: var(--gold);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+input,
+textarea {
+  width: 100%;
+  background: #000;
+  border: 2px solid #222;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+input:focus,
+textarea:focus {
+  border-color: var(--gold);
+  background: #050505;
+}
+.strategic-question-box {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 45px;
+  border-radius: 15px;
+  margin: 50px 0;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  text-align: center;
+}
+.q-text {
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1.5;
+  margin-bottom: 40px;
+  color: #f0f0f0;
+}
+.opt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+.opt-btn {
+  padding: 22px;
+  background: #000;
+  border: 2px solid #333;
+  color: #888;
+  cursor: pointer;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  transition: 0.4s;
+}
+.opt-btn:hover {
+  border-color: var(--gold);
+  color: #fff;
+}
+.opt-btn.active {
+  border-color: var(--safe);
+  color: var(--safe);
+  background: rgba(0, 255, 204, 0.05);
+}
+.btn-report {
+  width: 100%;
+  padding: 30px;
+  background: var(--gold);
+  color: black;
+  font-weight: 900;
+  border: none;
+  cursor: pointer;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-top: 40px;
+  border-radius: 12px;
+  transition: 0.5s;
+}
+.btn-report:hover {
+  background: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+}
+
+/* ==========================================================================
+SEMANTIC STRUCTURE WRAPPERS
+========================================================================== */
+
+.semantic-structure {
+  display: contents;
+}
+
+@media (max-width: 700px) {
+  body {
+    padding: 32px 14px;
+    overflow-x: hidden;
+  }
+
+  .header h1 {
+    margin-bottom: 32px;
+    font-size: clamp(2rem, 10vw, 2.7rem);
+    letter-spacing: 3px;
+    overflow-wrap: anywhere;
+  }
+
+  .evaluation-card,
+  .strategic-question-box {
+    padding: 22px 16px;
+  }
+
+  .form-grid,
+  .opt-grid {
+    grid-template-columns: 1fr;
+  }
+
+  input,
+  textarea {
+    padding: 14px;
+    font-size: 1rem;
+  }
+
+  .q-text {
+    margin-bottom: 24px;
+    font-size: 1.25rem;
+  }
+
+  .btn-report {
+    padding: 20px 14px;
+    font-size: 1.05rem;
+    letter-spacing: 2px;
+  }
+}
+.email-input-group {
+  margin-bottom: 30px;
+}
+
+.core-question {
+  margin-bottom: 10px;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.vision-response {
+  min-height: 180px;
+  font-size: 1.2rem;
+}

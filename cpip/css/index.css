@@ -1,0 +1,152 @@
+/* =========================================================
+CPIP | CLINICAL PROTECTION INTELLIGENCE PROTOCOL CSS STYLESHEET
+========================================================= */
+
+:root {
+  --gold: #d4af37;
+  --dark-bg: #050505;
+  --text-silver: #e2e8f0;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--dark-bg);
+  color: var(--text-silver);
+  font-family: "Inter", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.gateway-container {
+  text-align: center;
+  width: min(920px, calc(100% - 40px));
+  max-width: 920px;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.eng-name {
+  font-size: clamp(5rem, 11vw, 9rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: 0.16em;
+  padding-left: 0.16em;
+  background: linear-gradient(to right, #d4af37, #f7e0a8, #d4af37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  text-shadow: 0 0 30px rgba(212, 175, 55, 0.12);
+}
+
+.protocol-full-name {
+  color: #e9d58d;
+  font-size: clamp(1rem, 2vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.professional-title {
+  font-size: 0.92rem;
+  letter-spacing: 0.34em;
+  color: var(--text-silver);
+  opacity: 0.72;
+  margin-bottom: 38px;
+  text-transform: uppercase;
+}
+
+.protocol-hero {
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  border-radius: 2px;
+}
+
+.protocol-hero h1 {
+  color: var(--gold);
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.protocol-description {
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #94a3b8;
+}
+
+.enter-btn {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 15px 50px;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.enter-btn:hover {
+  background: var(--gold);
+  color: black;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+}
+
+@media (max-width: 700px) {
+  .eng-name {
+    font-size: clamp(4rem, 22vw, 6rem);
+    letter-spacing: 0.1em;
+    padding-left: 0.1em;
+  }
+
+  .protocol-full-name {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    letter-spacing: 0.14em;
+  }
+
+  .professional-title {
+    font-size: 0.72rem;
+    line-height: 1.7;
+    letter-spacing: 0.2em;
+    margin-bottom: 28px;
+  }
+
+  .protocol-hero {
+    padding: 28px 20px;
+  }
+
+  .protocol-hero h1 {
+    font-size: 2rem;
+  }
+
+  .protocol-description {
+    font-size: 1rem;
+  }
+
+  .enter-btn {
+    width: 100%;
+    padding: 15px 18px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ==========================================================================
+SEMANTIC STRUCTURE WRAPPERS
+========================================================================== */
+
+.semantic-structure {
+  display: contents;
+}
