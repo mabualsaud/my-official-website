@@ -180,9 +180,8 @@
           <!-- CV Request Information -->
           <aside class="cv-request-card" aria-label="CV request information">
             <i class="fas fa-file-lines" aria-hidden="true"></i>
-            <p>Always open to exploring strategic <strong>leadership and executive opportunities.</strong> To request a
-              tailored <strong>CV (ATS-Friendly)</strong> aligned with your company standards and role, please email me
-              with the <strong>job description and role requirements.</strong></p>
+            <p>Always open to exploring strategic <strong>leadership and executive opportunities.</strong> To receive a
+              tailored <strong>CV (ATS-Friendly)</strong> aligned with your company standards and role, please fill in the form at the end of this page and provide the <strong>Company Name, Job Description (JD),</strong> and <strong>any specific role requirements.</strong></p>
           </aside>
         </div>
       </section>
@@ -239,6 +238,7 @@
         <p>Register to receive the latest events, publications, and professional updates.</p>
 
         <form id="registrationForm" class="registration-form">
+          <input type="hidden" id="reg-time" name="time" value="" />
           <!-- Personal Information -->
           <div class="form-field">
             <label for="reg-name">Full Name</label>
@@ -301,6 +301,7 @@
          13. SCRIPTS
     ========================================================= -->
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script id="page-interaction-script" src="../js/home.js"></script>
   </body>
 </html>
