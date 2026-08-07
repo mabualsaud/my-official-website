@@ -321,15 +321,7 @@ html {
   width: 100%;
 }
 
-.top-uni-logo {
-  width: 190px;
-  height: auto;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  object-fit: contain;
-  filter: drop-shadow(0 0 35px rgba(34, 211, 238, 0.85));
-  transition: all 0.4s ease;
-}
+
 
 .subtitle {
   opacity: 0.8;
@@ -359,18 +351,9 @@ html {
   text-align: center;
 }
 
-.home-hero .top-uni-logo {
-  margin-bottom: 24px;
-}
+.home-hero 
 
-.home-eyebrow {
-  margin: 0 0 16px;
-  color: var(--accent-cyan);
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
+
 
 .home-hero .subtitle {
   width: 100%;
@@ -935,31 +918,7 @@ html {
     font-size: 18px !important;
   }
 
-  .top-uni-logo {
-    width: 100px !important;
-    margin-top: 8px !important;
-    margin-bottom: 8px !important;
-  }
-
-  .brand-box {
-    padding: 8px 10px !important;
-    gap: 10px !important;
-    border-radius: 10px !important;
-  }
-
-  .brand-info a {
-    font-size: 15px !important;
-  }
-  .brand-info span {
-    font-size: 10px !important;
-  }
-  .statement-text {
-    font-size: 14px !important;
-  }
-  .brand-box:hover {
-    transform: translateX(3px);
-  }
-}
+  
 
 @media (max-width: 900px) {
   .events-grid {
@@ -1348,69 +1307,4 @@ html {
     line-height: 1.55;
   }
 
-  .home-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-  }
-
-  .registration-form {
-    grid-template-columns: 1fr;
-  }
-
-  .home-contact-panel {
-    width: 100%;
-    min-width: 0;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-
-  .cv-request-card {
-    gap: 12px;
-    padding: 17px;
-  }
-
-  .cv-request-card p {
-    font-size: 14px;
-  }
-
-  .portfolio-cta {
-    margin: 34px auto;
-    padding: 30px 18px;
-  }
-  }
-
-@media (max-width: 950px) {
-html {
-font-size: 85%;
- }
- }
-
- /* ==========================================================================
-TOUCH DEVICES
-Keep borders visible when hover is unavailable.
-========================================================================== */
-
-@media (hover: none) and (pointer: coarse) {
-
-  .glass-panel,
-  .project-card,
-  .module-card,
-  .feature-card,
-  .article-card,
-  .cert-card,
-  .comparison-col,
-  .phase-card,
-  .visual,
-  .feature-image,
-  .page-return,
-  .project-return,
-  .back-btn,
-  .back-link,
-  .back-home-btn,
-  .return-btn,
-  .theme-btn,
-  .nav-links a {
-    border-color: rgba(255,255,255,.18) !important;
-  }
-
-}
+  
