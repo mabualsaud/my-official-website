@@ -1,29 +1,21 @@
 /* ========================================================================== 
-OFFICIAL PROFESSIONAL PORTFOLIO | BLACK GLASS LANDING GATE
+FINAL ASSIGNMENT | PROFESSIONAL PORTFOLIO GATE
+========================================================================== */
+
+/* ========================================================================== 
+1. GLOBAL VARIABLES & PAGE FOUNDATIONS
 ========================================================================== */
 
 :root {
-  --page-black: #020305;
-  --page-charcoal: #05070b;
-  --page-charcoal-soft: #0b0e14;
-
-  --glass-dark: rgba(5, 5, 5, 0.96);
-  --glass-soft: rgba(17, 17, 17, 0.92);
-
-  --gold: #d4af37;
-  --gold-light: #f7e0a8;
-  --gold-soft: #e9d58d;
-  --gold-deep: #8e6d13;
-
-  --cyan: #22d3ee;
-  --purple: #a855f7;
-  --fuchsia: #ff00fb;
-
-  --text-main: #ffffff;
-  --text-soft: #c7ced9;
-  --text-muted: #8f98a8;
-
-  --gold-border: rgba(212, 175, 55, 0.42);
+  --bg-primary: #040508;
+  --bg-secondary: #0a0d17;
+  --accent-gold: #c5a028;
+  --accent-gold-light: #f1d57b;
+  --accent-cyan: #22d3ee;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --card-border: rgba(197, 160, 40, 0.35);
+  --border-color: rgba(34, 211, 238, 0.25);
 }
 
 *,
@@ -34,464 +26,421 @@ OFFICIAL PROFESSIONAL PORTFOLIO | BLACK GLASS LANDING GATE
   padding: 0;
 }
 
-html {
-  min-width: 320px;
-  background: var(--page-black);
-}
-
 body {
+  display: flex;
   position: relative;
-  min-height: 100svh;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
   overflow-x: hidden;
-
   color: var(--text-main);
-  background:
-    radial-gradient(circle at 18% 18%, rgba(212, 175, 55, 0.08), transparent 28%),
-    radial-gradient(circle at 86% 18%, rgba(168, 85, 247, 0.035), transparent 22%),
-    radial-gradient(circle at 12% 82%, rgba(255, 0, 251, 0.022), transparent 20%),
-    radial-gradient(circle at 82% 82%, rgba(34, 211, 238, 0.055), transparent 26%),
-    linear-gradient(145deg, var(--page-charcoal-soft) 0%, var(--page-black) 72%);
-
+  background-color: var(--bg-primary);
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-.ambient-glow {
-  position: fixed;
-  z-index: 0;
-  border-radius: 50%;
-  filter: blur(95px);
+.semantic-structure {
+  display: contents;
+}
+
+/* ========================================================================== 
+2. AMBIENT BACKGROUND
+========================================================================== */
+
+.ambient-glow,
+.ambient-glow-2 {
+  position: absolute;
+  z-index: 1;
   pointer-events: none;
 }
 
-.ambient-glow-gold {
-  top: -170px;
-  left: -170px;
-  width: 420px;
-  height: 420px;
-  background: rgba(212, 175, 55, 0.08);
+.ambient-glow {
+  top: -200px;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(197, 160, 40, 0.12) 0%, rgba(4, 5, 8, 0) 70%);
 }
 
-.ambient-glow-cyan {
-  right: -220px;
-  bottom: -220px;
-  width: 480px;
-  height: 480px;
-  background: rgba(34, 211, 238, 0.04);
+.ambient-glow-2 {
+  right: -250px;
+  bottom: -250px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, rgba(4, 5, 8, 0) 70%);
 }
 
-.gate-shell {
-  display: grid;
-  position: relative;
-  z-index: 1;
-  min-height: 100svh;
-  place-items: center;
-  padding: 34px 24px;
-}
+/* ========================================================================== 
+3. MAIN PORTFOLIO GATE
+========================================================================== */
 
-.gate-content {
+.container {
   display: flex;
+  position: relative;
+  z-index: 2;
   flex-direction: column;
   align-items: center;
-  width: min(1180px, 100%);
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px 20px;
   text-align: center;
 }
 
-.portfolio-badge {
+/* ========================================================================== 
+4. UNIVERSITY BRANDING
+========================================================================== */
+
+.uni-logo-wrapper {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.uni-logo-wrapper::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.uni-logo {
+  display: block;
+  width: 190px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 40px rgba(197, 160, 40, 0.85)) drop-shadow(0 0 15px rgba(241, 213, 123, 0.5));
+  transition: all 0.4s ease;
+}
+
+/* ========================================================================== 
+5. PORTFOLIO GATE BADGE
+========================================================================== */
+
+.badge-wrapper {
+  margin-bottom: 25px;
+  animation: fadeInDown 1s ease-out;
+}
+
+.luxury-badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-
-  margin-bottom: 26px;
   padding: 9px 24px;
-
-  color: var(--gold-light);
-  background: linear-gradient(
-    135deg,
-    rgba(212, 175, 55, 0.12) 0%,
-    rgba(34, 211, 238, 0.055) 48%,
-    rgba(168, 85, 247, 0.045) 76%,
-    rgba(255, 0, 251, 0.028) 100%
-  );
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  border-radius: 999px;
-
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 10px 28px rgba(0, 0, 0, 0.36);
-
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
+  color: var(--accent-gold-light);
+  background: linear-gradient(135deg, rgba(197, 160, 40, 0.15), rgba(34, 211, 238, 0.08));
+  border: 1px solid var(--card-border);
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
-.portfolio-badge i {
-  color: var(--gold);
-  font-size: 0.86rem;
-}
+/* ========================================================================== 
+6. ASSIGNMENT INTRODUCTION
+========================================================================== */
 
 h1 {
-  max-width: 100%;
-
-  background:
-    linear-gradient(
-      100deg,
-      #8e6d13 0%,
-      #d4af37 18%,
-      #f7e0a8 35%,
-      #ffffff 48%,
-      #c8f7ff 51%,
-      #ffffff 54%,
-      #ffe7fb 58%,
-      #f7e0a8 64%,
-      #d4af37 82%,
-      #8e6d13 100%
-    );
-
-  background-size: 220% 100%;
-  background-position: 0% 50%;
-
-  font-family: "Cinzel", serif;
-  font-size: clamp(3rem, 6vw, 6.6rem);
-  font-weight: 700;
-  letter-spacing: 0.005em;
-  line-height: 1.04;
-
+  margin-bottom: 15px;
+  color: var(--accent-gold-light);
+  background: linear-gradient(270deg, #997a15, #f1d57b, #ffffff, #f1d57b, #997a15);
+  background-size: 300% 300%;
   background-clip: text;
+  font-family: "Cinzel", serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  text-shadow: 0 18px 42px rgba(0, 0, 0, 0.52);
-
-  animation: nameSweep 1.8s ease-in-out infinite alternate;
+  animation:
+    goldShimmer 3s ease infinite,
+    fadeInUp 1.2s ease-out;
 }
 
-.name-divider {
+.subtitle {
+  margin-bottom: 35px;
+  color: var(--text-muted);
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  animation: fadeInUp 1.4s ease-out;
+}
+
+/* ========================================================================== 
+7. INSTRUCTOR / COURSE DIRECTOR
+========================================================================== */
+
+.presentation-card {
+  position: relative;
+  width: 100%;
+  margin-bottom: 40px;
+  padding: 48px 40px;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(10, 13, 23, 0.9), rgba(4, 5, 8, 0.98));
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  animation: fadeInUp 1.6s ease-out;
+}
+
+.presentation-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--accent-gold), var(--accent-cyan));
+}
+
+.meta-grid {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-
-  width: min(520px, 78%);
-  margin: 26px auto 28px;
+  text-align: center;
 }
 
-.name-divider span {
-  height: 1px;
-  flex: 1;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.78));
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
-.name-divider span:last-child {
-  background: linear-gradient(90deg, rgba(212, 175, 55, 0.78), transparent);
-}
-
-.name-divider i {
-  width: 11px;
-  height: 11px;
-
-  border: 1px solid var(--gold);
-  transform: rotate(45deg);
-
-  box-shadow: 0 0 14px rgba(212, 175, 55, 0.28);
-}
-
-.identity-panel {
-  overflow: visible;
-  position: relative;
-  width: min(920px, 100%);
-  padding: 28px 34px;
-
-  background: linear-gradient(135deg, var(--glass-dark), var(--glass-soft));
-
-  border: 1px solid var(--gold-border);
-  border-radius: 22px;
-
-  box-shadow:
-    inset 0 1px 0 rgba(247, 224, 168, 0.08),
-    0 14px 32px rgba(0, 0, 0, 0.28),
-    -10px 0 28px rgba(34, 211, 238, 0.025),
-    10px 0 28px rgba(168, 85, 247, 0.022),
-    0 0 20px rgba(212, 175, 55, 0.08);
-
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-}
-
-.identity-panel::before {
-  content: "";
-  position: absolute;
-  left: -1px;
-  top: 18px;
-  bottom: 18px;
-  width: 2px;
-  border-radius: 999px;
-  pointer-events: none;
-  z-index: 3;
-
-  background: linear-gradient(
-    180deg,
-    rgba(212, 175, 55, 0.85) 0%,
-    #22d3ee 18%,
-    #38bdf8 36%,
-    #7c6cf2 58%,
-    #a855f7 78%,
-    #ff00fb 94%,
-    rgba(212, 175, 55, 0.55) 100%
-  );
-
-  box-shadow:
-    0 0 4px rgba(34, 211, 238, 0.80),
-    0 0 9px rgba(56, 189, 248, 0.55),
-    0 0 14px rgba(168, 85, 247, 0.42),
-    0 0 20px rgba(255, 0, 251, 0.28);
-}
-
-.identity-panel::after {
-  content: "";
-  position: absolute;
-  left: -14px;
-  top: 12px;
-  bottom: 12px;
-  width: 28px;
-  border-radius: 999px;
-  pointer-events: none;
-  z-index: 1;
-
-  background: linear-gradient(
-    180deg,
-    rgba(34, 211, 238, 0.20) 8%,
-    rgba(56, 189, 248, 0.22) 32%,
-    rgba(124, 108, 242, 0.20) 58%,
-    rgba(168, 85, 247, 0.18) 76%,
-    rgba(255, 0, 251, 0.15) 92%
-  );
-
-  filter: blur(11px);
-  opacity: 0.95;
-}
-
-
-.identity-icon {
-  display: grid;
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 18px;
-  place-items: center;
-
-  color: var(--gold-light);
-  background: rgba(212, 175, 55, 0.1);
-  border: 1px solid rgba(212, 175, 55, 0.42);
-  border-radius: 16px;
-
-  font-size: 1.45rem;
-
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 0 18px rgba(212, 175, 55, 0.08);
-}
-
-.primary-role {
-  color: var(--gold-light);
-
-  font-size: clamp(1.35rem, 2.4vw, 2rem);
-  font-weight: 600;
-  letter-spacing: 0.015em;
-}
-
-.secondary-role {
-  margin-top: 12px;
-
-  color: var(--text-soft);
-
-  font-size: clamp(0.95rem, 1.5vw, 1.18rem);
-  font-weight: 500;
-  letter-spacing: 0.035em;
-}
-
-.secondary-role span {
-  margin: 0 8px;
-  color: var(--gold);
-}
-
-.explore-button {
-  position: relative;
-  overflow: hidden;
-  display: inline-flex;
+.meta-icon {
+  display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  width: 76px;
+  height: 76px;
+  color: var(--accent-gold-light);
+  background: rgba(197, 160, 40, 0.15);
+  border: 1px solid rgba(197, 160, 40, 0.4);
+  border-radius: 18px;
+  font-size: 32px;
+}
 
-  margin-top: 34px;
-  min-width: 300px;
-  padding: 16px 30px;
+.meta-content h2 {
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  font-size: 18px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
 
-  color: #050505;
-  background: linear-gradient(
-      180deg,
-      #ffe89d 0%,
-      #ffd95f 18%,
-      #e6bb3b 48%,
-      #c99817 78%,
-      #a77408 100%
-  );
+.meta-content p {
+  color: var(--text-main);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
 
-  border: 1px solid #f6dfa1;
-  border-radius: 999px;
+/* ========================================================================== 
+8. WEBSITE ENTRY
+========================================================================== */
 
-  box-shadow:
-      0 18px 45px rgba(0,0,0,.45),
-      0 0 34px rgba(212,175,55,.28),
-      inset 0 2px 0 rgba(255,255,255,.55),
-      inset 0 -4px 8px rgba(120,80,0,.18);
+.launch-action {
+  animation: fadeInUp 1.8s ease-out;
+}
 
-  font-size: 0.9rem;
+.luxury-btn {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 45px;
+  overflow: hidden;
+  color: #040508;
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #997a15 100%);
+  border-radius: 50px;
+  box-shadow: 0 15px 35px rgba(197, 160, 40, 0.4);
+  font-size: 16px;
   font-weight: 800;
-  letter-spacing: 0.18em;
+  letter-spacing: 1.5px;
   text-decoration: none;
   text-transform: uppercase;
-
-  transition:
-      transform .3s ease,
-      box-shadow .3s ease,
-      background .3s ease,
-      color .3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.explore-button::before{
-  content:"";
-  position:absolute;
-  left:8%;
-  right:8%;
-  top:3px;
-  height:2px;
-  border-radius:999px;
-  background:rgba(255,255,255,.65);
-  filter:blur(.4px);
+.luxury-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: 0.5s;
 }
 
-.explore-button:hover,
-.explore-button:focus-visible{
-
-  color:#030303;
-
-  background:linear-gradient(
-      180deg,
-      #fff3c9 0%,
-      #ffe37c 18%,
-      #f2c94c 48%,
-      #d5a321 78%,
-      #b57f09 100%
-  );
-
-  box-shadow:
-      0 22px 52px rgba(0,0,0,.5),
-      0 0 42px rgba(212,175,55,.45),
-      inset 0 2px 0 rgba(255,255,255,.75),
-      inset 0 -4px 8px rgba(120,80,0,.18);
-
-  outline:none;
-  transform:translateY(-2px) scale(1.02);
+.luxury-btn:hover,
+.luxury-btn:focus-visible {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 100%);
+  box-shadow: 0 20px 45px rgba(197, 160, 40, 0.6);
+  outline: none;
 }
 
-.button-arrow {
-  font-size: 1.22rem;
+.luxury-btn:hover::after,
+.luxury-btn:focus-visible::after {
+  left: 100%;
+}
+
+.luxury-btn i {
   transition: transform 0.3s ease;
 }
 
-.explore-button:hover .button-arrow,
-.explore-button:focus-visible .button-arrow {
-  transform: translateX(6px);
+.luxury-btn:hover i,
+.luxury-btn:focus-visible i {
+  transform: translateX(5px);
 }
 
-.gate-footer {
-  margin-top: 30px;
+/* ========================================================================== 
+9. FOOTER
+========================================================================== */
 
-  color: var(--text-muted);
-
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
+#site-footer {
+  width: 100%;
+  margin-top: 60px;
+  padding: 40px 0;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
 }
 
-@keyframes nameSweep {
+.footer-copyright {
+  opacity: 0.6;
+}
+
+.footer-source-link {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition:
+    color 0.25s ease,
+    text-shadow 0.25s ease;
+}
+
+.footer-source-link:hover,
+.footer-source-link:focus-visible {
+  color: var(--accent-cyan);
+  text-shadow:
+    0 0 8px rgba(34, 211, 238, 0.8),
+    0 0 18px rgba(34, 211, 238, 0.55);
+  outline: none;
+}
+
+/* ========================================================================== 
+10. ANIMATIONS
+========================================================================== */
+
+@keyframes goldShimmer {
   0% {
     background-position: 0% 50%;
   }
 
-  100% {
+  50% {
     background-position: 100% 50%;
   }
-}
 
-@media (max-width: 760px) {
-  .gate-shell {
-    padding: 22px 14px;
-  }
-
-  .portfolio-badge {
-    margin-bottom: 22px;
-    padding: 8px 16px;
-    font-size: 0.66rem;
-    letter-spacing: 0.2em;
-  }
-
-  h1 {
-    font-size: clamp(2.35rem, 11.5vw, 4.4rem);
-    line-height: 1.06;
-  }
-
-  .name-divider {
-    width: 82%;
-    margin: 22px auto 24px;
-  }
-
-  .identity-panel {
-    padding: 28px 20px;
-    border-radius: 18px;
-  }
-
-  .identity-icon {
-    width: 54px;
-    height: 54px;
-    font-size: 1.3rem;
-  }
-
-  .primary-role {
-    line-height: 1.35;
-  }
-
-  .secondary-role {
-    line-height: 1.7;
-  }
-
-  .secondary-role span {
-    display: block;
-    height: 0;
-    margin: 0;
-    overflow: hidden;
-  }
-
-  .explore-button {
-    width: 100%;
-    min-width: 0;
-    margin-top: 28px;
-    padding: 15px 22px;
-    font-size: 0.82rem;
-  }
-
-  .gate-footer {
-    margin-top: 24px;
+  100% {
+    background-position: 0% 50%;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  h1 {
-    animation: none;
-    background-position: 50% 50%;
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
   }
 
-  .explore-button,
-  .button-arrow {
-    transition: none;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================================================== 
+11. RESPONSIVE DESIGN & MEDIA QUERIES
+========================================================================== */
+
+@media (max-width: 768px) {
+  .presentation-card {
+    padding: 30px 20px;
+  }
+
+  .uni-logo {
+    width: 100px;
+  }
+
+  .meta-content p {
+    font-size: 20px;
+  }
+
+  .meta-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 25px;
+  }
+
+  .meta-content h2 {
+    font-size: 13px;
+    letter-spacing: 1.7px;
+  }
+}
+
+@media (max-width: 950px) { html { font-size: 85%; } }
+
+/* ==========================================================================
+TOUCH DEVICES
+Keep borders visible when hover is unavailable.
+========================================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .glass-panel,
+  .project-card,
+  .module-card,
+  .feature-card,
+  .article-card,
+  .cert-card,
+  .comparison-col,
+  .phase-card,
+  .visual,
+  .feature-image,
+  .page-return,
+  .project-return,
+  .back-btn,
+  .back-link,
+  .back-home-btn,
+  .return-btn,
+  .theme-btn,
+  .nav-links a {
+    border-color: rgba(255,255,255,.18) !important;
+  }
+
 }
