@@ -1,0 +1,1541 @@
+/* =========================================================
+INNOVATIONS & PROJECTS | PROFESSIONAL PORTFOLIO WEBSITE
+========================================================= */
+
+/* ======================================================================
+1. GLOBAL VARIABLES & PAGE FOUNDATIONS
+====================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.semantic-structure {
+  display: contents;
+}
+
+:root {
+  --body-bg: #02040a;
+  --body-text: #ffffff;
+  --panel-bg: rgba(255, 255, 255, 0.03);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --text-title: #ffffff;
+  --muted-text: #b8c2d4;
+
+  --color-dxa: #7e22ce; /* GE Purple */
+
+  --color-epic: #e60026; /* EPIC Red */
+
+  --color-epic-blue: #27a2ff;
+
+  --color-epic-cyan: #38e8ff;
+
+  --color-ai: #00d1ff; /* Electric Cyan */
+
+  --color-ai-purple: #a855f7;
+
+  --color-ai-pink: #ff007f;
+
+  --color-outlier-lavender: #b784b7;
+
+  --color-patent-red: #ff334f;
+
+  --color-patent-green: #37e07c;
+
+  --color-msc-gold: #f59e0b;
+
+  --color-msc-red: #dc2626;
+
+  --color-msc-orange: #f97316;
+
+  --color-student: #0eb4a0; /* Teal for Student Talent Portfolio */
+
+  --color-family: #ff7a59; /* Coral for Family Creative Incubator */
+}
+
+/* ======================================================================
+2. LIGHT MODE VARIABLES
+====================================================================== */
+
+body.light {
+  --body-bg: #f3f4f6;
+  --body-text: #111111;
+  --panel-bg: #ffffff;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --text-title: #020617;
+}
+
+body {
+  background: none;
+  background-attachment: fixed;
+  background-color: var(--body-bg) !important;
+  color: var(--body-text) !important;
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page-wrapper {
+  width: min(1400px, calc(100vw - 48px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* ======================================================================
+3. PORTFOLIO HEADER & PROJECT OVERVIEW
+====================================================================== */
+
+.portfolio-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.back-home-btn {
+  display: flex;
+  position: static;
+  z-index: 10000;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-ai);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  text-transform: uppercase;
+  padding: 13px 24px;
+  border-radius: 30px;
+  margin: 0;
+  background: linear-gradient(135deg, rgba(0, 209, 255, 0.16), rgba(112, 0, 255, 0.12));
+  border: 1px solid rgba(0, 209, 255, 0.65);
+  box-shadow: 0 8px 24px rgba(0, 209, 255, 0.12);
+  transition: 0.3s;
+}
+
+.back-home-btn:hover,
+.back-home-btn:active,
+.back-home-btn:focus-visible {
+  color: #020617;
+  background: linear-gradient(135deg, #00d1ff, #8b5cf6);
+  box-shadow: 0 12px 30px rgba(0, 209, 255, 0.28);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.header-title-area {
+  margin-left: auto;
+  text-align: right;
+}
+.header-title-area h1 {
+  font-size: 28px;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-title) !important;
+}
+.header-title-area p {
+  margin: 5px 0 0 0;
+  font-size: 13px;
+  color: var(--color-ai);
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.projects-hero {
+  width: 92%;
+  max-width: 1320px;
+  box-sizing: border-box;
+  padding: 34px 40px;
+  margin: 0 auto 20px;
+  text-align: center;
+  background: linear-gradient(145deg, rgba(16, 20, 28, 0.94), rgba(8, 10, 15, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 16px 38px rgba(0, 0, 0, 0.34),
+    0 0 22px rgba(0, 209, 255, 0.05);
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.projects-hero:hover {
+  transform: translateY(-5px);
+  border-color: rgba(168, 85, 247, 0.58);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 20px 44px rgba(0, 0, 0, 0.42),
+    0 0 28px rgba(0, 209, 255, 0.14),
+    0 0 34px rgba(168, 85, 247, 0.12);
+}
+
+body.light .projects-hero {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+}
+
+.projects-hero h2 {
+  width: auto;
+  margin: 0 0 14px;
+  font-size: clamp(25px, 4vw, 38px);
+  text-transform: none;
+  color: transparent;
+  background: linear-gradient(90deg, var(--color-ai), var(--color-ai-purple), var(--color-ai-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 0 24px rgba(168, 85, 247, 0.16);
+}
+
+.projects-hero p {
+  max-width: 880px;
+  margin: 0 auto;
+  color: var(--body-text);
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.hero-tech {
+  color: var(--color-ai);
+  font-weight: 800;
+}
+
+.hero-responsive {
+  color: var(--color-ai-pink);
+  font-weight: 800;
+}
+
+.hero-ui {
+  color: var(--color-ai-purple);
+  font-weight: 800;
+}
+
+/* ======================================================================
+4. PROJECT NAVIGATION
+====================================================================== */
+
+.project-navigation {
+  width: min(1400px, calc(100vw - 48px));
+  margin: 0 auto 28px;
+  padding: 8px 14px;
+  align-self: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(145deg, rgba(16, 20, 28, 0.94), rgba(8, 10, 15, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 14px 34px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+.project-navigation-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0;
+  padding: 4px 2px;
+  list-style: none;
+  overflow-x: hidden;
+}
+
+.project-navigation-list li {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-navigation a {
+  --nav-accent: var(--color-ai);
+  position: relative;
+  color: var(--body-text);
+  padding: 13px 15px 15px;
+  border: 1px solid color-mix(in srgb, var(--nav-accent) 52%, transparent);
+  border-radius: 8px;
+  background: transparent;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  flex: 0 1 auto;
+  box-sizing: border-box;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.project-navigation a::after {
+  position: absolute;
+  right: 15px;
+  bottom: 7px;
+  left: 15px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--nav-accent);
+  box-shadow: 0 0 10px var(--nav-accent);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+.project-navigation a:hover,
+.project-navigation a:focus-visible {
+  color: var(--nav-accent);
+  border-color: var(--nav-accent);
+  background: color-mix(in srgb, var(--nav-accent) 9%, transparent);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--nav-accent) 18%, transparent),
+    0 0 14px color-mix(in srgb, var(--nav-accent) 35%, transparent);
+  transform: none;
+  outline: none;
+}
+
+.project-navigation a:hover::after,
+.project-navigation a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.project-navigation .nav-patent {
+  --nav-accent: var(--color-patent-green);
+}
+.project-navigation .nav-msc {
+  --nav-accent: var(--color-msc-gold);
+}
+.project-navigation .nav-ai {
+  --nav-accent: var(--color-ai);
+}
+.project-navigation .nav-epic {
+  --nav-accent: var(--color-epic);
+}
+.project-navigation .nav-dxa {
+  --nav-accent: var(--color-dxa);
+}
+.project-navigation .nav-student {
+  --nav-accent: var(--color-student);
+}
+.project-navigation .nav-family {
+  --nav-accent: var(--color-family);
+}
+
+body.light .project-navigation {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(0, 0, 0, 0.09);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+}
+
+body.light .project-navigation a {
+  border-color: color-mix(in srgb, var(--nav-accent) 58%, transparent);
+}
+
+/* ======================================================================
+5. PROJECT CARD FOUNDATIONS
+====================================================================== */
+
+.project-card {
+  --project-accent: var(--color-ai);
+  --project-glow: rgba(0, 209, 255, 0.2);
+  --github-accent: var(--project-accent);
+  background: var(--panel-bg) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--border-color) !important;
+  border-radius: 24px;
+  padding: 40px;
+  margin: 25px 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s,
+    box-shadow 0.4s;
+  scroll-margin-top: 24px;
+}
+
+body:not(.light) .project-card {
+  background: linear-gradient(145deg, rgba(16, 20, 28, 0.94), rgba(8, 10, 15, 0.98)) !important;
+}
+
+.project-card:hover,
+.project-card:active {
+  transform: translateY(-5px);
+  border-color: var(--project-accent) !important;
+  box-shadow: 0 18px 42px var(--project-glow);
+}
+
+/* ======================================================================
+6. PROJECTS INTRODUCTION
+====================================================================== */
+
+.projects-intro {
+  width: min(1520px, calc(100vw - 40px));
+  padding: 94px 0 48px;
+  text-align: center;
+}
+
+.projects-intro h2 {
+  margin: 0;
+  color: var(--body-text);
+  font-size: clamp(52px, 6.5vw, 84px);
+  font-weight: 900;
+  letter-spacing: clamp(1px, 0.55vw, 8px);
+  line-height: 1.04;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-shadow: 0 0 34px rgba(34, 211, 238, 0.16);
+}
+
+.projects-intro p {
+  width: min(980px, 100%);
+  margin: 34px auto 0;
+  color: var(--muted-text);
+  font-size: clamp(18px, 2vw, 23px);
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+/* ======================================================================
+7. PROJECT CARD HEADINGS & LOGOS
+====================================================================== */
+
+.card-title-logo {
+  height: 55px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 4px 8px;
+  display: inline-block;
+  vertical-align: middle;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.project-card h3 {
+  font-size: clamp(22px, 3vw, 32px);
+  margin: 0 0 20px 0;
+  font-weight: 800;
+  color: var(--text-title) !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.card-research h3 .title-text {
+  color: var(--color-patent-green) !important;
+}
+.card-research h3 .proposal-label {
+  color: var(--color-patent-red) !important;
+}
+.card-research h3 .invention-name {
+  color: #ffffff !important;
+  background: linear-gradient(
+    100deg,
+    #ffffff 0%,
+    #ffffff 22%,
+    var(--color-patent-red) 42%,
+    #ffffff 52%,
+    var(--color-patent-green) 68%,
+    #ffffff 84%,
+    #ffffff 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: patent-title-sweep 3.5s ease-in-out infinite alternate;
+}
+.card-msc-unique h3 .title-text {
+  color: var(--color-msc-gold) !important;
+}
+.card-ai h3 .title-text {
+  color: #ffffff !important;
+  background: linear-gradient(90deg, #ffffff 0%, #dffbff 42%, #33e6ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 0 10px rgba(0, 209, 255, 0.32),
+    0 0 20px rgba(0, 209, 255, 0.18);
+}
+.card-epic h3 .title-text {
+  color: #ffffff !important;
+}
+.card-epic h3 .epic-name {
+  color: var(--color-epic);
+  text-shadow:
+    0 0 10px rgba(230, 0, 38, 0.48),
+    0 0 22px rgba(230, 0, 38, 0.22);
+}
+.card-epic h3 .sap-name {
+  color: var(--color-epic-blue);
+  text-shadow:
+    0 0 10px rgba(39, 162, 255, 0.48),
+    0 0 22px rgba(39, 162, 255, 0.22);
+}
+.card-epic h3 .system-arrow {
+  color: rgba(255, 255, 255, 0.78);
+}
+.card-epic h3 .epic-description {
+  color: #ffffff;
+}
+.card-dxa h3 .title-text {
+  color: #ffffff !important;
+}
+.card-dxa h3 .dxa-description {
+  color: #ffffff;
+}
+.card-dxa h3 .dxa-action,
+.card-dxa h3 .dxa-name {
+  color: var(--color-dxa);
+  text-shadow:
+    0 0 10px rgba(126, 34, 206, 0.5),
+    0 0 22px rgba(126, 34, 206, 0.24);
+}
+.card-student h3 .title-text {
+  color: #64748b !important;
+}
+.card-student h3 .student-level {
+  color: #64748b;
+  text-shadow: 0 0 10px rgba(100, 116, 139, 0.28);
+}
+.card-student h3 .student-portfolio-name {
+  color: var(--color-student);
+  text-shadow:
+    0 0 10px rgba(14, 180, 160, 0.46),
+    0 0 20px rgba(14, 180, 160, 0.2);
+}
+.card-family h3 .title-text {
+  color: var(--color-family) !important;
+}
+
+.title-text {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.project-date {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: var(--project-accent);
+  background: rgba(255, 255, 255, 0.035);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.project-card p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--body-text) !important;
+  margin-bottom: 25px;
+}
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.tech-tags span {
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 14px;
+  border-radius: 30px;
+  border: 1px solid var(--border-color);
+  color: var(--body-text);
+}
+body.light .tech-tags span {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* ======================================================================
+8. ACTION BUTTONS
+====================================================================== */
+
+.launch-btn {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 30px;
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 50px;
+  transition: 0.3s;
+}
+
+/* ======================================================================
+9. AI MEDICAL MODEL PATENT PROPOSAL
+====================================================================== */
+
+.card-research {
+  --project-accent: var(--color-patent-green);
+  --project-glow: rgba(55, 224, 124, 0.22);
+  --github-accent: var(--color-patent-red);
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 16px 38px rgba(0, 0, 0, 0.34),
+    0 0 22px rgba(55, 224, 124, 0.06);
+}
+.card-research:hover {
+  border-color: rgba(55, 224, 124, 0.5) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 20px 44px rgba(0, 0, 0, 0.42),
+    0 0 28px rgba(55, 224, 124, 0.18);
+}
+body.light .card-research {
+  background: #ffffff !important;
+}
+.card-research::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--color-patent-red), var(--color-patent-green));
+}
+.btn-patent {
+  color: #06110a !important;
+  background: linear-gradient(110deg, var(--color-patent-red) 0%, #fff1f3 48%, var(--color-patent-green) 100%);
+  background-size: 180% 180%;
+  box-shadow:
+    0 10px 28px rgba(55, 224, 124, 0.24),
+    0 0 18px rgba(55, 224, 124, 0.16);
+  animation: patent-button-sweep 4s ease-in-out infinite alternate;
+}
+
+.btn-patent:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow:
+    0 14px 32px rgba(255, 51, 79, 0.24),
+    0 0 26px rgba(55, 224, 124, 0.28);
+}
+
+@keyframes patent-title-sweep {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes patent-button-sweep {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ======================================================================
+10. CPIP ACCESS
+====================================================================== */
+
+.cpip-access-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 24px;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(5, 5, 5, 0.96), rgba(17, 17, 17, 0.92));
+  border: 1px solid rgba(212, 175, 55, 0.42);
+  border-radius: 20px;
+  box-shadow:
+    inset 0 1px 0 rgba(247, 224, 168, 0.08),
+    0 14px 32px rgba(0, 0, 0, 0.28),
+    0 0 20px rgba(212, 175, 55, 0.08);
+}
+
+.btn-cpip {
+  color: #f7e0a8 !important;
+  background: linear-gradient(110deg, #050505 0%, #111111 48%, #8e6d13 78%, #d4af37 100%);
+  border: 1px solid rgba(212, 175, 55, 0.72);
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.4),
+    0 0 18px rgba(212, 175, 55, 0.18);
+}
+
+.btn-cpip:hover {
+  color: #ffffff !important;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.5),
+    0 0 26px rgba(212, 175, 55, 0.34);
+}
+
+.cpip-access-row p {
+  flex: 1;
+  margin: 0;
+  color: #e2e8f0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.cpip-access-row .highlight-safe {
+  color: #d4af37;
+}
+
+.cpip-links {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.cpip-links .github-link {
+  color: #e9d58d;
+  opacity: 0.78;
+}
+
+.cpip-links .github-link:hover,
+.cpip-links .github-link:focus-visible {
+  color: #f7e0a8;
+  opacity: 1;
+  text-shadow: 0 0 14px rgba(212, 175, 55, 0.45);
+  outline: none;
+}
+
+/* ======================================================================
+11. MSC SOFTWARE ENGINEERING ASSIGNMENTS
+====================================================================== */
+
+.card-msc-unique {
+  --project-accent: var(--color-msc-gold);
+  --project-glow: rgba(245, 158, 11, 0.22);
+  --github-accent: var(--color-msc-red);
+}
+
+.card-msc-unique::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--color-msc-red), var(--color-msc-orange), var(--color-msc-gold));
+}
+
+.btn-research {
+  color: #170900 !important;
+  background: linear-gradient(120deg, var(--color-msc-red) 0%, var(--color-msc-orange) 48%, var(--color-msc-gold) 100%);
+  box-shadow: 0 10px 26px rgba(245, 158, 11, 0.2);
+}
+
+.btn-research:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow:
+    0 12px 28px rgba(220, 38, 38, 0.24),
+    0 0 24px rgba(245, 158, 11, 0.28);
+}
+
+/* ======================================================================
+12. AI CLINICAL EVALUATION FRAMEWORK
+====================================================================== */
+
+.card-ai {
+  --project-accent: var(--color-ai);
+  --project-glow: rgba(0, 209, 255, 0.32);
+  --github-accent: var(--color-ai);
+  border-color: rgba(0, 209, 255, 0.34) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 16px 38px rgba(0, 0, 0, 0.34),
+    0 0 22px rgba(0, 209, 255, 0.08);
+}
+
+.card-ai:hover {
+  border-color: var(--color-ai) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 20px 44px rgba(0, 0, 0, 0.42),
+    0 0 30px rgba(0, 209, 255, 0.28);
+}
+
+.card-ai::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--color-ai);
+  box-shadow: 0 0 18px rgba(0, 209, 255, 0.62);
+}
+
+.btn-ai {
+  color: #020617 !important;
+  background: linear-gradient(110deg, #54c9c9 0%, #4fb4c8 36%, #df9eb8 70%, var(--color-outlier-lavender) 100%);
+  box-shadow:
+    0 10px 26px rgba(79, 180, 200, 0.28),
+    0 0 22px rgba(183, 132, 183, 0.2);
+}
+
+.btn-ai:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+  box-shadow:
+    0 12px 28px rgba(79, 180, 200, 0.38),
+    0 0 30px rgba(183, 132, 183, 0.3);
+}
+
+/* ======================================================================
+13. EPIC ENTERPRISE TRANSFORMATION
+====================================================================== */
+
+.card-epic {
+  --project-accent: var(--color-epic);
+  --project-glow: rgba(39, 162, 255, 0.22);
+  --github-accent: var(--color-epic-blue);
+}
+
+.card-epic::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--color-epic), var(--color-epic-blue), var(--color-epic-cyan));
+}
+
+.btn-epic {
+  background: linear-gradient(120deg, var(--color-epic) 0%, #b90028 42%, #0875d1 74%, var(--color-epic-blue) 100%);
+  box-shadow:
+    0 10px 26px rgba(230, 0, 38, 0.22),
+    0 0 18px rgba(39, 162, 255, 0.14);
+}
+
+.btn-epic:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+  box-shadow:
+    0 12px 28px rgba(230, 0, 38, 0.3),
+    0 0 26px rgba(39, 162, 255, 0.28);
+}
+
+/* ======================================================================
+14. DXA CLINICAL TRANSFORMATION
+====================================================================== */
+
+.card-dxa {
+  --project-accent: var(--color-dxa);
+  --project-glow: rgba(126, 34, 206, 0.28);
+  --github-accent: var(--color-dxa);
+}
+
+.card-dxa::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--color-dxa), #ffffff, var(--color-dxa));
+  box-shadow: 0 0 16px rgba(126, 34, 206, 0.42);
+}
+
+.btn-dxa {
+  color: #111111 !important;
+  background: linear-gradient(110deg, var(--color-dxa) 0%, #a855f7 46%, #ffffff 100%);
+  box-shadow:
+    0 10px 26px rgba(126, 34, 206, 0.3),
+    0 0 20px rgba(126, 34, 206, 0.2);
+}
+
+.btn-dxa:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.08);
+  box-shadow:
+    0 12px 28px rgba(126, 34, 206, 0.42),
+    0 0 28px rgba(255, 255, 255, 0.16);
+}
+
+/* ======================================================================
+15. SHARED PROJECT ACTIONS
+====================================================================== */
+
+.project-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.github-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--body-text);
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+.github-link i {
+  font-size: 24px;
+}
+.github-link:hover,
+.github-link:focus-visible {
+  opacity: 1;
+  color: var(--github-accent);
+  outline: none;
+}
+
+.github-link:hover i,
+.github-link:focus-visible i {
+  transform: scale(1.1);
+}
+
+/* ======================================================================
+16. SCHOOL STUDENT - TALENT PORTFOLIO
+====================================================================== */
+
+.card-student {
+  --project-accent: var(--color-student);
+  --project-glow: rgba(14, 180, 160, 0.22);
+  --github-accent: var(--color-student);
+}
+.card-student::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to bottom, #0f172a 0%, var(--color-student) 34%, #b2f5ea 100%);
+  box-shadow: 0 0 16px rgba(14, 180, 160, 0.42);
+}
+.project-card:hover.card-student {
+  border-color: var(--color-student) !important;
+}
+.btn-student {
+  background: linear-gradient(110deg, #0f172a 0%, #0eb4a0 44%, #b2f5ea 100%);
+  color: #020617 !important;
+  box-shadow:
+    0 10px 26px rgba(15, 23, 42, 0.38),
+    0 0 20px rgba(14, 180, 160, 0.2);
+}
+.btn-student:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.08);
+  box-shadow:
+    0 12px 30px rgba(15, 23, 42, 0.46),
+    0 0 26px rgba(14, 180, 160, 0.38);
+}
+
+/* ======================================================================
+17. FAMILY CREATIVE INCUBATOR & GALLERY
+====================================================================== */
+
+.card-family {
+  --project-accent: var(--color-family);
+  --project-glow: rgba(255, 122, 89, 0.22);
+}
+.card-family::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--color-family);
+}
+.project-card:hover.card-family {
+  border-color: var(--color-family) !important;
+}
+
+.family-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin: 25px 0;
+  width: 100%;
+}
+
+.gallery-item {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light .gallery-item {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--color-family);
+  box-shadow: 0 20px 45px rgba(14, 180, 160, 0.35);
+}
+
+.gallery-image-wrapper {
+  width: 100%;
+  height: 270px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  background: #000;
+  position: relative;
+  cursor: zoom-in;
+}
+
+.gallery-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover .gallery-image-wrapper img {
+  transform: scale(1.15);
+}
+
+.gallery-item h4 {
+  margin: 10px 0 6px 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-title);
+}
+.gallery-item span {
+  font-size: 13px;
+  color: var(--color-family);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* ======================================================================
+18. IMAGE LIGHTBOX
+====================================================================== */
+
+.image-lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(2, 6, 23, 0.92);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-lightbox-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-content-wrapper {
+  position: relative;
+  max-width: 85vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(14, 180, 160, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: scale(0.9);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-lightbox-modal.active .lightbox-image {
+  transform: scale(1);
+}
+
+.lightbox-caption {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 800;
+  margin-top: 20px;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.lightbox-close-btn:hover {
+  background: #ff3333;
+  border-color: #ff3333;
+  transform: rotate(90deg);
+}
+
+/* ======================================================================
+19. HIGHLIGHTED PROJECT TEXT
+====================================================================== */
+
+.highlight-safe {
+  color: var(--color-patent-green);
+}
+
+.highlight-risk {
+  color: var(--color-patent-red);
+}
+
+.highlight-msc {
+  color: var(--color-msc-gold);
+}
+
+.highlight-ai {
+  color: #33e6ff;
+  text-shadow:
+    0 0 8px rgba(0, 209, 255, 0.55),
+    0 0 16px rgba(0, 209, 255, 0.25);
+}
+
+.highlight-epic {
+  color: var(--color-epic-blue);
+}
+
+.highlight-epic-red {
+  color: var(--color-epic);
+}
+
+.highlight-dxa {
+  color: #a855f7;
+  text-shadow: 0 0 10px rgba(126, 34, 206, 0.28);
+}
+
+.highlight-student {
+  color: var(--color-student);
+}
+
+.highlight-family {
+  color: var(--color-family);
+}
+
+/* ======================================================================
+20. FOOTER
+====================================================================== */
+
+#site-footer {
+  width: 100%;
+  margin-top: 60px;
+  padding: 40px 0;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.footer-copyright {
+  opacity: 0.6;
+}
+
+.footer-source-link {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition:
+    color 0.25s ease,
+    text-shadow 0.25s ease;
+}
+
+.footer-source-link:hover,
+.footer-source-link:focus-visible {
+  color: var(--color-ai);
+  text-shadow:
+    0 0 8px rgba(34, 211, 238, 0.8),
+    0 0 18px rgba(34, 211, 238, 0.55);
+  outline: none;
+}
+
+/* ======================================================================
+21. RESPONSIVE DESIGN & MEDIA QUERIES
+====================================================================== */
+
+@media (max-width: 1050px) {
+  .project-navigation {
+    width: calc(100vw - 32px);
+    padding-inline: 10px;
+  }
+
+  .project-navigation-list {
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+
+  .project-navigation a {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 900px) {
+  .family-gallery-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .gallery-image-wrapper {
+    height: 240px !important;
+  }
+  .cpip-access-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .cpip-links {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .portfolio-header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    row-gap: 24px;
+  }
+  .back-home-btn {
+    align-self: flex-start;
+  }
+  .header-title-area {
+    width: 100%;
+    text-align: right;
+  }
+  .projects-intro h2 {
+    font-size: clamp(32px, 10vw, 42px);
+  }
+}
+
+@media (max-width: 600px) {
+  .project-navigation {
+    width: calc(100vw - 24px);
+    padding: 6px 8px;
+    border-radius: 14px;
+  }
+
+  .project-navigation a {
+    width: auto;
+    padding: 12px 13px 14px;
+  }
+
+  .project-navigation-list {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .project-navigation-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .projects-intro {
+    padding: 58px 0 32px;
+  }
+  .projects-intro h2 {
+    font-size: clamp(28px, 8.4vw, 42px);
+    letter-spacing: 1px;
+    line-height: 1.02;
+  }
+
+  .project-card h3 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .card-title-logo {
+    height: 48px;
+    max-width: 120px;
+  }
+  .family-gallery-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .gallery-image-wrapper {
+    height: 250px !important;
+  }
+  .lightbox-caption {
+    font-size: 16px;
+  }
+}
+
+
+/* ======================================================================
+FINAL MOBILE TYPOGRAPHY REFINEMENT
+====================================================================== */
+@media (max-width: 700px) {
+  .header-title-area h1,
+  .portfolio-title,
+  .page-title {
+    font-size: clamp(2rem, 9vw, 2.75rem) !important;
+    line-height: 1.06 !important;
+  }
+  .section-title,
+  #main-content h2 {
+    max-width: 100%;
+    font-size: clamp(1.75rem, 7.8vw, 2.25rem) !important;
+    line-height: 1.12 !important;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+}
+
+/* ======================================================================
+FINAL PROJECTS MOBILE TITLE SCALE
+====================================================================== */
+@media (max-width: 700px) {
+  .projects-intro {
+    width: calc(100% - 28px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 48px 0 26px !important;
+  }
+  .projects-intro h2 {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: clamp(1.72rem, 7.4vw, 2.15rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: .3px !important;
+    white-space: normal !important;
+    overflow-wrap: normal !important;
+  }
+  .projects-hero {
+    width: calc(100% - 28px) !important;
+    padding: 26px 18px !important;
+  }
+  .projects-hero h2 {
+    font-size: clamp(1.55rem, 7vw, 2rem) !important;
+    line-height: 1.12 !important;
+  }
+}
+
+/* ======================================================================
+SAFE FINAL OVERRIDE — balanced mobile heading hierarchy
+====================================================================== */
+@media (max-width: 700px) {
+  .header-title-area h1,
+  .projects-intro h2 {
+    font-size: clamp(1.9rem, 8vw, 2.2rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: .35px !important;
+  }
+  .header-title-area {
+    text-align: center !important;
+  }
+}
+
+/* ======================================================================
+FINAL VERIFIED FIX — balanced Projects mobile title hierarchy
+====================================================================== */
+@media (max-width: 700px) {
+  .portfolio-header {
+    row-gap: 18px !important;
+  }
+  .header-title-area {
+    width: 100% !important;
+    text-align: center !important;
+  }
+  .header-title-area h1,
+  .projects-intro h2 {
+    font-size: clamp(1.9rem, 8.2vw, 2.25rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: .35px !important;
+    white-space: normal !important;
+  }
+  .header-title-area p {
+    font-size: .78rem !important;
+    letter-spacing: 2px !important;
+  }
+  .projects-intro {
+    width: calc(100% - 24px) !important;
+    padding: 42px 0 24px !important;
+  }
+}
+
+/* ======================================================================
+FINAL MOBILE HEADER — MATCH PUBLICATION ARTICLES STRUCTURE
+====================================================================== */
+
+@media (max-width: 700px) {
+
+  .portfolio-header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 12px 10px 18px !important;
+
+    border: 1px solid rgba(0, 209, 255, 0.18) !important;
+    border-radius: 18px !important;
+
+    background: rgba(5, 12, 24, 0.72) !important;
+
+    box-sizing: border-box;
+  }
+
+  .back-home-btn {
+    position: static !important;
+    inset: auto !important;
+
+    align-self: flex-start !important;
+    flex: 0 0 auto !important;
+
+    margin: 0 !important;
+    padding: 9px 13px !important;
+
+    border-radius: 999px !important;
+
+    font-size: 11px !important;
+    letter-spacing: 0.4px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+
+  .header-title-area {
+    flex: 0 1 150px !important;
+
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 150px !important;
+    margin-left: auto !important;
+
+    text-align: right !important;
+  }
+
+  .header-title-area h1 {
+    margin: 0 !important;
+
+    font-size: 12px !important;
+    line-height: 1.08 !important;
+    letter-spacing: 2px !important;
+    white-space: normal !important;
+  }
+
+  .header-title-area p {
+    margin: 5px 0 0 !important;
+
+    font-size: 9px !important;
+    line-height: 1.45 !important;
+    letter-spacing: 2px !important;
+  }
+
+  .projects-intro {
+    padding-top: 54px !important;
+  }
+}
+
+/* ==========================================================================
+TOUCH DEVICES
+Keep borders visible when hover is unavailable.
+========================================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .glass-panel,
+  .project-card,
+  .module-card,
+  .feature-card,
+  .article-card,
+  .cert-card,
+  .comparison-col,
+  .phase-card,
+  .visual,
+  .feature-image,
+  .page-return,
+  .project-return,
+  .back-btn,
+  .back-link,
+  .back-home-btn,
+  .return-btn,
+  .theme-btn,
+  .nav-links a {
+    border-color: rgba(255,255,255,.18) !important;
+  }
+
+}
