@@ -889,7 +889,8 @@ body.light .project-card:hover {
 
 .research-publications-panel,
 .education-panel,
-.portfolio-section-panel {
+.portfolio-section-panel,
+.executive-panel {
   width: 100%;
   max-width: 1180px;
   margin-left: auto;
