@@ -12,6 +12,7 @@ PROFESSIONAL PORTFOLIO WEBSITE | OFFICIAL PORTFOLIO | AI & SOFTWARE ENGINEERING 
   --body-text: #ffffff;
   --panel-bg: rgba(255, 255, 255, 0.04);
   --accent-cyan: #22d3ee;
+  --accent-gold: #f1d57b;
   --accent-purple: #a855f7;
   --accent-pink: #ff00fb;
   --border-color: rgba(0, 209, 255, 0.25);
@@ -32,6 +33,7 @@ PROFESSIONAL PORTFOLIO WEBSITE | OFFICIAL PORTFOLIO | AI & SOFTWARE ENGINEERING 
   --card-sub-purple: #a855f7;
   --card-sub-pink: #ff00fb;
 }
+
 
 body.light {
   --body-bg: #f3f4f6;
@@ -662,6 +664,46 @@ h1 {
 
 .hero-title-line {
   display: block;
+}
+
+#site-header h1 {
+  margin: 24px auto 14px;
+  font-size: clamp(40px, 5.7vw, 78px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: #ffffff;
+  background: none;
+  -webkit-text-fill-color: #ffffff;
+  text-shadow: 0 0 30px rgba(0, 209, 255, 0.38), 0 10px 32px rgba(0, 0, 0, 0.58);
+  -webkit-text-stroke: 0.25px rgba(255, 255, 255, 0.9);
+}
+
+#site-header .hero-title-line + .hero-title-line {
+  margin-top: 7px;
+}
+
+.portfolio-hero-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px 0 22px;
+  padding: 8px 22px;
+  color: var(--accent-gold);
+  background: rgba(197, 160, 40, 0.08);
+  border: 1px solid rgba(197, 160, 40, 0.32);
+  border-radius: 999px;
+  font-size: clamp(12px, 1.5vw, 15px);
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+body.light .portfolio-hero-label {
+  color: #765b08;
+  background: rgba(197, 160, 40, 0.1);
+  border-color: rgba(118, 91, 8, 0.3);
 }
 
 body.light h1 {
@@ -2464,12 +2506,12 @@ FINAL PORTFOLIO MOBILE HERO TYPOGRAPHY
 ====================================================================== */
 @media (max-width: 600px) {
   #site-header h1 {
-    width: calc(100% - 24px) !important;
-    margin: 16px auto 10px !important;
-    font-size: clamp(1.78rem, 8.1vw, 2.2rem) !important;
-    line-height: 1.08 !important;
-    letter-spacing: .35px !important;
-    white-space: normal !important;
+    width: calc(100% - 16px) !important;
+    margin: 18px auto 13px !important;
+    font-size: clamp(1.15rem, 5.35vw, 2rem) !important;
+    line-height: 1 !important;
+    letter-spacing: -.25px !important;
+    white-space: nowrap !important;
     overflow-wrap: normal !important;
   }
   #site-header .professional-titles {
@@ -2479,6 +2521,12 @@ FINAL PORTFOLIO MOBILE HERO TYPOGRAPHY
     font-size: clamp(.92rem, 4.15vw, 1.08rem) !important;
     line-height: 1.42 !important;
     letter-spacing: 0 !important;
+  }
+  #site-header .portfolio-hero-label {
+    margin: 2px 0 16px;
+    padding: 7px 16px;
+    font-size: .68rem;
+    letter-spacing: 1.8px;
   }
   #site-header .subtitle {
     width: calc(100% - 30px) !important;
@@ -2543,4 +2591,41 @@ Keep borders visible when hover is unavailable.
     border-color: rgba(255,255,255,.18) !important;
   }
 
+}
+
+/* ======================================================================
+FINAL PORTFOLIO NAME HERO — preserve headline scale after global overrides
+====================================================================== */
+@media (min-width: 1201px) {
+  #site-header h1 {
+    font-size: clamp(4.6rem, 6.2vw, 6rem) !important;
+    line-height: .96 !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+  #site-header h1 {
+    width: calc(100% - 24px) !important;
+    max-width: none !important;
+    margin: 24px auto 16px !important;
+    font-size: clamp(3rem, 5.35vw, 4.15rem) !important;
+    line-height: .98 !important;
+    letter-spacing: -.8px !important;
+    white-space: nowrap !important;
+    overflow-wrap: normal !important;
+  }
+}
+
+@media (max-width: 600px) {
+  #site-header h1 {
+    width: calc(100% - 20px) !important;
+    margin: 20px auto 14px !important;
+    font-size: clamp(2.25rem, 10.2vw, 3rem) !important;
+    line-height: .95 !important;
+    letter-spacing: -.7px !important;
+    white-space: normal !important;
+    text-wrap: balance;
+    overflow-wrap: normal !important;
+  }
 }
