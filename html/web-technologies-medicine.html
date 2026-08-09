@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Mai Abu Al Saud" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="When Web Technologies Speak Medicine — a visual story connecting medical science with HTML, CSS, JavaScript, and software engineering." />
+    <title>When Web Technologies Speak Medicine | Mai Abu Al Saud</title>
+    <link rel="icon" type="image/png" href="../index.images/favicon2.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&amp;display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../css/web-technologies-medicine.css" />
+  </head>
+
+  <body>
+    
+    <!-- =========================================================
+         1. PAGE HEADER | HOME, UNIVERSITY BRAND & PORTFOLIO
+    ========================================================= -->
+<header class="page-header-shell">
+      <a class="header-action header-home" href="home.html">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+        <span>Website Home</span>
+      </a>
+
+      <div class="university-brand" aria-label="City St George's, University of London">
+        <img
+          src="../index.images/city-st-georges-luxury-transparent.png"
+          alt="City St George's, University of London" />
+      </div>
+
+      <a class="header-action header-portfolio" href="portfolio.html">
+        <i class="fa-solid fa-id-card" aria-hidden="true"></i>
+        <span>Professional Portfolio</span>
+      </a>
+    </header>
+
+    <!-- =========================================================
+         2. STORY NAVIGATION
+    ========================================================= -->
+
+    <nav class="story-nav" aria-label="Page sections">
+      <a href="#hero" data-label="Hero"><i class="fa-solid fa-house"></i></a>
+      <a href="#html-story" data-label="HTML"><i class="fa-solid fa-code"></i></a>
+      <a href="#css-story" data-label="CSS"><i class="fa-solid fa-palette"></i></a>
+      <a href="#js-story" data-label="JavaScript"><i class="fa-brands fa-js"></i></a>
+      <a href="#journey" data-label="Journey"><i class="fa-solid fa-route"></i></a>
+    </nav>
+
+    <!-- =========================================================
+         3. MAIN STORY CONTENT
+    ========================================================= -->
+
+    <main class="story-page">
+      <!-- =======================================================
+           3.1 HERO
+      ======================================================== -->
+
+      <section class="hero" id="hero">
+        <div class="hero-inner">
+          <h1>WHEN WEB <br class="mobile-title-break" />TECHNOLOGIES<br />SPEAK MEDICINE</h1>
+          <p>Where my medical background meets the language of software engineering.</p>
+        </div>
+      </section>
+
+      <!-- =======================================================
+           3.2 HTML — ANATOMY
+      ======================================================== -->
+
+      <section class="story-card html-card" id="html-story">
+        <div class="story-copy">
+          <span class="story-index">01</span>
+          <h2>HTML — Anatomy</h2>
+          <p class="story-lead">HTML defines the structure before styling or behaviour is added.</p>
+          <p>My medical background made this concept immediately familiar. Anatomy defines structure, location, and the relationship between parts. HTML does something remarkably similar by organising the elements that form a webpage.</p>
+          <div class="mapping-grid">
+            <div><strong>Header</strong><span>Forehead</span></div>
+            <div><strong>Body</strong><span>Eyes · Nose · Mouth</span></div>
+            <div><strong>Footer</strong><span>Chin</span></div>
+          </div>
+          <p class="story-note">HTML does not decide whether the face is glamorous. It makes sure there is a face to begin with. 😄</p>
+        </div>
+        <figure class="story-image">
+          <img src="../index.images/html-anatomy.png" alt="HTML anatomy visual mapping webpage structure to facial anatomy" />
+        </figure>
+      </section>
+
+      <!-- =======================================================
+           3.3 CSS — MAKEUP & PLASTIC SURGERY
+      ======================================================== -->
+
+      <section class="story-card css-card" id="css-story">
+        <div class="story-copy">
+          <span class="story-index">02</span>
+          <h2>CSS — Makeup &amp; Plastic Surgery</h2>
+          <p class="story-lead">The structure stays. The appearance transforms.</p>
+          <p>Once the structure exists, CSS takes over the visual layer. It controls the page background, colours, layout, spacing, proportions, alignment, effects, hover states, and responsive presentation — transforming the same HTML anatomy without changing its underlying structure.</p>
+          <div class="feature-grid css-concept-grid">
+            <span><strong>Page Background</strong> → Foundation</span>
+            <span><strong>Colours</strong> → Makeup</span>
+            <span><strong>Cards &amp; &lt;div&gt;s</strong> → Divided Face Sections</span>
+            <span><strong>Layout &amp; Proportions</strong> → Refined Nose &amp; Facial Balance</span>
+            <span><strong>Alignment</strong> → Straight, Aligned Teeth</span>
+            <span><strong>Border Radius &amp; Contours</strong> → Refined Facial Shape</span>
+            <span><strong>Typography &amp; Details</strong> → Eyebrows, Lips &amp; Finishing Touches</span>
+            <span><strong>Hover Effects</strong> → Shining Eyes &amp; Teeth ✨</span>
+          </div>
+          <p class="story-note">CSS is not simply decoration. It is where visual design meets engineering.</p>
+        </div>
+        <figure class="story-image">
+          <img src="../index.images/css-makeup.png" alt="CSS visual metaphor using makeup and cosmetic transformation" />
+        </figure>
+      </section>
+
+      <!-- =======================================================
+           3.4 JAVASCRIPT — PHYSIOLOGY
+      ======================================================== -->
+
+      <section class="story-card js-card" id="js-story">
+        <div class="story-copy">
+          <span class="story-index">03</span>
+          <h2>JavaScript — Physiology</h2>
+          <p class="story-lead">Now the styled structure begins to respond.</p>
+          <p>Anatomy tells us what structures exist. Physiology explains how they function and respond. JavaScript plays that role on the web by adding behaviour, events, movement, dynamic updates, and interaction.</p>
+          <div class="feature-grid">
+            <span>Raised Eyebrow → Response</span>
+            <span>Wink → Event</span>
+            <span>Smile → Interaction</span>
+            <span>Dimples → Expression</span>
+            <span>Facial Movement → Dynamic Behaviour</span>
+            <span>Visible Reaction → User Feedback</span>
+          </div>
+          <p class="story-note">The face is no longer static — it moves, responds, and communicates. Likewise, JavaScript transforms a webpage from something you view into something that responds to you.</p>
+        </div>
+        <figure class="story-image">
+          <img src="../index.images/js-physiology.png" alt="JavaScript physiology visual showing expression, movement, and interaction" />
+        </figure>
+      </section>
+
+      <!-- =======================================================
+           3.5 FROM MEDICAL SCIENCE TO SOFTWARE ENGINEERING
+      ======================================================== -->
+
+      <section class="journey-card" id="journey">
+        <span>THE CONNECTION</span>
+        <h2><span>FROM MEDICAL SCIENCE TO</span> <span>SOFTWARE ENGINEERING</span></h2>
+        <p>My transition into software engineering did not require leaving my medical way of thinking behind. I began using familiar ideas — structure, appearance, function, systems, and response — as a practical lens for understanding web technologies and building my own professional website from the first day of the module.</p>
+        <p class="journey-closing"><strong>Medicine taught me to understand structure and function. Software engineering gave me a new language to build with them.</strong></p>
+      </section>
+    </main>
+
+    <!-- =========================================================
+         4. FOOTER
+    ========================================================= -->
+
+    <footer class="site-footer">
+      <span>© 2026 Professional Portfolio. All Rights Reserved.</span>
+      <a href="https://github.com/mabualsaud" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Website Source</a>
+    </footer>
+
+    <!-- =========================================================
+         5. PAGE INTERACTIONS
+    ========================================================= -->
+
+    <script src="../js/web-technologies-medicine.js"></script>
+  </body>
+</html>
