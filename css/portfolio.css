@@ -660,6 +660,10 @@ h1 {
   text-transform: uppercase;
 }
 
+.hero-title-line {
+  display: block;
+}
+
 body.light h1 {
   text-shadow: none;
 }
