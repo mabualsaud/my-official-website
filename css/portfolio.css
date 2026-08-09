@@ -890,6 +890,10 @@ body.light .project-card:hover {
 .research-publications-panel,
 .education-panel,
 .portfolio-section-panel {
+  width: 100%;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
   background: var(--panel-bg) !important;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
