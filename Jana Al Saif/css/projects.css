@@ -1,0 +1,369 @@
+/* ==========================================================================
+           1. VARIABLES & GLOBAL STYLES (متطابقة تماماً مع الهوية البصرية لموقعك)
+           ========================================================================== */
+        :root {
+            --text-dark: #0f172a;
+            --text-light: #ffffff;
+            --text-muted-light: rgba(255, 255, 255, 0.75);
+            --panel-bg: rgba(30, 41, 59, 0.85); 
+            --border-color: rgba(255, 255, 255, 0.15);
+            --accent-emerald: #0eb4a0;
+            --accent-charcoal: #0f172a; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', 'Urbanist', sans-serif;
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: linear-gradient(180deg,
+                #e6fffb 0%,   
+                #b2f5ea 25%,
+                #4fd1c5 60%,
+                #0eb4a0 85%,
+                #007a74 100%  
+            );
+            background-attachment: fixed; 
+        }
+
+        .page-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* ==========================================================================
+           2. HEADER (التصميم الزجاجي المعتمد لقائمة التصفح العلوية)
+           ========================================================================== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 45px;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-logo {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo i {
+            color: var(--accent-emerald);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-size: 1.05rem;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-emerald);
+        }
+
+        /* ==========================================================================
+           3. PAGE MAIN TITLE
+           ========================================================================== */
+        .page-main-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-main-title h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: #0f172a;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.4);
+        }
+
+        .page-main-title p {
+            font-size: 1.2rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           4. PROJECTS GRID & GLASS CARDS
+           ========================================================================== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .project-glass-card {
+            background: var(--panel-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 28px;
+            padding: 25px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-glass-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-emerald); 
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            background: rgba(15, 23, 42, 0.95); 
+        }
+
+        /* حاوية الصور المجهزة لمنع قص الأطراف وإظهارها كاملة */
+        .project-img-wrapper {
+            width: 100%;
+            height: 230px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            background: rgba(15, 23, 42, 0.5); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .project-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            transition: transform 0.5s ease;
+        }
+
+        .project-glass-card:hover .project-img-wrapper img {
+            transform: scale(1.04);
+        }
+
+        .project-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid rgba(14, 180, 160, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .project-card-header i {
+            font-size: 22px;
+            color: #b2f5ea; 
+        }
+
+        .project-card-header h2 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .project-description {
+            font-size: 1.05rem;
+            color: var(--text-muted-light);
+            line-height: 1.7;
+            font-weight: 500;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        /* حاوية الأزرار التفاعلية أسفل الكارت */
+        .project-actions-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .project-action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            border-radius: 14px;
+            color: #000000;
+            font-weight: 800;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .project-img-wrapper, .zoom-trigger-btn {
+            cursor: pointer;
+        }
+
+        /* زر عرض وتحميل ملف المشروع الـ PDF */
+        .project-file-btn {
+            background: transparent;
+            border: 2px solid var(--accent-emerald);
+            color: #ffffff;
+        }
+
+        .project-glass-card:hover .zoom-trigger-btn {
+            background: var(--accent-emerald);
+            border-color: var(--accent-emerald);
+            color: #ffffff;
+            box-shadow: 0 12px 25px rgba(14, 180, 160, 0.4);
+        }
+
+        .project-glass-card:hover .project-file-btn {
+            background: rgba(14, 180, 160, 0.15);
+            color: #b2f5ea;
+            border-color: #b2f5ea;
+        }
+
+        /* ==========================================================================
+           5. LIGHTBOX OVERLAY SYSTEM (نظام التكبير والزووم من ملفاتك)
+           ========================================================================== */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 20px;
+        }
+
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85vh;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -25px;
+            right: -25px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2100;
+        }
+
+        .lightbox-close:hover {
+            background: var(--accent-emerald);
+            border-color: var(--accent-emerald);
+            transform: scale(1.1);
+        }
+
+        /* ==========================================================================
+           6. BACK NAVIGATION & FOOTER
+           ========================================================================== */
+        .back-navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .back-home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 35px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .back-home-btn:hover {
+            background: #0f172a;
+            border-color: var(--accent-emerald);
+            transform: scale(1.03);
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        @media (max-width: 992px) {
+            .projects-grid { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; padding: 15px 20px; border-radius: 20px; }
+            .nav-links { gap: 15px; }
+            .page-main-title h1 { font-size: 2.4rem; }
+            .projects-grid { grid-template-columns: 1fr; gap: 20px; }
+            .project-glass-card { padding: 20px; border-radius: 22px; }
+            .lightbox-close { top: -60px; right: 0; }
+        }
