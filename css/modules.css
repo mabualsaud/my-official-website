@@ -509,6 +509,10 @@ Static inside the normal page flow so it never follows the user while scrolling.
   border-left-color: #00d1ff;
 }
 
+.notebook-card.accent-official {
+  border-left-color: #f0c85a;
+}
+
 .notebook-card.accent-cpip {
   border-left-color: #7000ff;
 }
@@ -523,6 +527,18 @@ Static inside the normal page flow so it never follows the user while scrolling.
 
 .notebook-card.accent-student {
   border-left-color: #0eb4a0;
+}
+
+.notebook-card.accent-patent {
+  border-left-color: #37e07c;
+}
+
+.notebook-card.accent-hadi {
+  border-left-color: #d29a5a;
+}
+
+.notebook-card.accent-hashim {
+  border-left-color: #9b7cff;
 }
 
 .btn-code {

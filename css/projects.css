@@ -980,6 +980,115 @@ body.light .card-research {
     0 0 26px rgba(14, 180, 160, 0.38);
 }
 
+.family-portfolios > p {
+  max-width: 980px;
+}
+
+.family-portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.family-portfolio-card {
+  --family-card-accent: #0eb4a0;
+  display: flex;
+  min-height: 330px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 28px;
+  background: linear-gradient(145deg, rgba(12, 25, 30, 0.92), rgba(7, 12, 18, 0.96));
+  border: 1px solid color-mix(in srgb, var(--family-card-accent) 34%, transparent);
+  border-radius: 20px;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.portfolio-hadi {
+  --family-card-accent: #d29a5a;
+}
+
+.portfolio-hashim {
+  --family-card-accent: #9b7cff;
+}
+
+.portfolio-symbol {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  color: var(--family-card-accent);
+  background: color-mix(in srgb, var(--family-card-accent) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--family-card-accent) 30%, transparent);
+  border-radius: 14px;
+  font-size: 20px;
+}
+
+.family-portfolio-card small {
+  margin-top: 22px;
+  color: var(--family-card-accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.family-portfolio-card h4 {
+  margin: 8px 0 10px;
+  color: var(--text-title);
+  font-size: clamp(24px, 2.2vw, 32px);
+}
+
+body.light .family-portfolio-card {
+  background: linear-gradient(145deg, #ffffff, #f4f7fa);
+}
+
+.family-portfolio-card p {
+  flex: 1;
+  margin: 0 0 24px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.family-portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  color: var(--family-card-accent);
+  border: 1px solid color-mix(in srgb, var(--family-card-accent) 45%, transparent);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.family-portfolio-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--family-card-accent);
+  box-shadow: 0 24px 48px color-mix(in srgb, var(--family-card-accent) 16%, transparent);
+}
+
+.family-portfolio-link:hover,
+.family-portfolio-link:focus-visible {
+  color: #071014;
+  background: var(--family-card-accent);
+  outline: none;
+}
+
+@media (max-width: 1050px) {
+  .family-portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .family-portfolio-card {
+    min-height: auto;
+  }
+}
+
 /* ======================================================================
 17. FAMILY CREATIVE INCUBATOR & GALLERY
 ====================================================================== */
