@@ -18,6 +18,7 @@
     <title>AI Medical Model — Research Overview</title>
     <meta content="professional portfolio, software engineering, digital transformation, healthcare technology, AI safety, web technologies" name="keywords" />
     <link href="../css/patent.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
   </head>
 
    <!-- =========================================================
@@ -34,12 +35,19 @@
           ← Return to Research &amp; Projects
         </a>
 
+        <div class="patent-project-year" aria-label="Project year 2026">
+          <span>Project</span>
+          <strong>2026</strong>
+        </div>
+
         <aside aria-label="Page navigation" class="semantic-structure">
           <nav class="nav-links" id="main-navigation">
-            <a href="#patient">Diagnosis</a>
-            <a href="#disorders">Disorders</a>
-            <a href="#comparison">Comparison</a>
-            <a href="#cpip">Validation</a>
+            <ul>
+              <li><a href="#patient">Diagnosis</a></li>
+              <li><a href="#disorders">Disorders</a></li>
+              <li><a href="#comparison">Comparison</a></li>
+              <li><a href="#cpip">Validation</a></li>
+            </ul>
           </nav>
         </aside>
       </div>
@@ -74,7 +82,7 @@
           <h2>Engineering Clinical Diagnosis</h2>
           <p class="section-lead">A visual introduction to the behavioural and engineering disorders that may limit the reliability of current medical AI models.</p>
         </div>
-        <div class="feature-image"><img alt="AI Medical Patient Model and Disorders Overview" src="../index.images/patient.jpeg" /></div>
+        <div class="feature-image"><button class="patent-image-open" type="button" aria-label="Open diagnosis image at full size"><img alt="AI Medical Patient Model and Disorders Overview" src="../index.images/patient.jpeg?v=20260813" loading="eager" decoding="sync" /><span><i class="fas fa-expand" aria-hidden="true"></i> View full size</span></button></div>
       </section>
 
       <!-- =========================================================
@@ -124,7 +132,7 @@
           <h2>Current Model vs Proposed Direction</h2>
           <p class="section-lead">The visual comparison introduces the difference in research direction before the simplified comparison table.</p>
         </div>
-        <div class="visual"><img alt="Current LLM Medical vs Proposed AI Medical Model Comparison" src="../index.images/patent.jpeg" /></div>
+        <div class="visual"><button class="patent-image-open" type="button" aria-label="Open comparison image at full size"><img alt="Current LLM Medical vs Proposed AI Medical Model Comparison" src="../index.images/patent.jpeg?v=20260813" loading="eager" decoding="sync" /><span><i class="fas fa-expand" aria-hidden="true"></i> View full size</span></button></div>
       </section>
 
       <!-- =========================================================
@@ -178,13 +186,20 @@
     <!-- =========================================================
          FOOTER
     ========================================================= -->
-    <footer id="site-footer" style="margin-top: 60px; padding: 40px 0; opacity: 0.6; border-top: 1px solid var(--border-color); width: 100%; text-align: center;">
+    <div class="patent-lightbox" id="patentLightbox" role="dialog" aria-modal="true" aria-label="Full-size project image" hidden>
+      <button class="patent-lightbox-close" type="button" aria-label="Close image"><i class="fas fa-xmark" aria-hidden="true"></i></button>
+      <img id="patentLightboxImage" src="" alt="" />
+    </div>
+
+    <footer id="site-footer">
       © 2026 Professional Portfolio. All Rights Reserved. |
-      <a href="https://github.com/mabualsaud" rel="noopener noreferrer" style="color: inherit; text-decoration: none;" target="_blank">
+      <a class="footer-source-link" href="https://github.com/mabualsaud" rel="noopener noreferrer" target="_blank">
         <i class="fab fa-github"></i>
         Website Source
       </a>
     </footer>
+
+    <script src="../js/patent.js"></script>
 
   </body>
 </html>

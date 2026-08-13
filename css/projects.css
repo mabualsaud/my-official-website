@@ -36,6 +36,10 @@ html {
 
   --color-ai-pink: #ff007f;
 
+  --color-ecam-gold: #f0b83f;
+
+  --color-ecam-cyan: #19d9e8;
+
   --color-outlier-lavender: #b784b7;
 
   --color-patent-red: #ff334f;
@@ -336,6 +340,9 @@ body.light .projects-hero {
 .project-navigation .nav-ai {
   --nav-accent: var(--color-ai);
 }
+.project-navigation .nav-ecam {
+  --nav-accent: var(--color-ecam-gold);
+}
 .project-navigation .nav-epic {
   --nav-accent: var(--color-epic);
 }
@@ -495,6 +502,16 @@ body:not(.light) .project-card {
   text-shadow:
     0 0 10px rgba(0, 209, 255, 0.32),
     0 0 20px rgba(0, 209, 255, 0.18);
+}
+.card-ecam h3 .title-text {
+  color: #ffffff !important;
+  background: linear-gradient(90deg, #ffffff 0%, #f8e5ae 42%, var(--color-ecam-gold) 64%, var(--color-ecam-cyan) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0 0 12px rgba(240, 184, 63, 0.22),
+    0 0 22px rgba(25, 217, 232, 0.12);
 }
 .card-epic h3 .title-text {
   color: #ffffff !important;
@@ -832,6 +849,65 @@ body.light .card-research {
   box-shadow:
     0 12px 28px rgba(79, 180, 200, 0.38),
     0 0 30px rgba(183, 132, 183, 0.3);
+}
+
+/* ======================================================================
+12A. SIEMENS E-CAM TRANSFORMATION
+====================================================================== */
+
+.card-ecam {
+  --project-accent: var(--color-ecam-gold);
+  --project-glow: rgba(240, 184, 63, 0.28);
+  --github-accent: var(--color-ecam-cyan);
+  border-color: rgba(240, 184, 63, 0.36) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 16px 38px rgba(0, 0, 0, 0.34),
+    0 0 24px rgba(240, 184, 63, 0.07);
+}
+
+.card-ecam:hover {
+  border-color: var(--color-ecam-gold) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 20px 44px rgba(0, 0, 0, 0.42),
+    0 0 24px rgba(240, 184, 63, 0.2),
+    0 0 38px rgba(25, 217, 232, 0.1);
+}
+
+.card-ecam::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-ecam-gold), var(--color-ecam-cyan));
+  box-shadow:
+    0 0 16px rgba(240, 184, 63, 0.45),
+    0 0 24px rgba(25, 217, 232, 0.2);
+}
+
+.highlight-ecam {
+  color: var(--color-ecam-cyan);
+  text-shadow: 0 0 10px rgba(25, 217, 232, 0.28);
+}
+
+.btn-ecam {
+  color: #071013 !important;
+  background: linear-gradient(105deg, var(--color-ecam-gold) 0%, #f7d985 38%, #8de4df 70%, var(--color-ecam-cyan) 100%);
+  box-shadow:
+    0 10px 26px rgba(240, 184, 63, 0.2),
+    0 0 22px rgba(25, 217, 232, 0.12);
+}
+
+.btn-ecam:hover,
+.btn-ecam:focus-visible {
+  transform: translateY(-3px);
+  filter: brightness(1.08);
+  box-shadow:
+    0 13px 30px rgba(240, 184, 63, 0.3),
+    0 0 30px rgba(25, 217, 232, 0.2);
 }
 
 /* ======================================================================
