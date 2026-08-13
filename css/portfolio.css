@@ -2598,7 +2598,7 @@ FINAL PORTFOLIO NAME HERO — preserve headline scale after global overrides
 ====================================================================== */
 @media (min-width: 1201px) {
   #site-header h1 {
-    font-size: clamp(4.6rem, 6.2vw, 6rem) !important;
+    font-size: clamp(4.25rem, 5.7vw, 5.6rem) !important;
     line-height: .96 !important;
     white-space: nowrap !important;
   }
@@ -2628,4 +2628,63 @@ FINAL PORTFOLIO NAME HERO — preserve headline scale after global overrides
     text-wrap: balance;
     overflow-wrap: normal !important;
   }
+}
+/* ========================================================================== 
+   PROJECT DROPDOWN | RESEARCH & PROJECTS HIERARCHY
+========================================================================== */
+
+.site-pages-list > .project-pages-group {
+  display: block !important;
+  margin: 4px 0 !important;
+}
+
+.site-pages-list .project-pages-parent {
+  color: #ffffff !important;
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.16), rgba(168, 85, 247, 0.11)) !important;
+  border-color: rgba(103, 232, 249, 0.24) !important;
+}
+
+.project-pages-submenu {
+  position: static !important;
+  width: auto !important;
+  max-height: none !important;
+  margin: 7px 0 3px 20px !important;
+  padding: 3px 0 3px 12px !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 4px !important;
+  overflow: visible !important;
+  list-style: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-left: 1px solid rgba(103, 232, 249, 0.28) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.project-pages-submenu li {
+  display: block !important;
+}
+
+.site-pages-list .project-pages-submenu a {
+  min-height: 39px !important;
+  padding: 7px 11px !important;
+  font-size: 12.5px !important;
+  font-weight: 650 !important;
+  background: rgba(255, 255, 255, 0.018) !important;
+  border-radius: 10px !important;
+}
+
+.site-pages-list .project-pages-submenu a i {
+  width: 18px !important;
+  font-size: 13px !important;
+  color: #c084fc !important;
+}
+
+.site-pages-list .project-pages-submenu a:hover,
+.site-pages-list .project-pages-submenu a:focus-visible {
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.11), rgba(217, 70, 239, 0.08)) !important;
+  border-color: rgba(103, 232, 249, 0.18) !important;
+  transform: translateX(3px) !important;
 }

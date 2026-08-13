@@ -58,3 +58,67 @@ document.addEventListener("keydown", (event) => {
     closeLightbox();
   }
 });
+
+// ======================================================================
+// 6. DESKTOP HORIZONTAL PROJECT NAVIGATION
+// ======================================================================
+
+const projectNavigationList = document.querySelector(".project-navigation-list");
+
+if (projectNavigationList) {
+  const previousButton = document.querySelector(".project-nav-prev");
+  const nextButton = document.querySelector(".project-nav-next");
+  let dragging = false;
+  let dragStartX = 0;
+  let dragStartScroll = 0;
+
+  const updateNavigationAlignment = () => {
+    const overflows = projectNavigationList.scrollWidth > projectNavigationList.clientWidth + 1;
+    projectNavigationList.classList.toggle("is-centered", !overflows);
+    previousButton.hidden = !overflows;
+    nextButton.hidden = !overflows;
+    previousButton.disabled = projectNavigationList.scrollLeft <= 2;
+    nextButton.disabled = projectNavigationList.scrollLeft >= projectNavigationList.scrollWidth - projectNavigationList.clientWidth - 2;
+  };
+
+  previousButton.addEventListener("click", () => {
+    projectNavigationList.scrollBy({ left: -360, behavior: "smooth" });
+  });
+
+  nextButton.addEventListener("click", () => {
+    projectNavigationList.scrollBy({ left: 360, behavior: "smooth" });
+  });
+
+  projectNavigationList.addEventListener("wheel", (event) => {
+    if (projectNavigationList.scrollWidth <= projectNavigationList.clientWidth) return;
+    if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+      event.preventDefault();
+      projectNavigationList.scrollLeft += event.deltaY;
+    }
+  }, { passive: false });
+
+  projectNavigationList.addEventListener("pointerdown", (event) => {
+    if (projectNavigationList.scrollWidth <= projectNavigationList.clientWidth) return;
+    dragging = true;
+    dragStartX = event.clientX;
+    dragStartScroll = projectNavigationList.scrollLeft;
+    projectNavigationList.classList.add("is-dragging");
+    projectNavigationList.setPointerCapture(event.pointerId);
+  });
+
+  projectNavigationList.addEventListener("pointermove", (event) => {
+    if (!dragging) return;
+    projectNavigationList.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
+  });
+
+  const stopDragging = () => {
+    dragging = false;
+    projectNavigationList.classList.remove("is-dragging");
+  };
+
+  projectNavigationList.addEventListener("pointerup", stopDragging);
+  projectNavigationList.addEventListener("pointercancel", stopDragging);
+  projectNavigationList.addEventListener("scroll", updateNavigationAlignment, { passive: true });
+  window.addEventListener("resize", updateNavigationAlignment);
+  updateNavigationAlignment();
+}

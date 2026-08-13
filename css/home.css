@@ -280,14 +280,39 @@ html {
 .top-portfolio-button:hover,
 .top-portfolio-button:focus-visible {
   transform: translateY(-2px);
+  background: linear-gradient(105deg, #22d3ee 0%, #8b5cf6 58%, #d946ef 100%) border-box;
   box-shadow:
     0 18px 42px rgba(0, 0, 0, 0.48),
-    0 0 30px rgba(168, 85, 247, 0.24);
+    0 0 26px rgba(34, 211, 238, 0.22),
+    0 0 34px rgba(168, 85, 247, 0.24);
   outline: none;
+}
+
+.top-portfolio-button:hover .fa-id-card,
+.top-portfolio-button:focus-visible .fa-id-card {
+  color: #07111d;
+}
+
+.top-portfolio-button:hover .fa-arrow-right,
+.top-portfolio-button:focus-visible .fa-arrow-right {
+  color: #160923;
+  transform: translateX(3px);
 }
 
 .top-portfolio-button .fa-id-card {
   color: var(--accent-cyan);
+}
+
+.top-portfolio-button > span {
+  color: #fff;
+  transition: color 0.25s ease;
+}
+
+.top-portfolio-button:hover > span,
+.top-portfolio-button:focus-visible > span {
+  background: none;
+  color: #08101c;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .top-portfolio-button .fa-arrow-right {

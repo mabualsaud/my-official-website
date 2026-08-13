@@ -255,15 +255,84 @@ body.light .projects-hero {
   box-sizing: border-box;
 }
 
+.project-nav-arrow {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgba(0, 209, 255, 0.38);
+  border-radius: 50%;
+  background: rgba(5, 10, 17, 0.94);
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4), 0 0 16px rgba(0, 209, 255, 0.1);
+  transform: translateY(-50%);
+  transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.project-nav-prev {
+  left: 8px;
+}
+
+.project-nav-next {
+  right: 8px;
+}
+
+.project-nav-arrow:hover,
+.project-nav-arrow:focus-visible {
+  border-color: var(--color-ai);
+  background: var(--color-ai);
+  color: #021016;
+  outline: none;
+}
+
+.project-nav-arrow:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.project-navigation:has(.project-nav-arrow:not([hidden])) .project-navigation-list {
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
+.project-nav-arrow[hidden] {
+  display: none;
+}
+
 .project-navigation-list {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 6px;
   margin: 0;
   padding: 4px 2px;
   list-style: none;
-  overflow-x: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  cursor: grab;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  overscroll-behavior-inline: contain;
+  touch-action: pan-x;
+  user-select: none;
+}
+
+.project-navigation-list::-webkit-scrollbar {
+  display: none;
+}
+
+.project-navigation-list.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+.project-navigation-list.is-centered {
+  justify-content: center;
+  cursor: default;
 }
 
 .project-navigation-list li {
@@ -343,6 +412,9 @@ body.light .projects-hero {
 .project-navigation .nav-ecam {
   --nav-accent: var(--color-ecam-gold);
 }
+.project-navigation .nav-spect {
+  --nav-accent: #00a6a6;
+}
 .project-navigation .nav-epic {
   --nav-accent: var(--color-epic);
 }
@@ -360,6 +432,12 @@ body.light .project-navigation {
   background: rgba(255, 255, 255, 0.94);
   border-color: rgba(0, 0, 0, 0.09);
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+}
+
+body.light .project-nav-arrow {
+  border-color: rgba(0, 120, 145, 0.35);
+  background: rgba(255, 255, 255, 0.96);
+  color: #12313a;
 }
 
 body.light .project-navigation a {
@@ -849,6 +927,66 @@ body.light .card-research {
   box-shadow:
     0 12px 28px rgba(79, 180, 200, 0.38),
     0 0 30px rgba(183, 132, 183, 0.3);
+}
+
+/* ======================================================================
+12A. SIEMENS E-CAM TRANSFORMATION
+====================================================================== */
+
+/* ======================================================================
+12. CARDIAC SPECT/CT CLINICAL TRANSFORMATION
+====================================================================== */
+
+.card-spect {
+  --project-accent: #20d5d0;
+  --project-glow: rgba(0, 166, 166, 0.25);
+  --github-accent: #f0447c;
+  border-color: rgba(0, 166, 166, 0.34) !important;
+  background: linear-gradient(145deg, rgba(12, 20, 22, 0.82), rgba(4, 7, 9, 0.9));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 16px 38px rgba(0, 0, 0, 0.36), 0 0 24px rgba(0, 166, 166, 0.07);
+}
+
+.card-spect:hover {
+  border-color: #20d5d0 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 44px rgba(0, 0, 0, 0.44), 0 0 28px rgba(0, 166, 166, 0.22), 0 0 38px rgba(240, 68, 124, 0.1);
+}
+
+.card-spect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, #20d5d0, #f0447c);
+  box-shadow: 0 0 18px rgba(0, 166, 166, 0.38), 0 0 24px rgba(240, 68, 124, 0.14);
+}
+
+.card-spect h3 .title-text {
+  background: linear-gradient(95deg, #f4f5f6 0%, #f4f5f6 20%, #ff6b9a 54%, #20d5d0 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 18px rgba(0, 166, 166, 0.1);
+}
+
+.highlight-spect {
+  color: #20d5d0;
+  text-shadow: 0 0 12px rgba(0, 166, 166, 0.3);
+}
+
+.btn-spect {
+  color: #071012 !important;
+  border: 0;
+  background: linear-gradient(105deg, #20d5d0 0%, #81eee8 42%, #ff9abc 76%, #f0447c 100%);
+  box-shadow: 0 10px 26px rgba(0, 166, 166, 0.22), 0 0 22px rgba(240, 68, 124, 0.12);
+}
+
+.btn-spect:hover,
+.btn-spect:focus-visible {
+  transform: translateY(-3px);
+  filter: brightness(1.08);
+  box-shadow: 0 13px 30px rgba(0, 166, 166, 0.3), 0 0 30px rgba(240, 68, 124, 0.18);
 }
 
 /* ======================================================================

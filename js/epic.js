@@ -112,6 +112,7 @@ const lightbox = document.getElementById("lightbox");
 const lightboxImage = document.getElementById("lightboxImage");
 const lightboxClose = document.getElementById("lightboxClose");
 const zoomableImages = document.querySelectorAll(".zoomable");
+let previousImageFocus;
 
 function closeLightbox() {
   if (!lightbox || !lightboxImage) return;
@@ -120,17 +121,32 @@ function closeLightbox() {
   lightbox.setAttribute("aria-hidden", "true");
   lightboxImage.src = "";
   document.body.style.overflow = "";
+  previousImageFocus?.focus();
 }
 
 zoomableImages.forEach((image) => {
-  image.addEventListener("click", () => {
+  image.setAttribute("tabindex", "0");
+  image.setAttribute("role", "button");
+  image.setAttribute("aria-label", `Open full-size image: ${image.alt}`);
+
+  const openImage = () => {
     if (!lightbox || !lightboxImage) return;
 
+    previousImageFocus = image;
     lightboxImage.src = image.src;
     lightboxImage.alt = image.alt;
     lightbox.classList.add("show");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    lightboxClose?.focus();
+  };
+
+  image.addEventListener("click", openImage);
+  image.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openImage();
+    }
   });
 });
 

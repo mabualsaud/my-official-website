@@ -1,9 +1,6 @@
 /* =========================================================
 EPIC – NUCLEAR MEDICINE WORKFLOW ARCHITECTURE DESIGN CSS STYLESHEET
 ========================================================= */
-/* ==========================================================================
-1. DESIGN TOKENS & GLOBAL RESET
-========================================================================== */
 
 :root {
   --black: #030303;
@@ -98,11 +95,6 @@ blockquote {
   color: var(--white);
 }
 
-
-/* ==========================================================================
-2. ACCESSIBILITY & SHARED PAGE SHELLS
-========================================================================== */
-
 .skip-link {
   position: fixed;
   top: 12px;
@@ -126,20 +118,40 @@ blockquote {
   margin-inline: auto;
 }
 
+.return-btn {
+  position: fixed;
+  top: 104px;
+  left: 22px;
+  z-index: 900;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 17px;
+  border: 1px solid rgba(230, 0, 38, 0.35);
+  border-radius: 999px;
+  background: rgba(8, 8, 8, 0.88);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.42);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 800;
+  backdrop-filter: blur(18px);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
 
-/* ==========================================================================
-3. PROJECT NAVIGATION
-========================================================================== */
+.return-btn:hover {
+  border-color: var(--epic-red-bright);
+  background: rgba(230, 0, 38, 0.16);
+}
 
 .site-header {
-  position: relative;
-  inset: auto;
-  z-index: 4;
-
-  width: min(calc(100% - 90px), 1180px);
-  margin: 0 auto 42px;
-  padding: 0;
-
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  padding: 20px 24px 0;
   pointer-events: none;
 }
 
@@ -251,10 +263,12 @@ blockquote {
     opacity 0.2s ease;
 }
 
-
-/* ==========================================================================
-4. HERO BACKGROUND EFFECTS
-========================================================================== */
+.hero {
+  position: relative;
+  padding: 160px 20px 70px;
+  text-align: center;
+  overflow: hidden;
+}
 
 .hero-glow {
   position: absolute;
@@ -279,10 +293,38 @@ blockquote {
   background: #0066ff;
 }
 
+.hero-inner {
+  max-width: 950px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
 
-/* ==========================================================================
-5. JHAH BRAND ASSETS
-========================================================================== */
+.hero-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: -52px;
+  margin-bottom: 34px;
+}
+
+.jhah-logo-shell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  width: auto;
+  min-width: 420px;
+  max-width: 520px;
+  margin: 0;
+  padding: 14px 36px;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 35px rgba(255, 255, 255, 0.12);
+}
 
 .partner-logo {
   height: 28px;
@@ -318,11 +360,6 @@ blockquote {
   text-transform: uppercase;
   margin-bottom: 20px;
 }
-
-
-/* ==========================================================================
-6. HERO TYPOGRAPHY & ACTIONS
-========================================================================== */
 
 .hero-title {
   display: flex;
@@ -404,11 +441,6 @@ blockquote {
   background: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
 }
-
-
-/* ==========================================================================
-7. WORKFLOW SECTIONS & SYSTEM CARDS
-========================================================================== */
 
 .workflow-section {
   padding: 135px 0;
@@ -626,11 +658,6 @@ blockquote {
   transform: scale(1.015);
 }
 
-
-/* ==========================================================================
-8. TECHNICAL ARTICLE
-========================================================================== */
-
 .article-section {
   padding: 140px 0 170px;
   background:
@@ -778,11 +805,6 @@ blockquote {
   transform: rotate(90deg);
 }
 
-
-/* ==========================================================================
-9. IMAGE LIGHTBOX
-========================================================================== */
-
 .lightbox {
   position: fixed;
   inset: 0;
@@ -821,11 +843,6 @@ blockquote {
   line-height: 1;
   cursor: pointer;
 }
-
-
-/* ==========================================================================
-10. FOOTER
-========================================================================== */
 
 .site-footer {
   border-top: 1px solid var(--border);
@@ -889,11 +906,6 @@ blockquote {
   transform: translateY(0);
 }
 
-
-/* ==========================================================================
-11. BASE RESPONSIVE LAYOUT
-========================================================================== */
-
 @media (max-width: 1200px) {
   .unified-workflow-card {
     grid-template-columns: 1fr;
@@ -928,7 +940,6 @@ blockquote {
 }
 
 @media (max-width: 900px) {
-
   .site-header {
     padding: 15px 15px 0;
   }
@@ -975,7 +986,14 @@ blockquote {
   .nav-toggle.active span:nth-child(3) {
     transform: translateY(-6px) rotate(-45deg);
   }
-
+  .return-btn {
+    top: 90px;
+    left: 16px;
+  }
+  .hero {
+    min-height: auto;
+    padding-top: 160px;
+  }
   .insight-mini-grid {
     grid-template-columns: 1fr;
   }
@@ -986,21 +1004,37 @@ blockquote {
     white-space: normal;
     font-size: clamp(2rem, 8vw, 2.7rem);
   }
-
+  .hero {
+    padding-top: 140px;
+  }
 }
 
 @media (max-width: 640px) {
   .section-shell {
     width: min(calc(100% - 28px), var(--content-width));
   }
-
+  .return-btn span {
+    display: none;
+  }
+  .return-btn {
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+    padding: 0;
+  }
   .nav-brand-line {
     display: none;
   }
   .nav-brand {
     font-size: 0.68rem;
   }
-
+  .hero {
+    padding: 150px 14px 72px;
+  }
+  .jhah-logo-shell {
+    min-width: 210px;
+    padding: 12px 24px;
+  }
   .jhah-logo {
     width: 130px;
   }
@@ -1043,6 +1077,7 @@ blockquote {
   }
 }
 
+/* Balanced premium hero scale shared across the portfolio. */
 .hero-title,
 .hero-title-secondary {
   font-size: clamp(48px, 6vw, 72px);
@@ -1055,11 +1090,16 @@ blockquote {
     font-size: clamp(32px, 10vw, 42px);
   }
 }
+/* ========================================================================== */
+/* 13. FINAL LUXURY POLISH                                                     */
+/* ========================================================================== */
 
+/* Keep the capsule size; enlarge only the JHAH logo inside it. */
 .jhah-logo {
   height: 42px;
 }
 
+/* Hero hierarchy: architecture first, then the SAP to EPIC journey. */
 .hero-title {
   gap: 18px;
 }
@@ -1104,6 +1144,7 @@ blockquote {
   text-shadow: 0 0 30px var(--epic-red-glow);
 }
 
+/* Refined interaction polish without changing the approved colors. */
 .unified-workflow-card:hover .system-display {
   transform: translateY(-2px);
 }
@@ -1170,6 +1211,7 @@ blockquote {
   box-shadow: 0 0 24px var(--sap-blue-glow);
 }
 
+/* Technical article: balanced heading, official LinkedIn treatment and image. */
 .article-card {
   grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
 }
@@ -1224,11 +1266,7 @@ blockquote {
   height: auto;
 }
 
-
-/* ==========================================================================
-12. PROFESSIONAL BRIDGE
-========================================================================== */
-
+/* Standalone professional bridge: neon cyan identifies the transition itself. */
 .professional-bridge-card {
   --bridge-cyan: #38e8ff;
   --bridge-cyan-soft: rgba(56, 232, 255, 0.12);
@@ -1373,6 +1411,11 @@ blockquote {
   }
 }
 
+/* ========================================================================== */
+/* FINAL POLISH — APPROVED CHANGES ONLY                                       */
+/* ========================================================================== */
+
+/* Hero title and theme switch */
 .hero-title-secondary {
   width: 100%;
   font-size: clamp(2rem, 4.2vw, 4.7rem);
@@ -1381,34 +1424,19 @@ blockquote {
   letter-spacing: -0.035em;
 }
 
-
-/* ==========================================================================
-13. THEME SWITCH & INTERACTION POLISH
-========================================================================== */
-
 .theme-switch {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  justify-self: end;
   gap: 10px;
-
-  width: fit-content;
-  min-height: 50px;
-  margin: 0;
+  margin: 0 auto 44px;
   padding: 10px 17px;
-
   border: 1px solid rgba(255, 255, 255, 0.17);
   border-radius: 999px;
-
   background: rgba(255, 255, 255, 0.055);
-
   color: var(--white);
-  cursor: pointer;
   font-weight: 800;
-
+  cursor: pointer;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
-
   transition:
     transform 0.25s ease,
     border-color 0.25s ease,
@@ -1423,6 +1451,16 @@ blockquote {
   box-shadow:
     0 15px 38px rgba(0, 0, 0, 0.38),
     0 0 26px rgba(56, 232, 255, 0.18);
+}
+
+/* JHAH logo capsule */
+.jhah-logo-shell {
+  min-width: 0;
+  max-width: 470px;
+  gap: 14px;
+  margin-bottom: 8px;
+  padding: 10px 18px;
+  transform: translateY(-22px);
 }
 
 .jhah-logo {
@@ -1447,6 +1485,7 @@ blockquote {
   text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
 }
 
+/* Navigation hover identities — active state remains independent */
 .nav-link:hover {
   color: #fff;
 }
@@ -1467,6 +1506,37 @@ blockquote {
     0 0 24px rgba(56, 232, 255, 0.22);
 }
 
+/* Back button */
+.return-btn {
+  gap: 12px;
+  padding: 14px 22px;
+  border-width: 1.5px;
+  font-size: 0.92rem;
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.52),
+    0 0 26px rgba(230, 0, 38, 0.1);
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    background 0.28s ease,
+    box-shadow 0.28s ease;
+}
+.return-btn i {
+  transition: transform 0.28s ease;
+}
+.return-btn:hover {
+  transform: translateY(-3px);
+  border-color: var(--epic-red-bright);
+  background: linear-gradient(135deg, rgba(230, 0, 38, 0.22), rgba(39, 162, 255, 0.08));
+  box-shadow:
+    0 22px 55px rgba(0, 0, 0, 0.62),
+    0 0 34px rgba(230, 0, 38, 0.26);
+}
+.return-btn:hover i {
+  transform: translateX(-4px);
+}
+
+/* EPIC / SAP cards — glow remains external; image sizes unchanged */
 .epic-unified-card:hover {
   border-color: rgba(230, 0, 38, 0.88);
   box-shadow:
@@ -1480,6 +1550,7 @@ blockquote {
     0 0 110px rgba(39, 162, 255, 0.28);
 }
 
+/* Article card */
 .article-copy {
   display: flex;
   flex-direction: column;
@@ -1531,11 +1602,7 @@ blockquote {
   z-index: 1;
 }
 
-
-/* ==========================================================================
-14. LIGHT THEME
-========================================================================== */
-
+/* Theme switch state */
 body.light-theme {
   --black: #eef2f7;
   --black-soft: #ffffff;
@@ -1550,7 +1617,8 @@ body.light-theme {
   --shadow: 0 24px 70px rgba(22, 35, 53, 0.14);
   --shadow-deep: 0 36px 100px rgba(22, 35, 53, 0.18);
 }
-body.light-theme .site-header .project-nav{
+body.light-theme .site-header .project-nav,
+body.light-theme .return-btn {
   background: rgba(255, 255, 255, 0.88);
 }
 body.light-theme .hero-statement,
@@ -1572,7 +1640,9 @@ body.light-theme .theme-switch {
     white-space: normal;
     font-size: clamp(2rem, 10vw, 3.25rem);
   }
-
+  .jhah-logo-shell {
+    max-width: calc(100vw - 40px);
+  }
   .jhah-logo {
     height: 36px;
   }
@@ -1580,6 +1650,29 @@ body.light-theme .theme-switch {
     min-width: 68px;
     padding-inline: 14px;
   }
+}
+
+/* ========================================================================== */
+/* FINAL SHOWCASE POLISH — FULL-MARK PASS                                     */
+/* ========================================================================== */
+
+/* The hero is intentionally the dominant box on the page. */
+.hero {
+  padding: 160px 20px 54px;
+}
+
+.hero-inner {
+  max-width: 1240px;
+  padding: clamp(48px, 6vw, 82px) clamp(28px, 5vw, 72px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 42px;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(230, 0, 38, 0.1), transparent 34%),
+    radial-gradient(circle at 86% 100%, rgba(39, 162, 255, 0.1), transparent 36%), rgba(8, 9, 12, 0.82);
+  box-shadow:
+    0 42px 120px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
 }
 
 .hero-title-secondary {
@@ -1591,11 +1684,6 @@ body.light-theme .theme-switch {
   margin-bottom: 28px;
   font-size: clamp(1.08rem, 1.45vw, 1.3rem);
 }
-
-
-/* ==========================================================================
-15. HERO DOMAIN TAGS
-========================================================================== */
 
 .hero-tags {
   display: flex;
@@ -1641,6 +1729,34 @@ body.light-theme .theme-switch {
     0 0 22px rgba(56, 232, 255, 0.12);
 }
 
+/* Larger, more premium fixed return control. */
+.return-btn {
+  min-height: 54px;
+  padding: 15px 25px;
+  font-size: 1rem;
+  border-color: rgba(255, 255, 255, 0.22);
+  background: linear-gradient(145deg, rgba(18, 19, 24, 0.96), rgba(5, 5, 7, 0.92));
+  box-shadow:
+    0 22px 58px rgba(0, 0, 0, 0.68),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 28px rgba(230, 0, 38, 0.12);
+}
+
+.return-btn i {
+  font-size: 1.05rem;
+}
+
+.return-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.64);
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.78),
+    inset 0 1px 0 rgba(255, 255, 255, 0.13),
+    0 0 38px rgba(230, 0, 38, 0.28),
+    0 0 28px rgba(39, 162, 255, 0.14);
+}
+
+/* Visible illuminated underline on navigation hover. */
 .nav-link::after {
   position: absolute;
   right: 18px;
@@ -1694,6 +1810,7 @@ body.light-theme .theme-switch {
     0 0 22px rgba(56, 232, 255, 0.16);
 }
 
+/* Bridge now introduces the project immediately after the overview. */
 .bridge-section {
   padding: 30px 0 72px;
 }
@@ -1702,10 +1819,12 @@ body.light-theme .theme-switch {
   margin-top: 0;
 }
 
+/* Remove the distracting red patch above/right of the EPIC card. */
 .epic-section {
   background: linear-gradient(to bottom, transparent, rgba(230, 0, 38, 0.018), transparent);
 }
 
+/* Tighter rhythm while preserving premium breathing room. */
 .workflow-section {
   padding: 82px 0;
 }
@@ -1714,9 +1833,15 @@ body.light-theme .theme-switch {
   padding: 88px 0 130px;
 }
 
+/* External glow only: no colored wash bleeding across the card surface. */
 .epic-unified-card,
 .sap-unified-card {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.025), rgba(12, 13, 16, 0.97)), var(--panel);
+}
+
+body.light-theme .hero-inner {
+  background: rgba(255, 255, 255, 0.84);
+  border-color: rgba(14, 24, 38, 0.12);
 }
 
 body.light-theme .hero-tag {
@@ -1729,11 +1854,19 @@ body.light-theme .hero-tag {
   .nav-link::after {
     display: none;
   }
-
+  .hero-inner {
+    border-radius: 30px;
+  }
 }
 
 @media (max-width: 640px) {
-
+  .hero {
+    padding: 145px 14px 42px;
+  }
+  .hero-inner {
+    padding: 38px 18px;
+    border-radius: 24px;
+  }
   .hero-tags {
     gap: 9px;
   }
@@ -1741,7 +1874,12 @@ body.light-theme .hero-tag {
     width: 100%;
     justify-content: center;
   }
-
+  .return-btn {
+    width: 50px;
+    height: 50px;
+    min-height: 50px;
+    padding: 0;
+  }
   .bridge-section {
     padding: 22px 0 54px;
   }
@@ -1751,6 +1889,9 @@ body.light-theme .hero-tag {
   }
 }
 
+/* ========================================================================== */
+/* CARD HOVER CONSISTENCY — MATCH THE REST OF THE PORTFOLIO                  */
+/* ========================================================================== */
 .unified-workflow-card,
 .article-card,
 .professional-bridge-card {
@@ -1823,6 +1964,20 @@ body.light-theme .hero-tag {
   }
 }
 
+/* ========================================================================== */
+/* FINAL CLOSING FIXES — OPEN HERO, PREMIUM BACK CONTROL, HOVER-ONLY NAV LINE */
+/* ========================================================================== */
+
+.return-btn::before {
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(110deg, rgba(255, 255, 255, 0.08), transparent 42%, rgba(255, 255, 255, 0.035));
+  content: "";
+}
+
+/* Navigation underline is decorative and appears on hover only. */
 .nav-link.active::after {
   opacity: 0;
   transform: scaleX(0.45);
@@ -1833,6 +1988,96 @@ body.light-theme .hero-tag {
   transform: scaleX(1);
 }
 
+@media (max-width: 900px) {
+  .hero {
+    min-height: auto;
+    padding-top: 145px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-inner {
+    padding-inline: 4px;
+  }
+  .return-btn {
+    top: 92px !important;
+    left: 14px !important;
+    width: 54px;
+    height: 54px;
+    min-height: 54px;
+    padding: 0;
+    justify-content: center;
+  }
+}
+
+/* ========================================================================== */
+/* FINAL LOCK — LIVE SERVER CONSISTENCY                                       */
+/* ========================================================================== */
+
+/* Hero is structurally grouped only; it has no visual card treatment. */
+.hero-inner,
+body.light-theme .hero-inner {
+  width: min(100%, 1320px) !important;
+  max-width: 1320px !important;
+  padding: clamp(28px, 4vw, 54px) 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Back control remains dark, fixed, and premium in every theme. */
+.return-btn,
+body.light-theme .return-btn {
+  position: fixed !important;
+  top: 104px !important;
+  left: 24px !important;
+  right: auto !important;
+  bottom: auto !important;
+  z-index: 9999 !important;
+  min-height: 58px !important;
+  padding: 16px 26px !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  border-radius: 999px !important;
+  color: #fff !important;
+  background: linear-gradient(135deg, rgba(230, 0, 38, 0.28), rgba(39, 162, 255, 0.2)), rgba(5, 7, 11, 0.96) !important;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.78),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 0 34px rgba(230, 0, 38, 0.2),
+    0 0 28px rgba(39, 162, 255, 0.14) !important;
+  backdrop-filter: blur(22px) saturate(145%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(145%) !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+.return-btn:hover,
+body.light-theme .return-btn:hover {
+  transform: none !important;
+  border-color: rgba(255, 255, 255, 0.78) !important;
+  color: #fff !important;
+  background:
+    linear-gradient(135deg, rgba(230, 0, 38, 0.46), rgba(39, 162, 255, 0.32)), rgba(5, 7, 11, 0.98) !important;
+  box-shadow:
+    0 28px 74px rgba(0, 0, 0, 0.84),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 0 48px rgba(230, 0, 38, 0.38),
+    0 0 38px rgba(39, 162, 255, 0.25) !important;
+}
+
+.return-btn i {
+  color: #ff6572 !important;
+  filter: drop-shadow(0 0 11px rgba(230, 0, 38, 0.72));
+}
+
+.return-btn:hover i {
+  transform: translateX(-5px) !important;
+}
+
+/* Navigation underline appears on pointer hover only, never from active state. */
 .nav-link.active::after {
   opacity: 0 !important;
   transform: scaleX(0.45) !important;
@@ -1843,6 +2088,7 @@ body.light-theme .hero-tag {
   transform: scaleX(1) !important;
 }
 
+/* Restore a clearly visible, external EPIC glow without color wash above card. */
 .epic-section {
   background: linear-gradient(to bottom, transparent, rgba(230, 0, 38, 0.016), transparent) !important;
 }
@@ -1864,6 +2110,37 @@ body.light-theme .hero-tag {
     0 0 125px rgba(230, 0, 38, 0.3) !important;
 }
 
+@media (max-width: 640px) {
+  .return-btn,
+  body.light-theme .return-btn {
+    top: 92px !important;
+    left: 14px !important;
+    width: 54px !important;
+    height: 54px !important;
+    min-height: 54px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+  }
+}
+
+/* ========================================================================== */
+/* FINAL INTERACTION FIXES                                                    */
+/* ========================================================================== */
+
+/* Return button stays at the top of the page and does not follow scrolling. */
+.return-btn,
+body.light-theme .return-btn {
+  position: absolute !important;
+  top: 104px !important;
+  left: 24px !important;
+}
+
+.return-btn:hover,
+body.light-theme .return-btn:hover {
+  transform: none !important;
+}
+
+/* Colored underline motion for the project domain tags. */
 .hero-tag {
   position: relative;
   overflow: visible;
@@ -1919,11 +2196,23 @@ body.light-theme .hero-tag {
   }
 }
 
+@media (max-width: 640px) {
+  .return-btn,
+  body.light-theme .return-btn {
+    position: absolute !important;
+    top: 92px !important;
+    left: 14px !important;
+  }
+}
+
 @media (max-width: 950px) {
   html {
     font-size: 85%;
   }
 }
+/* ======================================================================
+FOOTER
+====================================================================== */
 
 #site-footer {
   width: 100%;
@@ -1939,441 +2228,152 @@ body.light-theme .hero-tag {
   text-decoration: none;
 }
 
-@media (max-width: 700px) {
+/* ========================================================================== */
+/* HERO LAYOUT — AUTHORITATIVE FINAL OVERRIDES                               */
+/* ========================================================================== */
 
-  .jhah-logo {
-    height: 39px !important;
-  }
-  .partner-logo {
-    height: 31px !important;
-  }
+body,
+body.light-theme {
+  background: #050607;
 }
 
-@media (min-width: 701px) {
-
-  .jhah-logo { height: 40px !important; }
-  .partner-logo { height: 34px !important; }
+body.light-theme .hero-title-secondary {
+  color: #f7f9fc;
+  text-shadow: 0 12px 38px rgba(0, 0, 0, 0.32);
 }
 
-@media (max-width: 700px) {
-
-  .workflow-section {
-    padding: 66px 0 !important;
-  }
-  .unified-workflow-card {
-    width: calc(100% - 24px) !important;
-    margin-inline: auto !important;
-    padding: 20px 14px !important;
-    gap: 28px !important;
-    border-radius: 26px !important;
-  }
-  .workflow-image-col {
-    width: 100% !important;
-  }
-  .system-display {
-    width: min(100%, 330px) !important;
-    min-height: 0 !important;
-    margin-inline: auto !important;
-    border-radius: 24px !important;
-    overflow: hidden !important;
-  }
-  .display-topline {
-    min-height: 48px !important;
-    padding: 0 16px !important;
-  }
-  .system-display img {
-    display: block !important;
-    width: 100% !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    flex: 0 0 auto !important;
-    padding: 8px 6px 12px !important;
-    object-fit: contain !important;
-  }
+main,
+.hero,
+.professional-bridge,
+.workflow-section,
+.epic-section,
+.sap-section,
+.article-section {
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
-.theme-switch {
-  margin: 0;
+.hero-glow {
+  display: none;
 }
 
 .hero {
-  position: relative;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-
-  min-height: 92vh;
-  padding: 34px 24px 72px;
-
-  overflow: hidden;
-  text-align: center;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 52px 24px 96px;
 }
-
-
-/* ==========================================================================
-16. HERO IDENTITY CONTROLS
-========================================================================== */
 
 .hero-controls-shell {
   position: relative;
-  z-index: 5;
-
-  width: min(calc(100% - 90px), 1180px);
-  margin: 0 auto 34px;
-  padding: 14px 0 12px;
-
-  border: 0;
-  border-radius: 0;
-
-  background: transparent;
-  box-shadow: none;
-
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+  z-index: 3;
+  order: 1;
+  width: min(100%, 1180px);
+  margin: 0 auto 52px;
 }
 
 .hero-controls {
-  width: 100%;
+  display: block;
   margin: 0;
 }
 
 .hero-controls-row {
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) auto minmax(220px, 1fr);
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 28px;
-
-  width: 100%;
-  margin: 0;
 }
 
-.return-btn,
-body.light-theme .return-btn {
-  position: static;
-  inset: auto;
-  z-index: auto;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-
-  width: fit-content;
-  min-height: 54px;
-  margin: 0;
-  padding: 14px 22px;
-
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 999px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(230, 0, 38, 0.25),
-      rgba(39, 162, 255, 0.18)
-    ),
-    rgba(7, 8, 12, 0.92);
-
-  box-shadow:
-    0 18px 46px rgba(0, 0, 0, 0.52),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 0 28px rgba(230, 0, 38, 0.12);
-
-  color: #ffffff;
-  font-size: 0.92rem;
-  font-weight: 800;
-
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
-  transition:
-    transform 0.28s ease,
-    border-color 0.28s ease,
-    background 0.28s ease,
-    box-shadow 0.28s ease;
-}
-
-.hero-return-btn {
+.hero-return-btn,
+body.light-theme .hero-return-btn {
+  position: static !important;
   justify-self: start;
-  align-self: center;
-}
-
-.return-btn i {
-  color: #ff5b68;
-  filter: drop-shadow(0 0 10px rgba(230, 0, 38, 0.55));
-  transition: transform 0.28s ease;
-}
-
-.return-btn:hover,
-body.light-theme .return-btn:hover {
-  border-color: rgba(255, 255, 255, 0.68);
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(230, 0, 38, 0.42),
-      rgba(39, 162, 255, 0.28)
-    ),
-    rgba(7, 8, 12, 0.96);
-
-  box-shadow:
-    0 24px 62px rgba(0, 0, 0, 0.68),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14),
-    0 0 40px rgba(230, 0, 38, 0.28),
-    0 0 30px rgba(39, 162, 255, 0.18);
-
-  transform: translateY(-3px);
-}
-
-.return-btn:hover i {
-  transform: translateX(-4px);
+  transform: none;
 }
 
 .jhah-logo-shell {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   justify-self: center;
-  gap: 22px;
-
-  width: auto;
-  min-width: 420px;
-  max-width: 520px;
+  max-width: 560px;
   margin: 0;
-  padding: 14px 36px;
-
-  border-radius: 999px;
-
-  background: #ffffff;
-
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.50),
-    0 0 35px rgba(255, 255, 255, 0.12);
-  justify-self: center;
+  transform: none;
 }
 
+.system-badge-text {
+  flex-direction: column;
+  min-width: 116px;
+  white-space: nowrap;
+}
 
 .theme-switch {
+  justify-self: end;
   margin: 0;
 }
 
-.hero-inner,
-body.light-theme .hero-inner {
+.site-header {
   position: relative;
-  z-index: 2;
+  inset: auto;
+  order: 2;
+  width: 100%;
+  margin: 0 0 72px;
+  padding: 0;
+  pointer-events: auto;
+}
 
-  width: min(100%, 1320px);
-  max-width: 1320px;
-  margin-inline: auto;
-  padding: clamp(28px, 4vw, 54px) 0;
+.hero-inner {
+  order: 3;
+  padding-top: 12px !important;
+  padding-bottom: 64px !important;
+}
 
-  border: 0;
-  border-radius: 0;
+.hero-title-secondary {
+  font-size: clamp(2.75rem, 5.35vw, 6.15rem);
+  margin-bottom: 38px;
+}
 
-  background: transparent;
-  box-shadow: none;
+.hero-title-journey {
+  font-size: clamp(1.9rem, 3.4vw, 3.4rem);
+  margin-bottom: 44px;
+}
 
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+.hero-statement {
+  font-size: clamp(1.14rem, 1.55vw, 1.38rem);
+  margin-bottom: 44px;
 }
 
 @media (max-width: 900px) {
   .hero {
-    min-height: auto;
-    padding: 160px 15px 64px;
-  }
-
-  .hero-controls-shell {
-    width: min(calc(100% - 30px), 760px);
-    padding: 20px;
+    min-height: 100svh;
+    padding: 38px 18px 68px;
   }
 
   .hero-controls-row {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 18px;
-  }
-
-  .hero-return-btn {
-    justify-self: center;
-  }
-
-  .hero-controls-spacer {
-    display: none;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero {
-    padding: 145px 14px 56px;
-  }
-
-  .hero-controls-shell {
-    width: min(calc(100% - 24px), 520px);
-    padding: 18px 14px;
-  }
-
-  .return-btn,
-  body.light-theme .return-btn {
-    width: auto;
-    height: auto;
-    min-height: 48px;
-    padding: 12px 18px;
-    font-size: 0.78rem;
-  }
-
-  .return-btn span {
-    display: inline;
+    grid-template-columns: 1fr auto;
   }
 
   .jhah-logo-shell {
-    width: min(100%, 420px);
-    min-width: 0;
-    padding: 12px 20px;
-    gap: 14px;
-  }
-
-  .jhah-logo {
-    width: auto;
-    height: 38px;
-  }
-
-  .partner-logo {
-    height: 30px;
-  }
-
-  .hero-inner,
-  body.light-theme .hero-inner {
-    padding-inline: 4px;
-  }
-}
-
-@media (max-width: 900px) {
-  .site-header {
-    width: min(calc(100% - 30px), 760px);
-    margin-bottom: 34px;
-    padding: 0;
-  }
-
-  .hero {
-    padding-top: 24px;
-  }
-}
-
-@media (max-width: 640px) {
-  .site-header {
-    width: min(calc(100% - 24px), 520px);
-  }
-
-  .hero {
-    padding-top: 18px;
-  }
-}
-
-/* ==========================================================================
-17. HERO CONTROLS | SINGLE-LINE DESKTOP ALIGNMENT
-========================================================================== */
-
-@media (min-width: 901px) {
-  .hero-controls-row {
-    grid-template-columns: minmax(220px, 1fr) auto minmax(220px, 1fr);
-  }
-
-  .hero-return-btn {
-    justify-self: start;
-  }
-
-  .jhah-logo-shell {
-    justify-self: center;
-  }
-
-  .theme-switch {
-    justify-self: end;
-  }
-}
-
-@media (max-width: 900px) {
-  .hero-controls-row {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 18px;
+    grid-column: 1 / -1;
+    grid-row: 1;
   }
 
   .hero-return-btn,
-  .jhah-logo-shell,
+  body.light-theme .hero-return-btn,
   .theme-switch {
-    justify-self: center;
+    grid-row: 2;
   }
 }
 
-/* ==========================================================================
-FINAL MOBILE HERO TAGS — SINGLE HORIZONTAL ROW
-========================================================================== */
-
-@media (max-width: 640px) {
-
-  .hero-tags {
+@media (max-width: 560px) {
+  .hero-controls-row {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    gap: 8px;
-
-    width: 100%;
-    margin: 0 auto;
-    padding: 2px 0 6px;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .hero-tags::-webkit-scrollbar {
-    display: none;
-  }
-
-  .hero-tag {
-    flex: 0 0 auto;
-
-    width: auto;
-    min-height: 38px;
-    padding: 8px 14px;
-
+    flex-wrap: wrap;
     justify-content: center;
-
-    white-space: nowrap;
-  }
-}
-
-/* ==========================================================================
-TOUCH DEVICES
-Keep borders visible when hover is unavailable.
-========================================================================== */
-
-@media (hover: none) and (pointer: coarse) {
-
-  .glass-panel,
-  .project-card,
-  .module-card,
-  .feature-card,
-  .article-card,
-  .cert-card,
-  .comparison-col,
-  .phase-card,
-  .visual,
-  .feature-image,
-  .page-return,
-  .project-return,
-  .back-btn,
-  .back-link,
-  .back-home-btn,
-  .return-btn,
-  .theme-btn,
-  .nav-links a {
-    border-color: rgba(255,255,255,.18) !important;
+    gap: 14px;
   }
 
+  .jhah-logo-shell {
+    order: -1;
+    width: 100%;
+  }
 }
