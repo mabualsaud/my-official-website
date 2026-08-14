@@ -1,0 +1,123 @@
+/* ================================================================
+   HEALTHCARE & NUCLEAR MEDICINE PROJECTS | PAGE FOUNDATION
+================================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@500;600;700;800&display=swap');
+
+:root{--bg:#050607;--panel:rgba(12,15,17,.78);--line:rgba(255,255,255,.13);--text:#f5f5f2;--muted:#adb3b9;--gold:#e4b84b;--teal:#17c8c8;--maroon:#8f1835}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Montserrat,Arial,sans-serif;transition:background .3s,color .3s}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,.018),transparent 34%,rgba(255,255,255,.012));z-index:-1}
+.page-shell{width:min(1480px,calc(100% - 48px));margin:auto}
+
+/* ================================================================
+   HEADER
+================================================================ */
+.page-header{min-height:130px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:28px}
+.header-button{justify-self:start;display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border:1px solid rgba(228,184,75,.48);border-radius:999px;background:rgba(8,10,11,.7);color:#eee;text-decoration:none;text-transform:uppercase;font-weight:800;font-size:.72rem;letter-spacing:.55px;cursor:pointer;transition:.25s}
+.header-button:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.theme-toggle{justify-self:end}
+.identity-panel{width:500px;height:78px;padding:12px 28px;border-radius:999px;background:#fff;box-shadow:0 14px 38px rgba(0,0,0,.35);display:grid;grid-template-columns:190px 1px 190px;align-items:center;justify-content:center;gap:22px}
+.identity-panel img{display:block;width:190px;height:48px;object-fit:contain}
+.identity-panel .aramco-identity{width:190px;height:50px}
+.identity-divider{width:1px;height:42px;background:rgba(25,35,42,.18)}
+
+/* ================================================================
+   PROJECT NAVIGATION
+================================================================ */
+.project-nav{position:sticky;top:14px;z-index:20;width:max-content;max-width:calc(100% - 20px);margin:8px auto 0;padding:9px;display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;background:rgba(7,9,10,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 14px 36px rgba(0,0,0,.26);overflow-x:auto;scrollbar-width:none}
+.project-nav::-webkit-scrollbar{display:none}
+.project-nav a{flex:0 0 auto;padding:14px 20px;border:1px solid transparent;border-radius:999px;color:#aeb3b7;text-decoration:none;text-transform:uppercase;font-size:.75rem;font-weight:800;letter-spacing:.55px;transition:.22s}
+.project-nav a span{margin-right:8px;color:#d9a13b;font-size:.82rem}
+.project-nav a:hover,.project-nav a:focus-visible{border-color:rgba(217,161,59,.42);background:rgba(217,161,59,.08);color:#fff}
+body.light .project-nav{background:rgba(250,250,248,.84)}
+body.light .project-nav a:hover,body.light .project-nav a:focus-visible{color:#111}
+
+/* ================================================================
+   HERO
+================================================================ */
+.hero{min-height:560px;padding:95px 24px 110px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.eyebrow{margin:0 0 35px;color:#d9a13b;font-size:.73rem;font-weight:800;letter-spacing:4px;text-transform:uppercase}
+.hero h1{max-width:1320px;margin:0;font-family:Montserrat,Arial,sans-serif;text-transform:uppercase;text-shadow:0 14px 42px rgba(0,0,0,.32)}
+.hero h1 span{display:block;color:#fffdf8;font-size:clamp(4.2rem,8.2vw,8.3rem);font-weight:800;line-height:.82;letter-spacing:-5px;text-shadow:0 0 28px rgba(255,255,255,.06)}
+.hero h1 strong{display:block;margin-top:25px;color:#e0b24d;font-size:clamp(1.65rem,3.5vw,3.8rem);font-weight:800;line-height:1;letter-spacing:5px;text-shadow:0 0 24px rgba(224,178,77,.12)}
+.hero-copy{max-width:860px;margin:42px auto 28px;color:#c3c7ca;font-size:1.12rem;line-height:1.75}
+.hero-facts{display:flex;flex-wrap:wrap;justify-content:center;gap:9px}
+.hero-facts span{padding:10px 15px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.025);font-size:.7rem;font-weight:800;letter-spacing:.7px;text-transform:uppercase}
+
+/* ================================================================
+   PROJECT CARDS
+================================================================ */
+.project-grid{display:grid;gap:34px;padding-bottom:100px}
+
+/* Original project-card structure moved from Projects. */
+.project-card{--project-accent:#e60026;--project-accent-2:#27a2ff;position:relative;display:flex;flex-direction:column;width:100%;padding:40px;border:1px solid color-mix(in srgb,var(--project-accent) 34%,var(--line));border-radius:24px;background:linear-gradient(145deg,rgba(16,20,28,.94),rgba(8,10,15,.98));overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 16px 38px rgba(0,0,0,.34);transition:transform .35s,border-color .35s,box-shadow .35s;scroll-margin-top:105px}
+.project-card::before{content:"";position:absolute;inset:0 auto 0 0;width:6px;background:linear-gradient(180deg,var(--project-accent),var(--project-accent-2));box-shadow:0 0 18px color-mix(in srgb,var(--project-accent) 38%,transparent)}
+.project-card:hover{transform:translateY(-5px);border-color:var(--project-accent)!important;box-shadow:0 20px 44px rgba(0,0,0,.44),0 0 28px color-mix(in srgb,var(--project-accent) 22%,transparent)}
+.project-card h2{display:flex;align-items:center;justify-content:space-between;gap:25px;margin:0 0 24px;font-family:Montserrat,Arial,sans-serif;font-size:clamp(1.55rem,2.4vw,2.5rem);font-weight:900;line-height:1.18}
+.project-card .title-text{color:#fff;font-weight:900}
+.project-card .project-date{display:inline-flex;margin-left:10px;padding:7px 11px;border:1px solid color-mix(in srgb,var(--project-accent) 50%,transparent);border-radius:999px;color:var(--project-accent);font-size:.62rem;letter-spacing:1px;vertical-align:middle}
+.card-title-logo{flex:0 0 auto;width:180px;max-height:60px;padding:8px 13px;border-radius:10px;background:#fff;object-fit:contain}
+.project-card p{max-width:1120px;margin:0;color:#b9bec5;font-size:1rem;line-height:1.8}
+.tech-tags{display:flex;flex-wrap:wrap;gap:9px;margin:25px 0}
+.tech-tags span{padding:9px 13px;border:1px solid color-mix(in srgb,var(--project-accent) 30%,var(--line));border-radius:999px;color:#d5d8db;background:rgba(255,255,255,.025);font-size:.65rem;font-weight:800;text-transform:uppercase}
+.project-actions{display:flex;align-items:center;gap:12px}
+.launch-btn{display:inline-flex;align-items:center;gap:11px;padding:13px 19px;border:1px solid var(--project-accent);border-radius:999px;color:#fff;text-decoration:none;text-transform:uppercase;font-size:.7rem;font-weight:800;letter-spacing:.5px;transition:.25s}
+.launch-btn:hover{gap:17px;background:linear-gradient(110deg,var(--project-accent),var(--project-accent-2));color:#080808}
+.card-epic{--project-accent:#e60026;--project-accent-2:#27a2ff}.card-epic .sap-name{color:#27a2ff}.card-epic .epic-name,.highlight-epic-red{color:#e60026}.highlight-epic{color:#27a2ff}
+.card-hotlab{--project-accent:#d9a13b;--project-accent-2:#74152c;border-color:rgba(116,21,44,.48)!important}
+.card-hotlab::before{background:linear-gradient(180deg,#d9a13b 0%,#74152c 76%,#4a0d1c 100%);box-shadow:0 0 18px rgba(116,21,44,.38)}
+.card-hotlab .title-text{background:linear-gradient(95deg,#fffaf2 0%,#f4d27e 24%,#d9a13b 48%,#a62b49 68%,#74152c 86%,#4a0d1c 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.card-hotlab .highlight-hotlab{color:#a92d4b}
+.card-hotlab .highlight-hotlab-gold{color:#efc05f}
+.card-hotlab .tech-tags span{border-color:rgba(217,161,59,.3);color:#f4efe6}
+.card-hotlab .btn-hotlab{border-color:rgba(217,161,59,.72);color:#fffaf2}
+.card-hotlab .btn-hotlab:hover{background:linear-gradient(135deg,#4a0d1c,#74152c 58%,#d9a13b);border-color:#d9a13b;color:#fffaf2}
+.card-ecam{--project-accent:#f0b83f;--project-accent-2:#19d9e8}.card-ecam .title-text{background:linear-gradient(90deg,#fff 0%,#f8e5ae 42%,#f0b83f 64%,#19d9e8 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.highlight-ecam{color:#19d9e8}
+.card-ecam .ecam-multipurpose{
+  background:none!important;
+  background-clip:border-box!important;
+  -webkit-background-clip:border-box!important;
+  color:#19d9e8!important;
+  -webkit-text-fill-color:#19d9e8!important;
+  text-shadow:0 0 14px rgba(25,217,232,.3)!important;
+}
+.card-spect{--project-accent:#20d5d0;--project-accent-2:#f0447c}.card-spect .title-text{background:linear-gradient(95deg,#f4f5f6 0%,#f4f5f6 20%,#ff6b9a 54%,#20d5d0 100%);-webkit-background-clip:text;background-clip:text;color:transparent}.highlight-spect{color:#20d5d0}
+.card-dxa{--project-accent:#7e22ce;--project-accent-2:#fff}.card-dxa .dxa-action,.card-dxa .dxa-name,.highlight-dxa{color:#a855f7}
+body.light .project-card{background:rgba(255,255,255,.78)}body.light .project-card p{color:#4c555b}body.light .tech-tags span{color:#343a3e}
+.clinical-card{--accent:var(--gold);--accent-2:var(--accent);position:relative;min-height:0;padding:40px;border:1px solid color-mix(in srgb,var(--accent) 34%,var(--line));border-radius:24px;background:linear-gradient(145deg,rgba(16,20,28,.94),rgba(8,10,15,.98));overflow:hidden;box-shadow:0 16px 38px rgba(0,0,0,.34);transition:.3s}
+.clinical-card::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:linear-gradient(180deg,var(--accent),var(--accent-2));box-shadow:0 0 18px color-mix(in srgb,var(--accent) 38%,transparent)}
+.clinical-card:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--accent) 58%,transparent);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.card-content{display:flex;flex-direction:column;align-items:flex-start}
+.card-meta{width:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px;margin-bottom:28px;color:var(--accent);font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:700}
+.card-meta time{padding:8px 13px;border:1px solid color-mix(in srgb,var(--accent) 42%,transparent);border-radius:999px;font-family:Montserrat,sans-serif;font-size:.66rem;letter-spacing:1px;text-transform:uppercase}
+.card-meta time{justify-self:end}
+.card-logo{display:block;width:170px;height:46px;padding:6px 12px;border-radius:10px;background:#fff;object-fit:contain}
+.card-logo-aramco{width:118px}
+.card-kicker{margin:0 0 12px!important;color:var(--accent)!important;font-size:.68rem!important;font-weight:800;letter-spacing:2.5px;text-transform:uppercase}
+.clinical-card h2{margin:0 0 22px;font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(2.25rem,3.2vw,3.8rem);line-height:.95;text-transform:uppercase;background:linear-gradient(95deg,#f5f5f3 0%,var(--accent) 58%,var(--accent-2) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.clinical-card p{margin:0;color:#b9bec2;font-size:.98rem;line-height:1.8}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0}
+.tags span{padding:8px 11px;border:1px solid var(--line);border-radius:999px;color:#d2d4d5;font-size:.62rem;font-weight:700;text-transform:uppercase}
+.clinical-card a{display:inline-flex;align-items:center;gap:12px;padding:13px 18px;border:1px solid color-mix(in srgb,var(--accent) 60%,transparent);border-radius:999px;color:var(--text);font-size:.7rem;font-weight:800;letter-spacing:.6px;text-decoration:none;text-transform:uppercase;transition:.25s}
+.clinical-card a:hover{background:linear-gradient(105deg,var(--accent),var(--accent-2));border-color:var(--accent);color:#080808;gap:18px}
+.card-epic{--accent:#e60026;--accent-2:#27a2ff}
+.card-hotlab{--accent:#e0ad43;--accent-2:#8f1835}
+.card-ecam{--accent:#f0b83f;--accent-2:#19d9e8}
+.card-spect{--accent:#ff6b9a;--accent-2:#20d5d0}
+.card-dxa{--accent:#7e22ce;--accent-2:#ffffff}
+
+/* ================================================================
+   FOOTER & LIGHT THEME
+================================================================ */
+footer{padding:28px 10px 36px;border-top:1px solid var(--line);color:#777;text-align:center;font-size:.72rem}
+footer a{color:#aaa;text-decoration:none} footer a:hover{color:var(--gold)}
+body.light{--bg:#ececeb;--panel:rgba(255,255,255,.7);--line:rgba(15,19,21,.16);--text:#111416;--muted:#555d62;background:linear-gradient(#dedede,#f6f6f4)}
+body.light .clinical-card{background:rgba(255,255,255,.68);box-shadow:0 22px 55px rgba(25,28,30,.12)}
+body.light .clinical-card p,body.light .hero-copy{color:#4b5358} body.light .tags span{color:#343a3e} body.light .header-button{background:rgba(255,255,255,.7);color:#181b1d}
+
+/* ================================================================
+   RESPONSIVE DESIGN
+================================================================ */
+@media(max-width:1000px){.hero{min-height:500px}}
+@media(max-width:720px){.page-shell{width:min(100% - 22px,1480px)}.page-header{grid-template-columns:1fr 1fr;min-height:112px}.identity-panel{grid-column:1/-1;grid-row:2;width:min(100%,370px);height:66px;padding:9px 15px;grid-template-columns:145px 1px 145px;gap:12px;justify-self:center}.identity-panel img{width:145px;height:42px}.identity-panel .aramco-identity{width:145px;height:44px}.identity-divider{height:34px}.header-button{padding:11px 13px;font-size:.58rem}.project-nav{max-width:100%;justify-content:flex-start;padding:7px}.project-nav a{padding:11px 15px;font-size:.65rem}.project-nav a span{font-size:.7rem}.hero{padding:75px 5px 80px}.eyebrow{font-size:.59rem;line-height:1.7;letter-spacing:2.3px}.hero h1 span{font-size:clamp(3.2rem,15vw,5rem);letter-spacing:-3px}.hero h1 strong{font-size:clamp(1.2rem,6vw,2rem);letter-spacing:2px;line-height:1.15}.hero-copy{font-size:.9rem}.project-card{padding:27px 22px}.project-card h2{align-items:flex-start;flex-direction:column;font-size:1.6rem}.project-card .project-date{margin:9px 0 0}.project-grid{gap:22px}.hero-facts{gap:6px}.hero-facts span{font-size:.55rem}}

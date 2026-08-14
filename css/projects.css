@@ -484,6 +484,191 @@ body:not(.light) .project-card {
 }
 
 /* ======================================================================
+5A. HEALTHCARE & NUCLEAR MEDICINE PORTFOLIO CARD
+====================================================================== */
+
+.card-healthcare {
+  --project-accent: #e0b24d;
+  --project-glow: rgba(224, 178, 77, 0.2);
+  min-height: 500px;
+  justify-content: center;
+  padding: 52px 54px;
+  border-color: rgba(224, 178, 77, 0.38) !important;
+  border-radius: 30px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 24px 64px rgba(0, 0, 0, 0.38),
+    0 0 34px rgba(224, 178, 77, 0.06);
+}
+
+body:not(.light) .card-healthcare {
+  background: linear-gradient(145deg, rgba(17, 19, 20, 0.96), rgba(7, 8, 9, 0.98)) !important;
+}
+
+.card-healthcare:hover {
+  border-color: #e0b24d !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 28px 72px rgba(0, 0, 0, 0.46),
+    0 0 34px rgba(224, 178, 77, 0.15),
+    0 0 52px rgba(25, 217, 232, 0.07);
+}
+
+.card-healthcare::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 6px;
+  background: linear-gradient(180deg, #fffdf8 0%, #e0b24d 52%, #19d9e8 100%);
+  box-shadow: 0 0 18px rgba(224, 178, 77, 0.24);
+}
+
+.healthcare-card-kicker {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: fit-content;
+  margin-bottom: 22px;
+  color: #e0b24d;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+}
+
+.healthcare-card-kicker i { color: #19d9e8; font-size: 0.9rem; }
+.healthcare-card-kicker span {
+  margin-left: 5px;
+  padding: 7px 10px;
+  border: 1px solid rgba(224, 178, 77, 0.38);
+  border-radius: 999px;
+  color: #fffdf8;
+  font-size: 0.58rem;
+  letter-spacing: 1px;
+}
+
+.card-healthcare h3 .title-text {
+  color: #fffdf8;
+  font-weight: 900;
+  letter-spacing: -0.8px;
+}
+
+.card-healthcare h3 .title-text > span {
+  display: block;
+  margin-top: 8px;
+  color: #e0b24d;
+  font-size: 0.86em;
+  letter-spacing: 0.3px;
+}
+
+.healthcare-project-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 29px 0 10px;
+}
+
+.healthcare-project-list span {
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  color: var(--body-text);
+  background: rgba(255, 255, 255, 0.035);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+}
+
+.btn-healthcare {
+  min-height: 54px;
+  padding: 14px 23px !important;
+  border-color: #e0b24d !important;
+  background: linear-gradient(105deg, #e0b24d 0%, #c58d27 100%) !important;
+  color: #0b0c0d !important;
+  box-shadow: 0 12px 28px rgba(197, 141, 39, 0.22);
+  font-weight: 900;
+}
+
+.btn-healthcare:hover {
+  color: #071012 !important;
+  background: linear-gradient(105deg, #f0c96b 0%, #19d9e8 100%) !important;
+  box-shadow: 0 14px 34px rgba(25, 217, 232, 0.18), 0 0 24px rgba(224, 178, 77, 0.2);
+  transform: translateY(-2px);
+}
+
+.nav-healthcare { --nav-accent: #d6aa43; }
+
+/* ======================================================================
+5B. ARTIFICIAL INTELLIGENCE PROJECTS PORTFOLIO CARD
+====================================================================== */
+
+.card-ai-portfolio {
+  --project-accent: #a855f7;
+  --project-glow: rgba(168, 85, 247, 0.2);
+  min-height: 500px;
+  justify-content: center;
+  padding: 52px 54px;
+  border-color: rgba(168, 85, 247, 0.34) !important;
+  border-radius: 30px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 24px 64px rgba(0,0,0,.38), 0 0 34px rgba(168,85,247,.07);
+}
+
+body:not(.light) .card-ai-portfolio {
+  background: linear-gradient(145deg, rgba(14,18,22,.97), rgba(7,8,10,.98)) !important;
+}
+
+.card-ai-portfolio::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 6px;
+  background: linear-gradient(180deg, #f7f8fa, #c084fc 50%, #7c3aed);
+  box-shadow: 0 0 18px rgba(168,85,247,.3);
+}
+
+.card-ai-portfolio:hover {
+  border-color: #a855f7 !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 28px 72px rgba(0,0,0,.46), 0 0 34px rgba(168,85,247,.18), 0 0 52px rgba(124,58,237,.1);
+}
+
+.ai-portfolio-kicker {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: fit-content;
+  margin-bottom: 22px;
+  color: #c084fc;
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+}
+
+.ai-portfolio-kicker i { color: #a855f7; font-size: .95rem; }
+.ai-portfolio-kicker span { margin-left: 5px; padding: 7px 10px; border: 1px solid rgba(168,85,247,.38); border-radius: 999px; color: #fff; font-size: .58rem; letter-spacing: 1px; }
+.card-ai-portfolio h3 .title-text { color: #fff; font-weight: 900; letter-spacing: -.8px; }
+.card-ai-portfolio h3 .title-text > span { display: block; margin-top: 8px; background: linear-gradient(90deg, #c084fc, #f5f6f8 48%, #7c3aed); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: .86em; letter-spacing: .3px; }
+.ai-project-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 29px 0 10px; }
+.ai-project-list span { padding: 9px 13px; border: 1px solid rgba(255,255,255,.12); border-radius: 999px; color: var(--body-text); background: rgba(255,255,255,.035); font-size: .68rem; font-weight: 800; letter-spacing: .35px; text-transform: uppercase; }
+.btn-ai-portfolio { min-height: 54px; padding: 14px 23px !important; border-color: #a855f7 !important; background: linear-gradient(105deg, #c084fc, #7c3aed) !important; color: #fff !important; box-shadow: 0 12px 28px rgba(168,85,247,.2); font-weight: 900; }
+.btn-ai-portfolio:hover { color: #fff !important; background: linear-gradient(105deg, #d8b4fe, #6d28d9) !important; box-shadow: 0 14px 34px rgba(168,85,247,.28), 0 0 24px rgba(124,58,237,.2); transform: translateY(-2px); }
+.nav-ai-portfolio { --nav-accent: #a855f7; }
+
+@media (max-width: 700px) {
+  .card-healthcare { min-height: 0; padding: 32px 24px; border-radius: 24px; }
+  .healthcare-card-kicker { flex-wrap: wrap; letter-spacing: 1.4px; }
+  .card-healthcare h3 .title-text > span { margin-top: 8px; }
+  .healthcare-project-list { gap: 6px; }
+  .healthcare-project-list span { padding: 7px 9px; font-size: 0.58rem; }
+  .card-ai-portfolio { min-height: 0; padding: 32px 24px; border-radius: 24px; }
+  .ai-portfolio-kicker { flex-wrap: wrap; letter-spacing: 1.4px; }
+  .card-ai-portfolio h3 .title-text > span { margin-top: 8px; }
+  .ai-project-list { gap: 6px; }
+  .ai-project-list span { padding: 7px 9px; font-size: .58rem; }
+}
+
+/* ======================================================================
 6. PROJECTS INTRODUCTION
 ====================================================================== */
 
