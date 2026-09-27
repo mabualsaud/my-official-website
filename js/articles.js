@@ -13,15 +13,19 @@ const publicationImages = {
   // 15-strategic-plan-board-visual.jpg
   // 17-executive-meeting-visual.jpg
   leadership: [
-    "advisory-consultancy.jpg",
-    "budget-management-2.png",
     "change-mangement.png",
+    "advisory-consultancy.jpg",
+    "aramco-skills.png",
+    "budget-management-2.png",
+    "budget-management.png",
+    "18-executive-budget-management.jpg",
     "digital-chrisma.jpg",
     "experiences.jpg",
     "integrity.png",
     "raci.jpg",
     "transparency.png",
-    "18-executive-budget-management.jpg",
+    "auditing-case-study.png",
+    "cnmt-auditing.png",
     "16-executive-meeting.jpg",
     "14-strategic-plan-board.jpg",
     "13-multitasking-fast-tracking.jpg",
@@ -69,7 +73,7 @@ const publicationImages = {
   ],
 
  ai: [
-  "leadership/ai-audit.jpg",
+  "ai-audit.jpg",
   "30-ai-medical-safety-governance-visual.jpg",
   "29-ai-medical-safety-governance.jpg",
   "26-ai-hallucination-control.jpg",
@@ -117,10 +121,6 @@ const publicationImages = {
   ],
 
   "nuclear-medicine": [
-    "leadership/aramco-skills.png",
-    "leadership/auditing-case-study.png",
-    "leadership/budget-management.png",
-    "leadership/cnmt-auditing.png",
     "nm-multidisplinities.png",
     "28-radiology-capital-asset-transfer.jpg",
     "27-verbal-vs-email-handover.jpg",
