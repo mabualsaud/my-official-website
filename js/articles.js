@@ -23,7 +23,6 @@ const publicationImages = {
     "experiences.jpg",
     "integrity.png",
     "raci.jpg",
-    "transparency.png",
     "auditing-case-study.png",
     "cnmt-auditing.png",
     "16-executive-meeting.jpg",
