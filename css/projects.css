@@ -872,6 +872,43 @@ body:not(.light) .card-ai-portfolio {
 body.light .tech-tags span {
   background: rgba(0, 0, 0, 0.03);
 }
+.msc-study-areas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 760px;
+}
+.msc-study-area {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+}
+.msc-study-area h4 {
+  margin: 0 0 12px;
+  color: var(--color-msc-gold);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.msc-study-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.msc-study-tags span {
+  padding: 6px 11px;
+}
+body.light .msc-study-area {
+  background: rgba(0, 0, 0, 0.02);
+}
+@media (max-width: 700px) {
+  .msc-study-areas {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* ======================================================================
 8. ACTION BUTTONS
@@ -1052,6 +1089,11 @@ body.light .card-research {
 }
 
 .btn-research {
+  width: 419.844px;
+  max-width: 100%;
+  min-height: 54px;
+  padding: 14px 23px;
+  justify-content: center;
   color: #170900 !important;
   background: linear-gradient(120deg, var(--color-msc-red) 0%, var(--color-msc-orange) 48%, var(--color-msc-gold) 100%);
   box-shadow: 0 10px 26px rgba(245, 158, 11, 0.2);

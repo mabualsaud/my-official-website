@@ -715,7 +715,7 @@ body.light h1 {
   font-size: clamp(18px, 3vw, 28px);
   font-weight: 700;
   margin-bottom: 15px;
-  text-transform: uppercase;
+  text-transform: none;
   line-height: 1.5;
 }
 
@@ -2563,6 +2563,8 @@ SAFE FINAL OVERRIDE — keep real logos visible inside mobile marquees
   }
 }
 
+
+
 /* ==========================================================================
 TOUCH DEVICES
 Keep borders visible when hover is unavailable.
@@ -2687,4 +2689,98 @@ FINAL PORTFOLIO NAME HERO — preserve headline scale after global overrides
   background: linear-gradient(90deg, rgba(34, 211, 238, 0.11), rgba(217, 70, 239, 0.08)) !important;
   border-color: rgba(103, 232, 249, 0.18) !important;
   transform: translateX(3px) !important;
+}
+
+/* Advisory and strategic consultancy section. */
+.consultancy-section-title {
+  margin: 0;
+  color: var(--accent-cyan);
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  line-height: 1.15;
+  text-align: center;
+}
+
+.consultancy-intro {
+  max-width: 100%;
+  margin: 14px auto 28px;
+  color: var(--body-text);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  opacity: 0.8;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.consultancy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.consultancy-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background: #202126;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  text-align: left;
+}
+
+body.light .consultancy-card {
+  background: #ffffff;
+}
+
+.consultancy-card h3 {
+  margin: 0 0 14px;
+  color: var(--accent-purple);
+  font-size: 1.18rem;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.consultancy-card ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.consultancy-card li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--body-text);
+  font-size: 0.96rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.consultancy-card li::before {
+  position: absolute;
+  left: 0;
+  color: var(--accent-cyan);
+  content: "•";
+}
+
+@media (max-width: 700px) {
+  .consultancy-intro {
+    white-space: normal;
+  }
+
+  .consultancy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .consultancy-card {
+    padding: 20px;
+  }
+}
+
+/* Preserve the two-column education layout on iPad instead of stacking every card. */
+@media (min-width: 701px) and (max-width: 1200px) {
+  .education-horizontal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+  }
 }

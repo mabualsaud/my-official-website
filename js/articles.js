@@ -13,6 +13,14 @@ const publicationImages = {
   // 15-strategic-plan-board-visual.jpg
   // 17-executive-meeting-visual.jpg
   leadership: [
+    "advisory-consultancy.jpg",
+    "budget-management-2.png",
+    "change-mangement.png",
+    "digital-chrisma.jpg",
+    "experiences.jpg",
+    "integrity.png",
+    "raci.jpg",
+    "transparency.png",
     "18-executive-budget-management.jpg",
     "16-executive-meeting.jpg",
     "14-strategic-plan-board.jpg",
@@ -32,6 +40,9 @@ const publicationImages = {
   ],
 
   "digital-transformation": [
+    "back-end.jpg",
+    "front-end.jpg",
+    "full-stack.png",
     "23-end-medical-ai-hallucinations.jpg",
     "22-ethics-vs-legality-data-security.jpg",
     "21-red-team-attack-simulation.jpg",
@@ -58,6 +69,7 @@ const publicationImages = {
   ],
 
  ai: [
+  "leadership/ai-audit.jpg",
   "30-ai-medical-safety-governance-visual.jpg",
   "29-ai-medical-safety-governance.jpg",
   "26-ai-hallucination-control.jpg",
@@ -105,6 +117,11 @@ const publicationImages = {
   ],
 
   "nuclear-medicine": [
+    "leadership/aramco-skills.png",
+    "leadership/auditing-case-study.png",
+    "leadership/budget-management.png",
+    "leadership/cnmt-auditing.png",
+    "nm-multidisplinities.png",
     "28-radiology-capital-asset-transfer.jpg",
     "27-verbal-vs-email-handover.jpg",
     "26-rapid-response-vs-code-blue.jpg",
@@ -158,7 +175,11 @@ document.querySelectorAll("[data-gallery]").forEach((gallery) => {
   }
 
   files.forEach((file, index) => {
-    const imagePath = `../articles/${folder}/${encodeURIComponent(file)}`;
+    const imageFilePath = file.includes("/") ? file : `${folder}/${file}`;
+    const imagePath = `../articles/${imageFilePath
+      .split("/")
+      .map((segment) => encodeURIComponent(segment))
+      .join("/")}`;
     const articleCard = document.createElement("button");
     const image = document.createElement("img");
 

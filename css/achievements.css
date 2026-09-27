@@ -141,6 +141,18 @@ body {
   border: 0;
 }
 
+.uk-distinction-note {
+  margin: 14px 0 0;
+  color: #f8f1e3;
+  font-size: 1.55rem;
+  font-weight: 700;
+}
+
+.uk-distinction-note strong {
+  color: inherit;
+  font-weight: 800;
+}
+
 .academic-logo-wrapper {
   display: flex;
   align-items: center;
@@ -204,6 +216,16 @@ body {
 
 .featured-card strong {
   color: var(--accent-orange);
+}
+
+.academic-results-card {
+  padding: 25px;
+}
+
+.module-grade-result + .module-grade-result {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(245, 158, 11, 0.3);
 }
 
 .featured-img {

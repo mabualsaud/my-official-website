@@ -1815,3 +1815,12 @@ MEDICINE MEETS SOFTWARE | FEATURED STORY
     width: 100%;
   }
 }
+
+/* Keep the home-hero action compact on tablet screens. */
+@media (min-width: 701px) and (max-width: 1200px) {
+  .top-portfolio-button {
+    min-height: 46px;
+    padding: 0 16px;
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,11 @@
+/* Shared footer readability for the main portfolio pages. */
+body footer {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  opacity: 1 !important;
+}
+
+body footer :not(.enter-button) {
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
